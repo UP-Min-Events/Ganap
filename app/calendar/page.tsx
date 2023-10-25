@@ -7,7 +7,7 @@ export default function Calendar(){
         <main className="min-h-screen flex flex-col items-center">
             <header className="flex flex-col w-full pt-4">
                 <BackButton />
-                <h1 className="text-center text-3xl font-bold">Calendar</h1>
+                <h1 className="text-center text-3xl lg:text-5xl font-bold">Calendar</h1>
             </header>
             <Separator className="my-4" />
             <ButtonMenu />
