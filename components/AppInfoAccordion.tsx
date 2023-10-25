@@ -15,7 +15,7 @@ export default function AppInfoAccordion() {
                 <AccordionContent className="indent-8 text-justify">
                     <p>Ganap is an event management system developed by Nhyl Bryle Iba&#241;ez, Anakin Skywalker Pactores, and Rafael Paderna.</p>
                     <p>This application was initially developed as a final project for CMSC 127: File and Database Management Systems. Through evolving interest, this project was continued into the application you are using right now.</p>
-                    <p>As of October 2023, this application is still in development in collaboration with the Student Organizations and Activities Section of the UP Mindanao's Office of Student Affairs.</p>
+                    <p>As of October 2023, this application is still in development in collaboration with the Student Organizations and Activities Section of the UP Mindanao&apos;s Office of Student Affairs.</p>
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">

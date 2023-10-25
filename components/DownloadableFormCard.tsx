@@ -15,7 +15,7 @@ export default function DownloadableFormCard() {
             <CardHeader className="space-y-0.5">
                 <CardTitle className="text-2xl">Form 1</CardTitle>
                 <CardDescription>
-                    A form to fill out the organization's event request.
+                    A form to fill out the organization&apos;s event request.
                 </CardDescription>
             </CardHeader>
             <CardFooter className="flex flex-col-reverse lg:flex-row lg:justify-between space-x-2">
