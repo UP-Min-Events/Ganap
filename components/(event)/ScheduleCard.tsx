@@ -13,14 +13,14 @@ import {
 export default function ScheduleCard() {
     return (
         <Card className="flex flex-col gap-4 p-4">
-            <CardHeader className="space-y-0.5">
+            <CardHeader className="space-y-0.5 p-2">
                 <CardTitle className="flex">
                     <CalendarIcon />
                     &nbsp; Schedule
                 </CardTitle>
                 <CardDescription>Event schedule details</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-2">
                 <div className="flex justify-between">
                     <p className="flex items-center"><CalendarIcon />&nbsp;Date</p> 
                     <p className="font-medium">October 25, 2023</p>
