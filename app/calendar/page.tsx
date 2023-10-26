@@ -1,4 +1,4 @@
-import BackButton from "@/components/(nav)/BackButton";
+import BackButton from "@/components/(buttons)/BackButton";
 import ButtonMenu from "@/components/(nav)/ButtonMenu";
 import { Separator } from "@/components/ui/separator"
 

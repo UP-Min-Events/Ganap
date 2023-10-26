@@ -1,4 +1,4 @@
-import BackButton from "@/components/(nav)/BackButton"
+import BackButton from "@/components/(buttons)/BackButton"
 import { Separator } from "@/components/ui/separator"
 import ScheduleCard from "@/components/(event)/ScheduleCard"
 import DescriptionCard from "@/components/(event)/DescriptionCard"
