@@ -1,7 +1,7 @@
-import BackButton from "@/components/(nav)/BackButton"
+import BackButton from "@/components/(buttons)/BackButton"
 import DownloadableFormCard from "@/components/DownloadableFormCard"
 import { Separator } from "@/components/ui/separator"
-import CallToActionButton from "@/components/CallToActionButton"
+import CallToActionButton from "@/components/(buttons)/CallToActionButton"
 
 export default function Forms(){
     return (
