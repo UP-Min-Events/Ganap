@@ -1,5 +1,5 @@
-import DownloadableFormCard from "@/components/(admin)/DownloadableFormCard"
-import { UploadFormSheet } from "@/components/(admin)/UploadFormSheet"
+import DownloadableFormCard from "./components/DownloadableFormCard"
+import { UploadFormSheet } from "./components/UploadFormSheet"
 import PageHeader from "@/components/(nav)/PageHeader"
 
 export default function Forms(){

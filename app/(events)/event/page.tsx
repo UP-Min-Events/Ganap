@@ -1,7 +1,7 @@
 import BackButton from "@/components/(buttons)/BackButton"
 import { Separator } from "@/components/ui/separator"
-import ScheduleCard from "@/components/(event)/ScheduleCard"
-import DescriptionCard from "@/components/(event)/DescriptionCard"
+import ScheduleCard from "./components/ScheduleCard"
+import DescriptionCard from "./components/DescriptionCard"
 
 export default function Event() {
     return (

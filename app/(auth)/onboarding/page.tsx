@@ -1,5 +1,5 @@
 import PageHeader from "@/components/(nav)/PageHeader"
-import OnboardingForm from "@/components/OnboardingForm"
+import OnboardingForm from "@/app/(auth)/onboarding/components/OnboardingForm"
 
 export default function Onboarding() {
     return (

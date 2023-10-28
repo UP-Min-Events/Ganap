@@ -2,6 +2,7 @@
 import { Separator } from "@/components/ui/separator";
 import { usePathname } from "next/navigation";
 import BackButton from "@/components/(buttons)/BackButton";
+import SignoutButton from "../(buttons)/SignoutButton";
 
 export default function PageHeader() {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export default function PageHeader() {
     '/downloadable-forms': "Downloadable Forms",
     '/onboarding': "Let's get to know you.",
     '/qr': "Account QR Code",
+    '/request': "Request an Event",
     '/scan': "Scan QR Code"
   };
 
@@ -23,6 +25,7 @@ export default function PageHeader() {
           <h1 className="text-[1.5rem] md:text-[1.75rem]lg:text-4xl font-semibold text-center">
             {headerNames[pathname]}
           </h1>
+          {pathname === '/account' ? <SignoutButton /> : "" }
       </header>
       <Separator className="mb-4" />  
     </>
