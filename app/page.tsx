@@ -1,6 +1,6 @@
-import EventCard from "@/components/(event)/EventCard"
+import EventCard from "@/app/components/EventCard"
 import Sidebar from "@/components/(nav)/Sidebar"
-import EventTabs from "@/components/(event)/EventTabs"
+import EventTabs from "@/app/components/EventTabs"
 import ButtonMenu from "@/components/(nav)/ButtonMenu"
 import PageHeader from "@/components/(nav)/PageHeader"
 

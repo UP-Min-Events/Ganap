@@ -4,9 +4,9 @@ import Link from "next/link"
 
 export default function SignoutButton() {
     return (
-        <Link href="/login" className="fixed right-0 pr-4">
-            <Button variant="ghost" className="p-0 text-var-neutral-30">
-                <ExitIcon className="h-6 w-6 lg:h-8 lg:w-8"/>
+        <Link href="/login" className="absolute right-0 md:right-[20%] lg:right-[30%] mr-6">
+            <Button variant="ghost" className="p-0 text-white">
+                <ExitIcon className="h-6 w-6"/>
             </Button>
         </Link>
     )

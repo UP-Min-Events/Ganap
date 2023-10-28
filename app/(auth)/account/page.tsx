@@ -1,9 +1,7 @@
-import SignoutButton from "@/components/(buttons)/SignoutButton";
-import AppInfoAccordion from "@/components/(account)/AppInfoAccordion";
+import AppInfoAccordion from "./components/AppInfoAccordion"
 import ButtonMenu from "@/components/(nav)/ButtonMenu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Separator } from "@/components/ui/separator"
-import { AccountInfoTabs } from "@/components/(account)/AccountInfoTabs";
+import { AccountInfoTabs } from "./components/AccountInfoTabs"
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import PageHeader from "@/components/(nav)/PageHeader";
