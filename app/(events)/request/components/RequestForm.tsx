@@ -53,7 +53,7 @@ export default function RequestForm() {
     }
 
     return (
-      <section className="w-full lg:max-w-[20%] px-6 flex flex-col gap-6">
+      <section className="w-full md:max-w-[50%] lg:max-w-[30%] px-6 flex flex-col gap-6">
         <header className="w-full flex gap-4 justify-between">
             <span className="w-[50%] bg-var-primary-20 rounded-full h-1" />
             <span className={`w-[50%] ${page === 0 ? `bg-var-neutral-70` : `bg-var-primary-20`} rounded-full h-1`} />
