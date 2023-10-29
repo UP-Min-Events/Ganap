@@ -1,7 +1,9 @@
+// Components
 import BackButton from "@/components/(buttons)/BackButton"
 import { Separator } from "@/components/ui/separator"
 import ScheduleCard from "./components/ScheduleCard"
 import DescriptionCard from "./components/DescriptionCard"
+import DataCard from "./components/DataCard"
 
 export default function Event() {
     return (
@@ -15,6 +17,7 @@ export default function Event() {
                 <h3 className="text-center text-sm font-medium">Status: Event Status</h3>
                 <ScheduleCard />    
                 <DescriptionCard />
+                <DataCard />
             </section>
         </main>
     )

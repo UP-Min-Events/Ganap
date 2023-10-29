@@ -1,5 +1,10 @@
 // Utilities
+import Link from "next/link"
+
+// Icons
 import { InfoCircledIcon, ArrowTopRightIcon } from "@radix-ui/react-icons"
+
+// shadCN Components
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -9,7 +14,7 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
-import Link from "next/link"
+
 
 export default function DescriptionCard() {
     return (

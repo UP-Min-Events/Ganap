@@ -1,6 +1,7 @@
-// Utilities
+// Icons
 import { CalendarIcon, ClockIcon, DrawingPinIcon } from "@radix-ui/react-icons"
 
+// shadCN Components
 import {
     Card,
     CardContent,
