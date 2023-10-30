@@ -1,5 +1,5 @@
 import AppInfoAccordion from "./components/AppInfoAccordion"
-import ButtonMenu from "@/components/(nav)/ButtonMenu";
+import CallToActionButton from "@/components/(buttons)/CallToActionButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { AccountInfoTabs } from "./components/AccountInfoTabs"
 import { Switch } from "@/components/ui/switch";
@@ -31,8 +31,10 @@ export default function Account() {
             <section className="w-[90%] md:w-[50%] lg:w-[40%] px-6">
                 <AppInfoAccordion />
             </section>
-            {/* <CallToActionButton action="Sign Out" /> */}
-            <ButtonMenu />
+            <nav className="relative mt-12">
+                <CallToActionButton action="Sign Out" />
+            </nav>
+            {/* <ButtonMenu /> */}
         </main>
     )
 }

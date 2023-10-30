@@ -1,8 +1,14 @@
 "use client";
-import { Separator } from "@/components/ui/separator";
+// Utilities
 import { usePathname } from "next/navigation";
+
+// Components
 import BackButton from "@/components/(buttons)/BackButton";
 import SignoutButton from "../(buttons)/SignoutButton";
+import AccountButton from "../(buttons)/AccountButton";
+
+// shadCN Components
+import { Separator } from "@/components/ui/separator";
 
 export default function PageHeader() {
   const pathname = usePathname();
@@ -25,7 +31,9 @@ export default function PageHeader() {
           <h1 className="text-[1.5rem] md:text-[1.75rem]lg:text-4xl font-semibold text-center">
             {headerNames[pathname]}
           </h1>
-          {pathname === '/account' ? <SignoutButton /> : "" }
+          <>
+            {pathname === '/account' ? <SignoutButton /> : pathname !== '/onboarding' ? <AccountButton /> : ""}
+          </>
       </header>
       <Separator className="mb-4" />  
     </>

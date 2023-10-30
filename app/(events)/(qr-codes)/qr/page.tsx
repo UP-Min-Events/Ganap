@@ -1,9 +1,13 @@
-import PageHeader from "@/components/(nav)/PageHeader";
+// Radix Icons
 import { GroupIcon } from "@radix-ui/react-icons";
+
+// Components
+import PageHeader from "@/components/(nav)/PageHeader";
+import ButtonMenu from "@/components/(nav)/ButtonMenu";
 
 export default function QR() {
     return (
-        <main className="min-h-screen">
+        <main className="min-h-screen flex flex-col items-center">
             <PageHeader />
             <section className="container flex flex-col items-center pt-16 md:max-w-[50%] lg:max-w-[30%]">
                 <figure className="text-var-primary-30 pb-4">
@@ -15,6 +19,7 @@ export default function QR() {
                     <p className="text-var-primary-30 pt-4 text-justify">Disclaimer: This QR code cannot be used by other people to log their attendance.</p>
                 </section>
             </section>
+            <ButtonMenu />
         </main>
     )
 }

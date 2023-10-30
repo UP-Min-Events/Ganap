@@ -8,9 +8,9 @@ interface CallToActionButtonProps {
 export default function CallToActionButton({ action }: CallToActionButtonProps) {
     return (
         // <Link href="/" className="fixed bottom-24">
-            <Button className="bg-var-primary-20 hover:bg-var-primary-30 w-[15rem] h-[3rem] rounded-2xl text-base text-center">
+            <Button className="bg-var-primary-20 hover:bg-var-primary-30 w-[15rem] h-[2.5rem] rounded-2xl text-base text-center">
                 {action}
             </Button>
-        // </Link>
+        // </Link>                          
     )
 }
