@@ -1,3 +1,5 @@
+// shadCN Components
+import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -6,6 +8,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
+
+import { RowsIcon } from "@radix-ui/react-icons"
 
 import {
 Sheet,
@@ -30,9 +34,9 @@ import {
 
 export default function Sidebar() {
     return (
-        <nav className="left-4 absolute">
+        <nav className="absolute left-0 md:left-[20%] lg:left-[30%] ml-6">
             <DropdownMenu>
-                <DropdownMenuTrigger>
+                <DropdownMenuTrigger className="flex items-center p-0">
                     Ganap ADMIN
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="rounded-none min-w-[14rem] min-h-screen">

@@ -5,6 +5,7 @@ import ButtonMenu from "@/components/(nav)/ButtonMenu"
 import PageHeader from "@/components/(nav)/PageHeader"
 
 export default function Home() {
+  
   return (
     <main className="min-h-screen flex flex-col items-center">
       <PageHeader />
