@@ -13,7 +13,7 @@ import { Separator } from "@/components/ui/separator";
 import AdminHeader from "./AdminHeader";
 
 export default function PageHeader() {
-  const user = "admin";
+  const user = "organizer";
   const pathname = usePathname();
 
   const headerNames: { [key: string]: string } = {
@@ -24,18 +24,20 @@ export default function PageHeader() {
     '/onboarding': "Let's get to know you.",
     '/qr': "Account QR Code",
     '/request': "Request an Event",
-    '/scan': "Scan QR Code"
+    '/scan': "Scan QR Code",
   };
 
   return (
     <>
       <header className="px-6 w-full flex justify-center relative bg-var-primary-30 text-white py-4">
-        {user !== 'admin' ?
+        {user !== 'admin' ? // will fix in the future, error regarding hydration
           <>
             <nav>
               {pathname !== '/' ? <BackButton /> : ""}
             </nav>
             <h1 className="text-[1.5rem] md:text-[1.75rem]lg:text-4xl font-semibold text-center">
+
+
               {headerNames[pathname]}
             </h1>
             <nav>
@@ -44,7 +46,7 @@ export default function PageHeader() {
           </>
         :
           <>
-            <AdminHeader />
+            <AdminHeader /> 
           </>
         }
       </header>

@@ -16,9 +16,10 @@ import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 
 export default function AdminHeader() {
   return (
-    <nav>
+    <>
       <NavigationMenu>
         <NavigationMenuList className="space-x-2 text-sm">
+
           <NavigationMenuItem>
             <Link href="/">
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-var-primary-30 hover:bg-inherit hover:text-var-primary-10`}>
@@ -26,6 +27,7 @@ export default function AdminHeader() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
             <Link href="/calendar">
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-var-primary-30 hover:bg-inherit hover:text-var-primary-10`}>
@@ -33,6 +35,7 @@ export default function AdminHeader() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
             <Link href="/">
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-var-primary-30 hover:bg-inherit hover:text-var-primary-10`}>
@@ -40,6 +43,7 @@ export default function AdminHeader() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
             <Link href="/downloadable-forms">
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-var-primary-30 hover:bg-inherit hover:text-var-primary-10`}>
@@ -47,8 +51,9 @@ export default function AdminHeader() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+
         </NavigationMenuList>
       </NavigationMenu>
-    </nav>
+    </>
   )
 }
