@@ -12,9 +12,10 @@ import Sidebar from "@/components/(nav)/Sidebar"
 import { Separator } from "@/components/ui/separator";
 import AdminHeader from "./AdminHeader";
 
+
 export default function PageHeader() {
-  const user = "organizer";
   const pathname = usePathname();
+  const user: string = '';
 
   const headerNames: { [key: string]: string } = {
     '/': "Ganap",
@@ -29,7 +30,7 @@ export default function PageHeader() {
 
   return (
     <>
-      <header className="px-6 w-full flex justify-center relative bg-var-primary-30 text-white py-4">
+      <header className="px-6 w-full flex justify-center relative bg-var-primary-30 text-white py-4 overflow-hidden">
         {user !== 'admin' ? // will fix in the future, error regarding hydration
           <>
             <nav>

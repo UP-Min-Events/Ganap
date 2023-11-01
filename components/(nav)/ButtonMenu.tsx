@@ -10,7 +10,7 @@ export default function ButtonMenu() {
 
     return (
     <nav className={`fixed bottom-8 flex border ${pathname === '/scan' ? "border-white" : "border-var-primary-20" } rounded-2xl overflow-hidden`}>
-      <Link href="/qr">
+      <Link href="/request">
         <Button variant="ghost" className={`rounded-2xl h-12 hover:bg-var-primary-20 hover:text-white ${pathname === ('/qr' || '/request') ? " text-var-primary-20" : ""}`}>
           <RocketIcon className="h-6 w-6" />
         </Button>

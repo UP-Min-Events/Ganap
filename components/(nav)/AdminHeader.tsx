@@ -18,7 +18,7 @@ export default function AdminHeader() {
   return (
     <>
       <NavigationMenu>
-        <NavigationMenuList className="space-x-2 text-sm">
+        <NavigationMenuList className="text-sm">
 
           <NavigationMenuItem>
             <Link href="/">
