@@ -57,11 +57,11 @@ export default function Calendar() {
                               <span className="text-gray-500">1</span>
                           </div>
                           <div className="bottom flex-grow h-30 py-1 w-full cursor-pointer">
-                              <div className="event bg-var-primary-10 text-black rounded p-1 text-sm mb-1">
+                              <div className="event bg-red-100 text-black rounded p-1 text-sm mb-1">
                                   <span className="event-name">Meeting&nbsp;</span>
                                   <span className="time">12:00~14:00</span>
                               </div>
-                              <div className="event bg-var-secondary-10 text-black rounded p-1 text-sm mb-1">
+                              <div className="event bg-green-100 text-black rounded p-1 text-sm mb-1">
                                   <span className="event-name">Meeting&nbsp;</span>
                                   <span className="time">18:00~20:00</span>
                               </div>

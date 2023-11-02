@@ -49,7 +49,7 @@ export function UploadFormSheet() {
         </div>
         <SheetFooter>
           <SheetClose asChild>
-            <Button className="bg-var-secondary-30 hover:bg-var-secondary-20"type="submit">Upload Form</Button>
+            <Button className="bg-green-300 hover:bg-green-400" type="submit">Upload Form</Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

@@ -22,7 +22,7 @@ export default function AdminHeader() {
 
           <NavigationMenuItem>
             <Link href="/">
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-var-primary-30 hover:bg-inherit hover:text-var-primary-10`}>
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-red-500 hover:bg-inherit hover:text-red-100`}>
                 Pending Requests
               </NavigationMenuLink>
             </Link>
@@ -30,7 +30,7 @@ export default function AdminHeader() {
 
           <NavigationMenuItem>
             <Link href="/calendar">
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-var-primary-30 hover:bg-inherit hover:text-var-primary-10`}>
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-red-500 hover:bg-inherit hover:text-red-100`}>
                 Calendar
               </NavigationMenuLink>
             </Link>
@@ -38,7 +38,7 @@ export default function AdminHeader() {
 
           <NavigationMenuItem>
             <Link href="/">
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-var-primary-30 hover:bg-inherit hover:text-var-primary-10`}>
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-red-500 hover:bg-inherit hover:text-red-100`}>
                 Event List
               </NavigationMenuLink>
             </Link>
@@ -46,7 +46,7 @@ export default function AdminHeader() {
 
           <NavigationMenuItem>
             <Link href="/downloadable-forms">
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-var-primary-30 hover:bg-inherit hover:text-var-primary-10`}>
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-red-500 hover:bg-inherit hover:text-red-100`}>
                 Downloadable Forms
               </NavigationMenuLink>
             </Link>

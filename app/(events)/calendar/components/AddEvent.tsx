@@ -55,7 +55,7 @@ export function AddEvent() {
         </div>
         <SheetFooter>
           <SheetClose asChild>
-            <Button className="bg-var-secondary-30 hover:bg-var-secondary-20"type="submit">Upload Event</Button>
+            <Button className="bg-green-300 hover:bg-green-400" type="submit">Upload Event</Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

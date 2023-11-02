@@ -1,17 +1,17 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function EventTabs() {
-    const user = 'admin'
+    const user: string = 'user'
 
     const tabData = user === 'admin'
         ? [
             { value: "pending", label: "Pending", colorClass: "text-yellow-500" },
-            { value: "completed", label: "Completed", colorClass: "text-var-secondary-20" },
-            { value: "closed", label: "Closed", colorClass: "text-var-primary-30" },
+            { value: "completed", label: "Completed", colorClass: "text-green-300" },
+            { value: "closed", label: "Closed", colorClass: "text-red-600" },
         ] : [
-            { value: "upcoming", label: "Upcoming", colorClass: "text-var-primary-30, data-[state=active]:text-var-secondary-20" },
-            { value: "ongoing", label: "Ongoing", colorClass: "text-var-primary-30, data-[state=active]:text-var-secondary-20" },
-            { value: "past", label: "Past", colorClass: "text-var-primary-30, data-[state=active]:text-var-secondary-20" },
+            { value: "upcoming", label: "Upcoming", colorClass: "text-red-600, data-[state=active]:text-green-300" },
+            { value: "ongoing", label: "Ongoing", colorClass: "text-red-600, data-[state=active]:text-green-300" },
+            { value: "past", label: "Past", colorClass: "text-red-600, data-[state=active]:text-green-300" },
         ];
 
     return (

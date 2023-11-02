@@ -55,8 +55,8 @@ export default function RequestForm() {
     return (
       <section className="w-full md:max-w-[50%] lg:max-w-[30%] px-6 flex flex-col gap-6">
         <header className="w-full flex gap-4 justify-between">
-            <span className="w-[50%] bg-var-primary-20 rounded-full h-1" />
-            <span className={`w-[50%] ${page === 0 ? `bg-var-neutral-70` : `bg-var-primary-20`} rounded-full h-1`} />
+            <span className="w-[50%] bg-red-500 rounded-full h-1" />
+            <span className={`w-[50%] ${page === 0 ? `bg-var-neutral-70` : `bg-red-500`} rounded-full h-1`} />
         </header>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -160,11 +160,11 @@ export default function RequestForm() {
               }
             <nav className="w-full flex flex-col gap-4 items-center">
               { page === 0 ?
-                  <Button className="w-[75%] rounded-2xl border-var-primary-20" type="button" variant="outline" onClick={() => setPage(1)}>Next Page</Button>
+                  <Button className="w-[75%] rounded-2xl border-red-500" type="button" variant="outline" onClick={() => setPage(1)}>Next Page</Button>
                 :
                 <>
-                  <Button className="w-[75%] rounded-2xl border-var-primary-20" type="button" variant="outline" onClick={() => setPage(0)}>Previous Page</Button>
-                  <Button className="w-[75%] rounded-2xl bg-var-primary-20 hover:bg-var-primary-30 h-10" type="submit">Submit Request</Button>
+                  <Button className="w-[75%] rounded-2xl border-red-500" type="button" variant="outline" onClick={() => setPage(0)}>Previous Page</Button>
+                  <Button className="w-[75%] rounded-2xl bg-red-500 hover:bg-var-primary-30 h-10" type="submit">Submit Request</Button>
                 </>
               }
             </nav>
