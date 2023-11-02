@@ -9,9 +9,9 @@ export default function EventTabs() {
             { value: "completed", label: "Completed", colorClass: "text-green-300" },
             { value: "closed", label: "Closed", colorClass: "text-red-600" },
         ] : [
-            { value: "upcoming", label: "Upcoming", colorClass: "text-red-600, data-[state=active]:text-green-300" },
-            { value: "ongoing", label: "Ongoing", colorClass: "text-red-600, data-[state=active]:text-green-300" },
-            { value: "past", label: "Past", colorClass: "text-red-600, data-[state=active]:text-green-300" },
+            { value: "upcoming", label: "Upcoming", colorClass: "data-[state=active]:bg-red-400 data-[state=active]:text-white" },
+            { value: "ongoing", label: "Ongoing", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100" },
+            { value: "past", label: "Past", colorClass: "data-[state=active]:bg-red-600 data-[state=active]:text-neutral-100" },
         ];
 
     return (
