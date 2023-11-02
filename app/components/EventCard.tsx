@@ -27,7 +27,7 @@ export default function EventCard() {
                         <p>Venue</p>
                     </CardContent>
                 </section>
-                <DoubleArrowRightIcon className="w-12 h-12 group-hover:text-red-500" />
+                <DoubleArrowRightIcon className="w-10 h-10 group-hover:text-red-500" />
             </Card>
         </Link>
     )
