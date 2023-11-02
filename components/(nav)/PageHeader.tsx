@@ -30,7 +30,7 @@ export default function PageHeader() {
 
   return (
     <>
-      <header className="px-6 w-full flex justify-center relative bg-var-primary-30 text-white py-4 overflow-hidden">
+      <header className="px-6 w-full flex justify-center relative bg-red-500 text-white py-4 overflow-hidden">
         {user !== 'admin' ? // will fix in the future, error regarding hydration
           <>
             <nav>
