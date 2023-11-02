@@ -118,7 +118,7 @@ export default function OnboardingForm() {
               )}
             />
             <span className="w-full flex justify-center">
-              <Button className="w-[75%] rounded-2xl bg-var-primary-20 hover:bg-var-primary-30 h-12" type="submit">Finish</Button>
+              <Button className="w-[75%] rounded-2xl bg-red-500 hover:bg-red-600 h-12" type="submit">Finish</Button>
             </span>
           </form>
         </Form>

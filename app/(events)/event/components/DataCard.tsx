@@ -57,7 +57,7 @@ export default async function DataCard() {
 				<DataTable columns={columns} data={data} />
 			</CardContent>
 			<CardFooter className="flex justify-end p-2">
-				<Button className="bg-var-primary-20 hover:bg-var-primary-10 hover:text-black">
+				<Button className="bg-red-500 hover:bg-red-100 hover:text-black">
 					<DownloadIcon className="mr-2 h-4 w-4" /> Download CSV
 				</Button>
 			</CardFooter>

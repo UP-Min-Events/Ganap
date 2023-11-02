@@ -20,7 +20,7 @@ export default function DownloadableFormCard() {
             </CardHeader>
             <CardFooter className="flex flex-col-reverse lg:flex-row lg:justify-between space-x-2 p-0">
                 <Button variant="ghost" className="md:text-sm p-0">Delete</Button>
-                <Button className="bg-var-primary-30 hover:bg-var-primary-20">Download</Button>
+                <Button className="bg-red-500 hover:bg-red-600">Download</Button>
             </CardFooter>
         </Card>   
     )

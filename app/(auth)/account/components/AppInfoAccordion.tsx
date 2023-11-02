@@ -25,7 +25,7 @@ export default function AppInfoAccordion() {
                         <Switch id="toggle-notifications" />
                         <Label htmlFor="enable-notifications">Enable Notifications</Label>
                     </div>
-                    <span className="text-sm text-var-primary-30 font-medium">This feature is not yet functional.</span>
+                    <span className="text-sm text-red-600 font-medium">This feature is not yet functional.</span>
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
