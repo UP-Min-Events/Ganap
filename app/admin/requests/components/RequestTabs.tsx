@@ -8,7 +8,7 @@ export default function RequestTabs() {
     ];
 
     return (
-        <Tabs defaultValue={"pending"} className="w-full flex flex-col">
+        <Tabs defaultValue={"pending"} className="w-full lg:max-w-[75%] mx-auto flex flex-col">
             <TabsList className="mx-auto">
                 {tabData.map((tab, index) => (
                     <TabsTrigger

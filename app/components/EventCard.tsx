@@ -1,8 +1,8 @@
-'use client'
-
 // Utilities
-import { DoubleArrowRightIcon } from "@radix-ui/react-icons"
 import Link from 'next/link'
+
+// UI Components
+import { DoubleArrowRightIcon } from "@radix-ui/react-icons"
 import {
     Card,
     CardContent,
