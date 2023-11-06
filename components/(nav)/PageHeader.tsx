@@ -21,24 +21,23 @@ export default function PageHeader() {
     '/': "Ganap",
     '/account': "Account",
     '/calendar': "Calendar",
-    '/downloadable-forms': "Downloadable Forms",
+    '/admin/forms': "Downloadable Forms",
     '/onboarding': "Let's get to know you.",
     '/qr': "Account QR Code",
     '/request': "Request an Event",
+    '/admin/requests': "Event Requests",
     '/scan': "Scan QR Code",
   };
 
   return (
     <>
       <header className="px-6 w-full flex justify-center relative bg-red-500 text-white py-4 overflow-hidden">
-        {user !== 'admin' ? // will fix in the future, error regarding hydration
+        {user !== 'admin' ?
           <>
             <nav>
               {pathname !== '/' ? <BackButton /> : ""}
             </nav>
-            <h1 className="text-[1.5rem] md:text-[1.75rem]lg:text-4xl font-semibold text-center">
-
-
+            <h1 className="text-[1.5rem] md:text-[1.75rem] lg:text-4xl font-semibold text-center">
               {headerNames[pathname]}
             </h1>
             <nav>

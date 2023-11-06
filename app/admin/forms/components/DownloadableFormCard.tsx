@@ -18,10 +18,10 @@ export default function DownloadableFormCard() {
                     A form to fill out the organization&apos;s event request.
                 </CardDescription>
             </CardHeader>
-            <CardFooter className="flex flex-col-reverse lg:flex-row lg:justify-between space-x-2 p-0">
+            <CardFooter className="flex flex-col-reverse lg:flex-row lg:justify-between p-0">
                 <Button variant="ghost" className="md:text-sm p-0">Delete</Button>
-                <Button className="bg-red-500 hover:bg-red-600">Download</Button>
+                <Button className="bg-red-500 hover:bg-red-600 ml-0">Download</Button>
             </CardFooter>
-        </Card>   
+        </Card>     
     )
-}
+}   
