@@ -1,21 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function EventTabs() {
-    const user: string = 'user'
-
-    const tabData = user === 'admin'
-        ? [
-            { value: "pending", label: "Pending", colorClass: "text-yellow-500" },
-            { value: "completed", label: "Completed", colorClass: "text-green-300" },
-            { value: "closed", label: "Closed", colorClass: "text-red-600" },
-        ] : [
-            { value: "upcoming", label: "Upcoming", colorClass: "data-[state=active]:bg-red-400 data-[state=active]:text-white" },
-            { value: "ongoing", label: "Ongoing", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100" },
-            { value: "past", label: "Past", colorClass: "data-[state=active]:bg-red-600 data-[state=active]:text-neutral-100" },
-        ];
+    const tabData = [
+        { value: "upcoming", label: "Upcoming", colorClass: "data-[state=active]:bg-red-400 data-[state=active]:text-white" },
+        { value: "ongoing", label: "Ongoing", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100" },
+        { value: "past", label: "Past", colorClass: "data-[state=active]:bg-red-600 data-[state=active]:text-neutral-100" },
+    ];
 
     return (
-        <Tabs defaultValue={user === 'admin' ? "pending" : "upcoming"} className="w-full flex flex-col">
+        <Tabs defaultValue={"upcoming"} className="w-full xl:max-w-[75%] mx-auto flex flex-col">
             <TabsList className="mx-auto">
                 {tabData.map((tab, index) => (
                     <TabsTrigger
@@ -29,7 +22,7 @@ export default function EventTabs() {
             </TabsList>
             {tabData.map((tab) => (
                 <TabsContent key={tab.value} value={tab.value}>
-                    {tab.label} {user === 'admin' ? "Requests" : "Events"}
+                    {tab.label} Events
                 </TabsContent>
             ))}
         </Tabs>
