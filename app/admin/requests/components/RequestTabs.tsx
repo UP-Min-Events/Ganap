@@ -1,14 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-export default function EventTabs() {
+export default function RequestTabs() {
     const tabData = [
-        { value: "upcoming", label: "Upcoming", colorClass: "data-[state=active]:bg-red-400 data-[state=active]:text-white" },
-        { value: "ongoing", label: "Ongoing", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100" },
-        { value: "past", label: "Past", colorClass: "data-[state=active]:bg-red-600 data-[state=active]:text-neutral-100" },
+        { value: "pending", label: "Pending", colorClass: "data-[state=active]:bg-red-400 data-[state=active]:text-white" },
+        { value: "completed", label: "Completed", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100" },
+        { value: "closed", label: "Closed", colorClass: "data-[state=active]:bg-red-600 data-[state=active]:text-neutral-100" },
     ];
 
     return (
-        <Tabs defaultValue={"upcoming"} className="w-full xl:max-w-[75%] mx-auto flex flex-col">
+        <Tabs defaultValue={"pending"} className="w-full xl:max-w-[75%] mx-auto flex flex-col">
             <TabsList className="mx-auto">
                 {tabData.map((tab, index) => (
                     <TabsTrigger
@@ -22,7 +22,7 @@ export default function EventTabs() {
             </TabsList>
             {tabData.map((tab) => (
                 <TabsContent key={tab.value} value={tab.value}>
-                    {tab.label} Events
+                    {tab.label} Requests
                 </TabsContent>
             ))}
         </Tabs>
