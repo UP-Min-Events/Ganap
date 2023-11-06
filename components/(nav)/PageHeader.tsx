@@ -37,7 +37,7 @@ export default function PageHeader() {
             <nav>
               {pathname !== '/' ? <BackButton /> : ""}
             </nav>
-            <h1 className="text-[1.5rem] md:text-[1.75rem]lg:text-4xl font-semibold text-center">
+            <h1 className="text-[1.5rem] md:text-[1.75rem] lg:text-4xl font-semibold text-center">
               {headerNames[pathname]}
             </h1>
             <nav>
