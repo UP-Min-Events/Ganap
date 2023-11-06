@@ -9,7 +9,7 @@ import { Switch } from "@/components/ui/switch"
 
 export default function AppInfoAccordion() {
     return (
-        <Accordion type="single" collapsible className="w-full">    
+        <Accordion type="single" collapsible className="w-full xl:max-w-[75%] mx-auto">    
             <AccordionItem value="item-1">
                 <AccordionTrigger>About the app</AccordionTrigger>
                 <AccordionContent className="indent-8 text-justify">

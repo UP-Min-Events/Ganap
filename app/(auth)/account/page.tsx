@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default function Account() {
     return (
-        <main className="min-h-[calc(100vh + 6rem)] flex flex-col items-center">
+        <main className="min-h-screen flex flex-col items-center">
             <PageHeader />
             <section className="flex flex-col items-center pb-4">
                 <Avatar className="w-32 h-32 mb-4">
@@ -32,8 +32,8 @@ export default function Account() {
                 </span> */}
                 <AccountInfo />
             </section>
-            <Separator className="my-4 w-[100%] md:w-[50%] lg:w-[40%]" />
-            <section className="w-[90%] md:w-[50%] lg:w-[40%] px-6">
+            {/* <Separator className="my-4 w-[100%] md:w-[50%] lg:w-[40%]" /> */}
+            <section className="w-[90%] md:w-[50%] lg:w-[40%] px-6 mt-6">
                 <AppInfoAccordion />
             </section>
             {/* <nav className="relative mt-12">
