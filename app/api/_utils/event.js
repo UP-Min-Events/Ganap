@@ -25,3 +25,20 @@ export const uploadEventDetails = async (body, tableName) => {
         return errorHandler(error);
     }
 }
+
+export const queryEvent = async (eventId, tableName) => {
+    const command = new QueryCommand({
+        TableName: tableName,
+        KeyConditionExpression: "event_id = :event_id",
+        ExpressionAttributeValues: {
+            ":event_id": eventId
+        }
+    });
+
+    try {
+        const response = await docClient.send(command);
+        return successHandler(response.Items);
+    } catch (error) {
+        return errorHandler(error);
+    }
+}
