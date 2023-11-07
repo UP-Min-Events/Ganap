@@ -51,7 +51,7 @@ export default function OnboardingForm() {
 
     return (
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full lg:max-w-[20%] mt-4 px-6 space-y-4">
             <FormField
               control={form.control}
               name="firstName"

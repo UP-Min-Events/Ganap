@@ -1,7 +1,8 @@
-import PageHeader from "@/components/(nav)/PageHeader";
-import ButtonMenu from "@/components/(nav)/ButtonMenu";
+// Components
 import Calendar from "./components/Calendar";
 import { AddEvent } from "./components/AddEvent";
+import PageHeader from "@/components/(nav)/PageHeader";
+import ButtonMenu from "@/components/(nav)/ButtonMenu";
 
 export default function calendar() {
     return (
