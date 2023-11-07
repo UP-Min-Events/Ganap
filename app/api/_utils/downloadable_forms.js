@@ -1,5 +1,5 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { PutCommand, DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
+import { PutCommand, DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
 import { v4 as uuidv4 } from 'uuid';
 import { errorHandler, successHandler } from "./status_handler";
 
@@ -18,6 +18,19 @@ export const uploadForm = async (body, tableName) => {
     try {
         await docClient.send(command);
         return successHandler({ message: "Form uploaded successfully" });
+    } catch (error) {
+        return errorHandler(error);
+    }
+}
+
+export const getForms = async (tableName) => {
+    const command = new ScanCommand({
+        TableName: tableName
+    });
+
+    try {
+        const response = await docClient.send(command);
+        return successHandler(response.Items);
     } catch (error) {
         return errorHandler(error);
     }
