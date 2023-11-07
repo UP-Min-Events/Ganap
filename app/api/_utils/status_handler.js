@@ -8,7 +8,8 @@ const errorBody = (statusCode, message) => {
 }
 
 export const errorHandler = (error) => {
-    console.log(error);
+    console.log(error.name);
+    console.log(error.message);
 
     if (error.$metadata.httpStatusCode === 500) {
         return errorBody(500, "Internal server error");
