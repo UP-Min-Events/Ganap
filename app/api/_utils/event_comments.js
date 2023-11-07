@@ -7,18 +7,19 @@ const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
 
 export const postComment = async (body, eventId, tableName) => {
+    const params = {
+        event_id: eventId,
+        comment_id: uuidv4(),
+        ...body
+    }
     const command = new PutCommand({
         TableName: tableName,
-        Item: {
-            event_id: eventId,
-            comment_id: uuidv4(),
-            ...body
-        }
+        Item: params,
     });
 
     try {
         await docClient.send(command);
-        return successHandler({ message: "Comment uploaded successfully" });
+        return successHandler(params);
     } catch (error) {
         return errorHandler(error);
     }

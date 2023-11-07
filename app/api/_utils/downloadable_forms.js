@@ -7,17 +7,19 @@ const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
 
 export const uploadForm = async (body, tableName) => {
+    const params = {
+        form_id: uuidv4(),
+        ...body
+    }
+
     const command = new PutCommand({
         TableName: tableName,
-        Item: {
-            form_id: uuidv4(),
-            ...body
-        }
+        Item: params,
     });
 
     try {
         await docClient.send(command);
-        return successHandler({ message: "Form uploaded successfully" });
+        return successHandler(params);
     } catch (error) {
         return errorHandler(error);
     }
