@@ -1,5 +1,5 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { PutCommand, DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
+import { PutCommand, DynamoDBDocumentClient, ScanCommand, QueryCommand, DeleteCommand } from "@aws-sdk/lib-dynamodb";
 import { v4 as uuidv4 } from 'uuid';
 import { errorHandler, successHandler } from "./status_handler";
 
@@ -31,6 +31,39 @@ export const getForms = async (tableName) => {
     try {
         const response = await docClient.send(command);
         return successHandler(response.Items);
+    } catch (error) {
+        return errorHandler(error);
+    }
+}
+
+export const queryForm = async (formId, tableName) => {
+    const command = new QueryCommand({
+        TableName: tableName,
+        KeyConditionExpression: "form_id = :form_id",
+        ExpressionAttributeValues: {
+            ":form_id": formId
+        }
+    });
+
+    try {
+        const response = await docClient.send(command);
+        return successHandler(response.Items);
+    } catch (error) {
+        return errorHandler(error);
+    }
+}
+
+export const deleteForm = async (formId, tableName) => {
+    const command = new DeleteCommand({
+        TableName: tableName,
+        Key: {
+            form_id: formId
+        },
+    });
+
+    try {
+        await docClient.send(command);
+        return successHandler({ message: "Form deleted successfully" });
     } catch (error) {
         return errorHandler(error);
     }
