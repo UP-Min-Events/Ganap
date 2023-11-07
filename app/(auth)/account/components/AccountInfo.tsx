@@ -9,7 +9,7 @@ export default function AccountInfo() {
         href={{
           pathname: "/account/edit",
           query: {
-            info: "Name",
+            info: "name",
             name: "Nhyl Bryle", 
           }
         }}
@@ -21,7 +21,7 @@ export default function AccountInfo() {
         href={{
           pathname: "/account/edit",
           query: {
-            info: "Student Number",
+            info: "studentNumber",
             studentNumber: "2021-XXXXX", 
           }
         }}
@@ -33,7 +33,7 @@ export default function AccountInfo() {
         href={{
           pathname: "/account/edit",
           query: {
-            info: "Year Level",
+            info: "yearLevel",
             yearLevel: "2021-XXXXX", 
           }
         }}
@@ -45,7 +45,7 @@ export default function AccountInfo() {
         href={{
           pathname: "/account/edit",
           query: {
-            info: "Degree Program",
+            info: "degreeProgram",
             degreeProgram: "2021-XXXXX", 
           }
         }}
@@ -57,7 +57,7 @@ export default function AccountInfo() {
         href={{
           pathname: "/account/edit",
           query: {
-            info: "Organizations",
+            info: "organizations",
             organizations: "2021-XXXXX", 
           }
         }}
