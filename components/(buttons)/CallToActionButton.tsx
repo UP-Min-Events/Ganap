@@ -1,5 +1,8 @@
-import { Button } from "@/components/ui/button"
+// Utilities
 import Link from "next/link"
+
+// UI Componments
+import { Button } from "@/components/ui/button"
 
 interface CallToActionButtonProps {
   action: string;
@@ -7,10 +10,12 @@ interface CallToActionButtonProps {
 
 export default function CallToActionButton({ action }: CallToActionButtonProps) {
     return (
-        // <Link href="/" className="fixed bottom-24">
-            <Button id="action-button" className="bg-red-500 hover:bg-red-600 w-[15rem] h-[2.5rem] rounded-2xl text-base text-center" aria-label="Call to Action">
-                {action}
-            </Button>
-        // </Link>                          
+        <Button 
+            id="action-button" 
+            className="bg-red-500 hover:bg-red-600 w-[15rem] h-[2.5rem] rounded-2xl text-base text-center" 
+            aria-label="Call to Action"
+        >
+            {action}
+        </Button>
     )
 }

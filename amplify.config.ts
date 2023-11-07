@@ -6,7 +6,7 @@ export const amplifyconfig = {
         oauth: {
             domain: "ganap.auth.ap-southeast-1.amazoncognito.com",
             scope: ["email", "openid", "profile"],
-            redirectSignIn: "http://localhost:3000/",
+            redirectSignIn: "http://localhost:3000/onboarding",
             redirectSignOut: "http://localhost:3000/",
             responseType: "code"
         }

@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import GoogleSignIn from './GoogleSignIn'
 
 export default function Login() {
