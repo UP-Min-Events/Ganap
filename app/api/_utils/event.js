@@ -80,3 +80,58 @@ export const queryPendingEvents = async (tableName, index) => {
         return errorHandler(error);
     }
 }
+
+export const queryActiveEvents = async (tableName, lastEvaluatedKey = null) => {
+    const date_today = new Date().toISOString();
+
+    console.log("Date Today:", date_today);
+
+    // TODO: Add limite for query pagination
+    const params = {
+        TableName: tableName,
+        FilterExpression: "start_date <= :date_today AND end_date >= :date_today AND approval_status = :approval_status",
+        ExpressionAttributeValues: {
+            ":date_today": date_today,
+            ":approval_status": "approved"
+        },
+        ScanIndexForward: true,
+    }
+
+    if (lastEvaluatedKey) {
+        params.ExclusiveStartKey = lastEvaluatedKey;
+    }
+
+    const command = new ScanCommand(params);
+
+    try {
+        const response = await docClient.send(command);
+        return successHandler(response.Items);
+    } catch (error) {
+        return errorHandler(error);
+    }
+}
+
+// export const queryActiveEvents = async (tableName, index) => {
+//     const date_today = new Date().toISOString();
+
+//     console.log("Date Today:", date_today);
+
+//     const command = new QueryCommand({
+//         TableName: tableName,
+//         IndexName: index,
+//         KeyConditionExpression: "start_date <= :date_today AND end_date >= :date_today",
+//         FilterExpression: "approval_status = :approval_status",
+//         ExpressionAttributeValues: {
+//             ":date_today": date_today,
+//             ":approval_status": "approved"
+//         },
+//         ScanIndexForward: true,
+//     });
+
+//     try {
+//         const response = await docClient.send(command);
+//         return successHandler(response.Items);
+//     } catch (error) {
+//         return errorHandler(error);
+//     }
+// }
