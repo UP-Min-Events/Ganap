@@ -49,7 +49,7 @@ export default function CommentDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="rounded-full mx-auto px-8 h-10 mb-8 mt-2">Add Comment</Button>
+        <Button variant="outline" className="rounded-full px-8 h-10">Add Comment</Button>
       </DialogTrigger>
       <DialogContent className="w-[90%]">
         <DialogHeader>

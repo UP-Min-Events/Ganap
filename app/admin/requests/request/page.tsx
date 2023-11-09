@@ -4,9 +4,9 @@ import { Separator } from "@/components/ui/separator"
 import BackButton from "@/components/(buttons)/BackButton"
 
 // Feature Components
-import DataCard from "./components/DataCard"
 import ScheduleCard from "./components/ScheduleCard"
 import CommentDialog from "./components/CommentDialog"
+import ApproveRequest from "./components/ApproveRequest"
 import DescriptionCard from "./components/DescriptionCard"
 
 export default function Request() {
@@ -23,8 +23,10 @@ export default function Request() {
 					</h3>
 					<ScheduleCard />    
 					<DescriptionCard />
-					<DataCard />
-					<CommentDialog />
+					<div className="flex gap-4 justify-center">
+						<CommentDialog />
+						<ApproveRequest />
+					</div>
 				</section>
 			</main>
     )
