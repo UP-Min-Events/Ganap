@@ -11,15 +11,20 @@ export const errorHandler = (error) => {
     console.log(error.name);
     console.log(error.message);
 
-    if (error.$metadata.httpStatusCode === 500) {
-        return errorBody(500, "Internal server error");
+    if (error.name === "ValidationError") {
+        return errorBody(422, error.message);
     }
 
     if (error.name === "ResourceNotFoundException") {
         return errorBody(404, "The resource you are looking for does not exist");
     }
 
-    // To catch: validation or authorization errors
+    if (error.$metadata && error.$metadata.httpStatusCode === 500) {
+        return errorBody(500, "Internal server error");
+    }
+
+
+    // To catch soon: validation or authorization errors
 
     return errorBody(400, "Bad request");
 }

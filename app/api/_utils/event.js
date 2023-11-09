@@ -13,6 +13,12 @@ export const uploadEventDetails = async (body, tableName) => {
         ...body
     }
 
+    const validateParams = validatePostEvent(params);
+
+    if (validateParams) {
+        return validateParams;
+    }
+
     const command = new PutCommand({
         TableName: tableName,
         Item: params,
@@ -20,6 +26,7 @@ export const uploadEventDetails = async (body, tableName) => {
 
     try {
         await docClient.send(command);
+        console.log(successHandler(params))
         return successHandler(params);
     } catch (error) {
         return errorHandler(error);
@@ -42,3 +49,15 @@ export const queryEvent = async (eventId, tableName) => {
         return errorHandler(error);
     }
 }
+
+const validatePostEvent = (body) => {
+    const approval_status_enums = ["approved", "rejected", "pending"];
+
+    // To follow: validation for the other attributes.
+    if (!approval_status_enums.includes(body.approval_status)) {
+        return errorHandler({
+            name: "ValidationError",
+            message: "Approval status must be one of approved, rejected, or pending"
+        });
+    }
+} 
