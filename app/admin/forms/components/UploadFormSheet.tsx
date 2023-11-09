@@ -1,6 +1,13 @@
+"use client"
+
+// Form Components
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+// UI Components
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import {
   Sheet,
@@ -12,13 +19,45 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import CallToActionButton from "@/components/(buttons)/CallToActionButton"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+
+const formSchema = z.object({
+  form_id: z.string(),
+  form_title: z.string(),
+  form_link: z.string(),
+  form_description: z.string(),
+})
 
 export function UploadFormSheet() {
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      form_id: "",
+      form_title: "",
+      form_link:"",
+      form_description:"",
+    },
+  }) 
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values)
+  }
+
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <CallToActionButton action="Upload Form" />
+        <Button>Upload Form</Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
@@ -27,31 +66,70 @@ export function UploadFormSheet() {
             Upload a form that you want to be downloadable here. Make sure to add a title and description for the form, as well as the correct link for the file download.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="title" className="text-right">
-              Title
-            </Label>
-            <Input id="title" placeholder="Form Title" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="description" className="text-right">
-              Description
-            </Label>
-            <Textarea id="description" placeholder="Form Description" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="link" className="text-right">
-              Link
-            </Label>
-            <Input id="link" placeholder="Google Drive Link" className="col-span-3" />
-          </div>
-        </div>
-        <SheetFooter>
-          <SheetClose asChild>
-            <Button className="bg-green-300 hover:bg-green-400" type="submit">Upload Form</Button>
-          </SheetClose>
-        </SheetFooter>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="grid gap-4 py-4">
+              <div className="flex flex-col gap-2">
+                <FormField 
+                  control={form.control}
+                  name="form_title"
+                  render={({ field }) => (
+                    <FormItem className="mb-4">
+                      <FormLabel htmlFor="Form Title">
+                        Title
+                      </FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Form Title"
+                          {...field} 
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                <FormField 
+                  control={form.control}
+                  name="form_description"
+                  render={({ field }) => (
+                    <FormItem className="mb-4">
+                      <FormLabel htmlFor="Form Description">
+                        Description
+                      </FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Form Description"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                <FormField 
+                  control={form.control}
+                  name="form_link"
+                  render={({ field }) => (
+                    <FormItem className="mb-4">
+                      <FormLabel htmlFor="Form Link">
+                        Link
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Google Drive Link"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            <SheetFooter>
+              <SheetClose asChild>
+                <Button className="bg-green-300 hover:bg-green-400" type="submit">Upload Form</Button>
+              </SheetClose>
+            </SheetFooter>
+          </form>
+        </Form>
       </SheetContent>
     </Sheet>
   )
