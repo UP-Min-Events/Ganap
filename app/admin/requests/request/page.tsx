@@ -4,8 +4,9 @@ import { Separator } from "@/components/ui/separator"
 import BackButton from "@/components/(buttons)/BackButton"
 
 // Feature Components
-import DataCard from "./components/DataCard"
 import ScheduleCard from "./components/ScheduleCard"
+import CommentDialog from "./components/CommentDialog"
+import ApproveRequest from "./components/ApproveRequest"
 import DescriptionCard from "./components/DescriptionCard"
 
 export default function Request() {
@@ -15,14 +16,17 @@ export default function Request() {
 					<BackButton />
 					<h1 className="text-[1.75rem] font-semibold text-center">Event Title</h1>
 				</header>
-				<Separator className="my-4" />
+				<Separator className="mb-4" />
 				<section className="container flex flex-col gap-4 md:max-w-[60%] lg:max-w-[40%]">
 					<h3 className="flex justify-center items-center text-center text-sm font-medium">
 						Status:&nbsp; <Badge>Event Status</Badge>
 					</h3>
 					<ScheduleCard />    
 					<DescriptionCard />
-					<DataCard />
+					<div className="flex gap-4 justify-center">
+						<CommentDialog />
+						<ApproveRequest />
+					</div>
 				</section>
 			</main>
     )
