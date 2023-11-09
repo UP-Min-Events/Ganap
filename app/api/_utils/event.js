@@ -60,4 +60,23 @@ const validatePostEvent = (body) => {
             message: "Approval status must be one of approved, rejected, or pending"
         });
     }
-} 
+}
+
+export const queryPendingEvents = async (tableName, index) => {
+    const command = new QueryCommand({
+        TableName: tableName,
+        IndexName: index,
+        KeyConditionExpression: "approval_status = :approval_status",
+        ExpressionAttributeValues: {
+            ":approval_status": "pending"
+        },
+        ScanIndexForward: true,
+    });
+
+    try {
+        const response = await docClient.send(command);
+        return successHandler(response.Items);
+    } catch (error) {
+        return errorHandler(error);
+    }
+}
