@@ -57,7 +57,7 @@ export function UploadFormSheet() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button>Upload Form</Button>
+        <Button className="bg-green-300 hover:bg-green-400 rounded-full px-8 h-10">Upload Form</Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
