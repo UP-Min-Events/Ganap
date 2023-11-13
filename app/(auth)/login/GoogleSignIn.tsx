@@ -1,46 +1,27 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { Amplify, Auth, Hub } from "aws-amplify"
+import { Amplify, Auth } from "aws-amplify"
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
-import amplifyconfig from "@/amplify.config"
 import { Button } from "@/components/ui/button"
+import { getUser } from "@/utils/getUser";
+import { CognitoUser } from "amazon-cognito-identity-js";
+import amplifyconfig from "@/amplify.config"
 
 Amplify.configure(amplifyconfig)
 
 export default function GoogleSignIn() {
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState<CognitoUser | any>(null);
+
+    const bruh = async () => {
+        const user = await getUser();
+        setUser(user);
+    }
 
     useEffect(() => {
-        const unsubscribe = Hub.listen('auth', ({ payload: { event, data } }) => {
-            switch (event) {
-                case 'signIn':
-                    setUser(data);
-                    break;
-                case 'signOut':
-                    setUser(null)
-                    break;
-                case 'customOAuthState':
-                    console.log('customOAuthState', data);
-            }
-        });
-
-        getUser();
-
-        return unsubscribe
+        bruh()
     }, [])
-
-    const getUser = async (): Promise<void> => {
-        try {
-            const currentUser = await Auth.currentAuthenticatedUser();
-            setUser(currentUser);
-            console.log(currentUser)
-        } catch (error) {
-            console.error(error);
-            console.log("Not signed in");
-        }
-    };
 
     return (
         <>

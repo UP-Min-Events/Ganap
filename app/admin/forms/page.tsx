@@ -1,20 +1,14 @@
-import DownloadableFormCard from "./components/DownloadableFormCard"
-import { UploadFormSheet } from "./components/UploadFormSheet"
+// Components
+import FormFeed from "./components/FormFeed"
 import PageHeader from "@/components/(nav)/PageHeader"
+import { UploadFormSheet } from "./components/UploadFormSheet"
 
 export default function Forms(){
     return (
-        <main>
+        <main className="flex flex-col items-center">
             <PageHeader />
-            <section className="container grid gap-4 grid-cols-2 place-items-center lg:max-w-[50%]">
-                <DownloadableFormCard />
-                <DownloadableFormCard />
-                <DownloadableFormCard />
-                <DownloadableFormCard />
-            </section>
-            <section className="fixed bottom-12 flex w-full justify-center">
-                <UploadFormSheet />
-            </section>
+            <UploadFormSheet />
+            <FormFeed />
         </main>
     )
 }

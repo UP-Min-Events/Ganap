@@ -1,10 +1,14 @@
 "use client"
 
+// Utilities
+import Link from "next/link"
 import { Amplify, Auth, Hub } from "aws-amplify"
 import amplifyconfig from "@/amplify.config"
+import { useEffect, useState } from "react"
+
+// UI Components
 import { ExitIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
 
 Amplify.configure(amplifyconfig)
 
