@@ -62,7 +62,7 @@ export default function AccountInfo() {
               pathname: "/account/edit",
               query: {
                 info: "degreeProgram",
-                degreeProgram: "2021-XXXXX", 
+                degreeProgram: "BS Computer Science", 
               }
             }}
             className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
@@ -74,7 +74,7 @@ export default function AccountInfo() {
               pathname: "/account/edit",
               query: {
                 info: "organizations",
-                organizations: "2021-XXXXX", 
+                organizations: "Organization 1, Organization 2, Organization 3", 
               }
             }}
             className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"

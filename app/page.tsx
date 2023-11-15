@@ -2,13 +2,12 @@
 import dynamic from "next/dynamic"
 
 // Components
-import Sidebar from "@/components/(nav)/Sidebar"
 import ButtonMenu from "@/components/(nav)/ButtonMenu"
 import PageHeader from "@/components/(nav)/PageHeader"
 const EventFeed = dynamic(() => import("./components/EventFeed"))
 
-export default function Home() {
-  
+export default async function Home() {
+
   return (
     <main className="min-h-screen flex flex-col items-center">
       <PageHeader />

@@ -1,19 +1,22 @@
 "use client";
 // Utilities
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { getUser } from "@/utils/getUser";
+import { CognitoUser } from "amazon-cognito-identity-js";
 
 // Components
 import BackButton from "@/components/(buttons)/BackButton";
 import SignoutButton from "../(buttons)/SignoutButton";
 import AccountButton from "../(buttons)/AccountButton";
-import Sidebar from "@/components/(nav)/Sidebar"
 
 // shadCN Components
 import { Separator } from "@/components/ui/separator";
 import AdminHeader from "./AdminHeader";
 
-
 export default function PageHeader() {
+
+  const [userdata, setUser] = useState<CognitoUser | any>(null);
   const pathname = usePathname();
   const user: string = '';
 
@@ -28,6 +31,20 @@ export default function PageHeader() {
     '/admin/requests': "Event Requests",
     '/scan': "Scan QR Code",
   };
+
+  useEffect(() => {
+    const get_user = async () => {
+      const user = await getUser();
+      setUser(user);
+    }
+    
+    get_user();
+  }, [])
+
+  useEffect(() => {
+    console.log(userdata)
+    console.log(userdata?.getUsername())
+  }, [userdata])
 
   return (
     <>
