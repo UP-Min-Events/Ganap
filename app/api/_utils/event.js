@@ -86,7 +86,7 @@ export const queryActiveEvents = async (tableName, lastEvaluatedKey = null) => {
 
     console.log("Date Today:", date_today);
 
-    // TODO: Add limite for query pagination
+    // TODO: Add limit for query pagination
     const params = {
         TableName: tableName,
         FilterExpression: "start_date <= :date_today AND end_date >= :date_today AND approval_status = :approval_status",
@@ -135,3 +135,61 @@ export const queryActiveEvents = async (tableName, lastEvaluatedKey = null) => {
 //         return errorHandler(error);
 //     }
 // }
+
+export const queryPastEvents = async (tableName, lastEvaluatedKey = null) => {
+    const date_today = new Date().toISOString();
+
+    console.log("Date Today:", date_today);
+
+    // TODO: Add limit for query pagination
+    const params = {
+        TableName: tableName,
+        FilterExpression: "end_date <= :date_today AND approval_status = :approval_status",
+        ExpressionAttributeValues: {
+            ":date_today": date_today,
+            ":approval_status": "approved"
+        },
+        ScanIndexForward: true,
+    }
+
+    if (lastEvaluatedKey) {
+        params.ExclusiveStartKey = lastEvaluatedKey;
+    }
+
+    const command = new ScanCommand(params);
+
+    try {
+        const response = await docClient.send(command);
+        return successHandler(response.Items);
+    } catch (error) {
+        return errorHandler(error);
+    }
+}
+
+export const queryIncomingEvents = async (tableName, lastEvaluatedKey = null) => {
+    const date_today = new Date().toISOString();
+
+    // TODO: Add limit for query pagination
+    const params = {
+        TableName: tableName,
+        FilterExpression: "start_date >= :date_today AND end_date >= :date_today AND approval_status = :approval_status",
+        ExpressionAttributeValues: {
+            ":date_today": date_today,
+            ":approval_status": "approved"
+        },
+        ScanIndexForward: true,
+    }
+
+    if (lastEvaluatedKey) {
+        params.ExclusiveStartKey = lastEvaluatedKey;
+    }
+
+    const command = new ScanCommand(params);
+
+    try {
+        const response = await docClient.send(command);
+        return successHandler(response.Items);
+    } catch (error) {
+        return errorHandler(error);
+    }
+}
