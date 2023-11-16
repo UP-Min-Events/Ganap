@@ -43,7 +43,7 @@ export default function PageHeader() {
 
   useEffect(() => {
     console.log(userdata)
-    console.log(userdata?.getUsername())
+    // console.log(userdata?.getUsername())
   }, [userdata])
 
   return (
