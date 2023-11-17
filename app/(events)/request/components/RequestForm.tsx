@@ -169,15 +169,19 @@ export default function RequestForm() {
                   />
                 </>
               }
-            <nav className="w-full flex flex-col gap-2 items-center">
-              { page === 0 ?
-                  <Button className="w-[75%] lg:w-[50%] rounded-2xl border-red-500" type="button" variant="outline" onClick={() => setPage(1)}>Next Page</Button>
-                :
-                <>
-                  <Button className="w-[75%] lg:w-[50%] rounded-2xl border-red-500" type="button" variant="outline" onClick={() => setPage(0)}>Previous Page</Button>
-                  <Button className="w-[75%] lg:w-[50%] rounded-2xl bg-red-500 hover:bg-var-primary-30 h-10" type="submit">Submit Request</Button>
-                </>
-              }
+            <nav className="bottom-4 mx-auto w-full">
+              <div className="mx-auto flex flex-col gap-2 items-center">
+                { page === 0 ?
+                  <>
+                    <Button className="w-[10rem] rounded-xl border-red-500" type="button" variant="outline" onClick={() => setPage(1)}>Next Page</Button>
+                  </>
+                  :
+                  <>
+                    <Button className="w-[10rem] rounded-xl border-red-500" type="button" variant="outline" onClick={() => setPage(0)}>Previous Page</Button>
+                    <Button className="w-[10rem] rounded-xl bg-red-500 hover:bg-var-primary-30 h-10" type="submit">Submit Request</Button>
+                  </>
+                }
+              </div>
             </nav>
           </form>
         </Form>
