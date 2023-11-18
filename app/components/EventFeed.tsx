@@ -9,7 +9,7 @@ export default function EventFeed() {
       <header className="text-2xl font-bold mb-2">
         <EventTabs /> 
       </header>
-      <ScrollArea className="max-h-[calc(100vh-16rem)] overflow-scroll w-full no-scrollbar">
+      <ScrollArea className="max-h-[calc(100vh-18rem)] overflow-scroll w-full no-scrollbar">
         <EventCard />
         <EventCard />
         <EventCard />
