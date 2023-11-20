@@ -5,3 +5,5 @@ export const GET = async (_, { params }) => {
     const response = await queryEvent(eventId, "EventDetails");
     return response;
 }
+
+// export const PUT = async ()
