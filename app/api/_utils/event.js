@@ -193,3 +193,15 @@ export const queryIncomingEvents = async (tableName, lastEvaluatedKey = null) =>
         return errorHandler(error);
     }
 }
+
+// export const updateEventDetails = async (tableName, key) => {
+//     const params = {
+//         TableName: tableName,
+//         Key: {
+//             event_id: key
+//         },
+//         UpdateExpression: {
+            
+//         }
+//     }
+// }
