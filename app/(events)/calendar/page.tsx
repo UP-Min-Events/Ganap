@@ -8,7 +8,7 @@ export default function calendar() {
     return (
         <main className="min-h-screen flex flex-col items-center">
             <PageHeader />
-            {/* <AddEvent /> */}
+            <AddEvent />
             <Calendar />
             <ButtonMenu />
         </main>

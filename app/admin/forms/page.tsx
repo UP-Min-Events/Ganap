@@ -7,8 +7,8 @@ export default function Forms(){
     return (
         <main className="flex flex-col items-center">
             <PageHeader />
-            <UploadFormSheet />
             <FormFeed />
+            <UploadFormSheet />
         </main>
     )
 }

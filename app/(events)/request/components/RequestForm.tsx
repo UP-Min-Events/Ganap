@@ -45,7 +45,7 @@ export default function RequestForm() {
         event_name: "",
         organizer:"",
         description:"",
-        venue:"",
+        venue:"", 
         // approval_status:"",
       },
     })

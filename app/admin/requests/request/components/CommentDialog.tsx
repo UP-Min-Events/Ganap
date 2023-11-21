@@ -27,6 +27,7 @@ import {
 import { useToast } from "@/components/ui/use-toast"
 
 const formSchema = z.object({
+  comment_id: z.string().uuid(),
   comment_content: z.string(),
 })
 
@@ -36,6 +37,7 @@ export default function CommentDialog() {
   const comment = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      comment_id: "",
       comment_content: "",
     },
   })

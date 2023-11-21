@@ -17,10 +17,13 @@ import {
 import { Input } from "@/components/ui/input"
 import { useRouter } from "next/navigation"
 
+// const degreePrograms = z.enum(["BS Computer Science", "BS Applied Mathematics", "BS Data Science", "BS Food Technology", "BS Biology"]);
+// type degreePrograms = z.infer<typeof degreePrograms>;
+
 const formSchema = z.object({
   firstName: z.string().min(3, { message: "First name must be at least 3 or more characters long."}).max(50),
   lastName: z.string().min(3, { message: "Last name must be atleast 3 or more characters long."}).max(30),
-  studentNumber: z.string(),
+  studentNumber: z.string().min(6, { message: "Enter a valid student number."}),
   yearLevel: z.string(),
   degreeProgram: z.string(),
 })
@@ -36,7 +39,7 @@ export default function OnboardingForm() {
         lastName:"",
         studentNumber:"",
         yearLevel:"",
-        degreeProgram:"",
+        degreeProgram: "",
       },
     })
    
@@ -118,7 +121,7 @@ export default function OnboardingForm() {
               )}
             />
             <span className="w-full flex justify-center">
-              <Button className="w-[75%] rounded-2xl bg-red-500 hover:bg-red-600 h-12" type="submit">Finish</Button>
+              <Button className="w-[75%] rounded-2xl bg-red-500 hover:bg-red-600 h-[2.5rem]" type="submit">Finish</Button>
             </span>
           </form>
         </Form>

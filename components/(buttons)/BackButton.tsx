@@ -14,7 +14,7 @@ export default function BackButton() {
     return (
         <nav 
             onClick={() => router.back()} 
-            className="absolute left-0 pt-1 md:left-[20%] xl:left-[30%] ml-6" 
+            className="absolute left-0 pt-0 lg:pt-1 ml-6" 
         >
             <Button 
                 id="back-button" 
