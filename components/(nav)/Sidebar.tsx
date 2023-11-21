@@ -1,5 +1,6 @@
 // shadCN Components
 import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -8,8 +9,6 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
-
-import { RowsIcon } from "@radix-ui/react-icons"
 
 import {
 Sheet,
@@ -20,24 +19,16 @@ SheetTitle,
 SheetTrigger,
 } from "@/components/ui/sheet"
 
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
-  } from "@/components/ui/navigation-menu"
-
+// Radix Icons
+import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons"
+import Link from "next/link"
 
 export default function Sidebar() {
     return (
-        <nav className="absolute left-0 md:left-[20%] lg:left-[30%] ml-6">
-            <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center p-0">
-                    Ganap ADMIN
+        <>
+            {/* <DropdownMenu>
+                <DropdownMenuTrigger className="absolute left-0 pt-0 lg:pt-2">
+                    <HamburgerMenuIcon className="h-6 w-6" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="rounded-none min-w-[14rem] min-h-screen">
                     <DropdownMenuLabel>Ganap ADMIN</DropdownMenuLabel>
@@ -51,30 +42,34 @@ export default function Sidebar() {
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>Log out</DropdownMenuItem>
                 </DropdownMenuContent>
-            </DropdownMenu>
-        </nav>
-        // <nav className="left-4 absolute">
-        //     <Sheet>
-        //         <SheetTrigger>Open</SheetTrigger>
-        //         <SheetContent className="max-w-[14rem]">
-        //             <SheetHeader>
-        //                 <SheetTitle>Ganap ADMIN</SheetTitle>
-        //                 <SheetDescription>
-        //                     Hello
-        //                 </SheetDescription>
-        //             </SheetHeader>
-        //         </SheetContent>
-        //     </Sheet>
-        // </nav>
-        // <NavigationMenu>
-        //     <NavigationMenuList>
-        //         <NavigationMenuItem>
-        //         <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-        //         <NavigationMenuContent>
-        //             <NavigationMenuLink>Link</NavigationMenuLink>
-        //         </NavigationMenuContent>
-        //         </NavigationMenuItem>
-        //     </NavigationMenuList>
-        // </NavigationMenu>
+            </DropdownMenu> */}
+            <Sheet>
+                <DropdownMenu>
+                    <SheetTrigger className="absolute left-0 pt-2">
+                            <HamburgerMenuIcon className="h-6 w-6" />
+                    </SheetTrigger>
+                    <SheetContent>
+                        <SheetHeader>
+                            <SheetTitle>Ganap ADMIN</SheetTitle>
+                        </SheetHeader>
+                        <Separator />
+                        <nav className="flex flex-col text-left font-medium">
+                            <div className="flex flex-col gap-2 pt-4">
+                                <Link href="/admin/requests">Requests</Link>
+                                <Link href="/calendar">Calendar</Link>
+                                <Link href="/">Events List</Link>
+                                <Separator />
+                            </div>
+                            <div className="flex flex-col gap-2 pt-4">
+                                <Link href="/admin/forms">Downloadable Forms</Link>
+                                <Link href="/admin/requests">Notifications</Link>
+                                <Separator />
+                            </div>
+                            <Link href="/admin/requests" className="pt-4">Log out</Link>
+                        </nav>
+                    </SheetContent>
+                </DropdownMenu>
+            </Sheet>
+        </>
     )
 }

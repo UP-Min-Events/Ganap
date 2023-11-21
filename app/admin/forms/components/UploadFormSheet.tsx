@@ -29,6 +29,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 
+import { UploadIcon } from "@radix-ui/react-icons"
+
 const formSchema = z.object({
   form_id: z.string(),
   form_title: z.string(),
@@ -56,8 +58,10 @@ export function UploadFormSheet() {
 
   return (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button className="bg-green-300 hover:bg-green-400 rounded-full px-8 h-10">Upload Form</Button>
+      <SheetTrigger asChild className="mt-8">
+        <Button className="bg-green-300 hover:bg-green-400 rounded-full px-6 py-[1.25rem]">
+          <UploadIcon className="w-4 h-4 mr-2" /> Upload Form
+        </Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
