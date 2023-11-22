@@ -24,7 +24,7 @@ export default function DownloadableFormCard() {
                 </CardDescription>
             </CardHeader>
             <CardFooter className="flex justify-end gap-4 p-0">
-                <Button className="bg-red-500 hover:bg-red-600 rounded-xl p-4">
+                <Button className="bg-red-500 hover:bg-red-600 rounded-xl p-4" disabled>
                     <DownloadIcon className="mr-2" /> Download
                 </Button>
             </CardFooter>
