@@ -34,10 +34,10 @@ export default function Sidebar() {
 
 	const links = [
 		{ href: '/admin/requests', text: 'Requests', icon: <Album /> },
-		{ href: '/calendar', text: 'Calendar', icon: <CalendarDays /> },
+		{ href: '/admin/calendar', text: 'Calendar', icon: <CalendarDays /> },
 		{ href: '/', text: 'Events List', icon: <List /> },
 		{ href: '/admin/forms', text: 'Downloadable Forms', icon: <Folders /> },
-		{ href: '/admin/ntoficiations', text: 'Notifications', icon: <Mail /> }, 
+		{ href: '/admin/notifications', text: 'Notifications', icon: <Mail /> }, 
 		{ href: '/admin/logout', text: 'Log out', icon: <LogOut /> },
 	];
 

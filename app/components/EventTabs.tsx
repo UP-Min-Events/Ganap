@@ -3,8 +3,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 export default function EventTabs() {
     const tabData = [
         { value: "upcoming", label: "Upcoming", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-white" },
-        { value: "ongoing", label: "Ongoing", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100" },
-        { value: "finished", label: "Finished", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100" },
+        { value: "active", label: "Active", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100" },
+        { value: "past", label: "Past", colorClass: "data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100" },
     ];
 
     return (

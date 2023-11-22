@@ -25,7 +25,7 @@ export default function ButtonMenu() {
         <Button 
           id="home" 
           variant="ghost"
-          className={`rounded-2xl h-12 hover:bg-red-500 hover:text-white ${pathname === (isAdmin ? '/admin/requests' : '/') ? " text-red-500" : ""}`} 
+          className={`rounded-l-2xl h-12 hover:bg-red-500 hover:text-white ${pathname === (isAdmin ? '/admin/requests' : '/') ? " text-red-500" : ""}`} 
           aria-label="Home"
         >
           <HomeIcon className="h-6 w-6" />
@@ -38,7 +38,7 @@ export default function ButtonMenu() {
         <Button 
           id="calendar"  
           variant="ghost"
-          className={`rounded-2xl h-12 hover:bg-red-500 hover:text-white ${pathname === '/calendar' ? " text-red-500" : ""}`} 
+          className={`rounded h-12 hover:bg-red-500 hover:text-white ${pathname === '/calendar' ? " text-red-500" : ""}`} 
           aria-label="Calendar"
         >
           <CalendarIcon className="h-6 w-6"/>
@@ -51,7 +51,7 @@ export default function ButtonMenu() {
         <Button 
           id="event-button" 
           variant="ghost" 
-          className={`rounded-2xl h-12 hover:bg-red-500 hover:text-white ${pathname === (isAdmin ? '/admin/forms' : ('/request' || '/qr')) ? " text-red-500" : ""}`} 
+          className={`rounded-r-2xl h-12 hover:bg-red-500 hover:text-white ${pathname === (isAdmin ? '/admin/forms' : ('/request' || '/qr')) ? " text-red-500" : ""}`} 
           aria-label={isAdmin ? "Forms" : "Event Action"}
         >
           {isAdmin ? 
