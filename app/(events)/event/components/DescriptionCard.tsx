@@ -31,7 +31,7 @@ export default function DescriptionCard() {
             </CardContent>
             <CardFooter className="flex justify-end p-2">
                 <Link href="/qr">
-                    <Button className="bg-red-500 hover:bg-red-100 hover:text-black">
+                    <Button className="bg-red-500 hover:bg-red-600">
                         <ArrowTopRightIcon className="mr-2 h-4 w-4" /> Attend this event
                     </Button>
                 </Link> 
