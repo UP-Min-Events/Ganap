@@ -10,7 +10,7 @@ export default function Event() {
 	return (
 		<main>
 			<EventHeader />
-			<section className="container flex flex-col gap-4 md:max-w-[60%] lg:max-w-[40%]">
+			<section className="container flex flex-col gap-4 md:max-w-[60%] lg:max-w-[50%] xl:max-w-[40%]">
 				<EventStatus />
 				<ScheduleCard />    
 				<DescriptionCard />
