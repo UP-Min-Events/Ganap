@@ -17,7 +17,7 @@ export default function DeleteForm() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="h-4 w-4">
+        <Button variant="ghost" size="icon" className="h-4 w-4 hover:text-red-500">
           <Cross1Icon className="p-0 m-0" />
         </Button>
       </AlertDialogTrigger>
