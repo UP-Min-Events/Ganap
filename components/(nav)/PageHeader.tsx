@@ -17,6 +17,7 @@ const headerNames: { [key: string]: string } = {
     '/': "GanUP",
     '/account': "Account",
     '/calendar': "Calendar",
+    '/admin/calendar': "Calendar",
     '/admin/forms': "Downloadable Forms",
     '/onboarding': "Let's get to know you.",
     '/qr': "Account QR Code",

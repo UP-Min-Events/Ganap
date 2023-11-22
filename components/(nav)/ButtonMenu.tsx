@@ -32,7 +32,7 @@ export default function ButtonMenu() {
         </Button>
       </Link>
       <Link 
-        href="/calendar" 
+        href={isAdmin ? '/admin/calendar' : '/calendar'}
         aria-label="Calendar"
       >
         <Button 
