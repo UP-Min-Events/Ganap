@@ -3,6 +3,7 @@ import { cookies } from 'next/headers'
 
 export async function GET(request: NextRequest) {
 
+    const origin = request.nextUrl.origin
     const searchParams = request.nextUrl.searchParams
     const code = searchParams.get('code') as string
 
@@ -14,7 +15,7 @@ export async function GET(request: NextRequest) {
             grant_type: 'authorization_code',
             client_id: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID as string,
             code: code,
-            redirect_uri: 'http://localhost:3000/api/auth/callback'
+            redirect_uri: `${origin}/api/auth/callback`
         })
 
         // Get tokens
@@ -42,10 +43,6 @@ export async function GET(request: NextRequest) {
         cookieStore.set('access_token', data.access_token)
         cookieStore.set('refresh_token', data.refresh_token)
         
-        const idTokenExists = cookieStore.has('idtoken')
-        const accessTokenExists = cookieStore.has('accesstoken')
-        const refreshTokenExists = cookieStore.has('refreshtoken')
-
         // Get user info
         const res = await fetch(`https://${process.env.NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/userInfo`, {
             method: 'GET',
@@ -66,7 +63,7 @@ export async function GET(request: NextRequest) {
         cookieStore.set('sub', sub)
 
         // Check if user exists
-        const rez = await fetch(`http://localhost:3000/api/users/${sub}`, {
+        const rez = await fetch(`${origin}/api/users/${sub}`, {
             method: 'GET',
         })
 
@@ -74,7 +71,7 @@ export async function GET(request: NextRequest) {
 
         // Create user if it doesn't exist
         if (user_data.error) {
-            const res = await fetch(`http://localhost:3000/api/users`, {
+            const res = await fetch(`${origin}/api/users`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
