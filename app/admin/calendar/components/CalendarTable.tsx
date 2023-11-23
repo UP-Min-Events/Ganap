@@ -6,7 +6,7 @@ interface Day {
   short: string;
 }
 
-export default function Calendar() {
+export default function CalendarTable() {
   const weekdays: Day[] = [
     { full: "Sunday", short: "Sun" },
     { full: "Monday", short: "Mon" },
