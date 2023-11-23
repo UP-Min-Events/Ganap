@@ -9,7 +9,7 @@ export default function AccountButton() {
     return (
         <Link 
             href="/account" 
-            className="absolute right-0 pt-1 md:right-[20%] xl:right-[30%] mr-6 " 
+            className="absolute right-0 pt-0 lg:pt-1" 
             aria-label="Account"
         >
             <Button 

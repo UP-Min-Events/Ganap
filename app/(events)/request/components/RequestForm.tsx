@@ -24,14 +24,14 @@ import { useRouter } from "next/navigation"
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
 
-const onboarding_form_schema = z.object({
+const request_form_schema = z.object({
   event_name: z.string().min(3, { message: "Event name must be at least 3 or more characters long."}).max(50),
-  event_host: z.string().min(3, { message: "Last name must be atleast 3 or more characters long."}).max(30),
-  event_description: z.string(),
-  date: z.date(),
-  time: z.string(),
+  start_date: z.date(),
+  end_date: z.date(),
   venue: z.string(),
-  accomplished_forms: z.string(),
+  description: z.string(),
+  organizer: z.string().min(3, { message: "Organizer must be a valid name"}).max(30),
+  // approval_status: z.enum(["approved, rejected, pending"]);
 })
 
 export default function RequestForm() {
@@ -39,20 +39,19 @@ export default function RequestForm() {
     const [page, setPage] = useState(0)
 
     // 1. Define your form.
-    const form = useForm<z.infer<typeof onboarding_form_schema>>({
-      resolver: zodResolver(onboarding_form_schema),
+    const form = useForm<z.infer<typeof request_form_schema>>({
+      resolver: zodResolver(request_form_schema),
       defaultValues: {
         event_name: "",
-        event_host:"",
-        event_description:"",
-        time:"",
-        venue:"",
-        accomplished_forms:"",
+        organizer:"",
+        description:"",
+        venue:"", 
+        // approval_status:"",
       },
     })
    
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof onboarding_form_schema>) {
+    function onSubmit(values: z.infer<typeof request_form_schema>) {
       // Do something with the form values.
       // ✅ This will be type-safe and validated.
       console.log(values)
@@ -85,7 +84,7 @@ export default function RequestForm() {
                   />
                   <FormField
                     control={form.control}
-                    name="event_host"
+                    name="organizer"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Host</FormLabel>
@@ -98,7 +97,7 @@ export default function RequestForm() {
                   />
                   <FormField
                     control={form.control}
-                    name="event_description"
+                    name="description"
                     render={() => (
                       <FormItem>
                         <FormLabel>Event Description</FormLabel>
@@ -114,7 +113,7 @@ export default function RequestForm() {
                 <>
                   <FormField
                     control={form.control}
-                    name="date"
+                    name="start_date"
                     render={() => (
                       <FormItem>
                         <FormLabel>Date</FormLabel>
@@ -127,12 +126,12 @@ export default function RequestForm() {
                   />
                   <FormField
                     control={form.control}
-                    name="time"
-                    render={({ field }) => (
+                    name="end_date"
+                    render={() => (
                       <FormItem>
-                        <FormLabel>Time</FormLabel>
+                        <FormLabel>Date</FormLabel>
                         <FormControl>
-                          <Input placeholder="Time" type="time" {...field} />
+                          <DatePicker />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -153,7 +152,7 @@ export default function RequestForm() {
                   />
                   <FormField
                     control={form.control}
-                    name="accomplished_forms"
+                    name="organizer"
                     render={() => (
                       <FormItem>
                         <FormLabel htmlFor="multiple_files">Accomplished Forms</FormLabel>

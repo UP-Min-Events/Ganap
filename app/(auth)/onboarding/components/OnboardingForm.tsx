@@ -16,12 +16,15 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
+// const degreePrograms = z.enum(["BS Computer Science", "BS Applied Mathematics", "BS Data Science", "BS Food Technology", "BS Biology"]);
+// type degreePrograms = z.infer<typeof degreePrograms>;
+
 const formSchema = z.object({
-    firstName: z.string().min(3, { message: "First name must be at least 3 or more characters long." }).max(50),
-    lastName: z.string().min(3, { message: "Last name must be atleast 3 or more characters long." }).max(30),
-    studentNumber: z.string(),
-    yearLevel: z.string(),
-    degreeProgram: z.string(),
+  firstName: z.string().min(3, { message: "First name must be at least 3 or more characters long."}).max(50),
+  lastName: z.string().min(3, { message: "Last name must be atleast 3 or more characters long."}).max(30),
+  studentNumber: z.string().min(6, { message: "Enter a valid student number."}),
+  yearLevel: z.string(),
+  degreeProgram: z.string(),
 })
 
 export default function OnboardingForm({ sub }: { sub: string }) {

@@ -1,5 +1,8 @@
+'use client'
+
 // shadCN Components
 import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -8,8 +11,6 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
-
-import { RowsIcon } from "@radix-ui/react-icons"
 
 import {
 Sheet,
@@ -20,61 +21,52 @@ SheetTitle,
 SheetTrigger,
 } from "@/components/ui/sheet"
 
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
-  } from "@/components/ui/navigation-menu"
+// Icons
+import { HamburgerMenuIcon } from "@radix-ui/react-icons"
+import { Album, CalendarDays, List, Folders, Mail, LogOut } from "lucide-react"
 
+// Utilities
+import Link from "next/link"
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
-    return (
-        <nav className="absolute left-0 md:left-[20%] lg:left-[30%] ml-6">
-            <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center p-0">
-                    Ganap ADMIN
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="rounded-none min-w-[14rem] min-h-screen">
-                    <DropdownMenuLabel>Ganap ADMIN</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>Pending Requests</DropdownMenuItem>
-                    <DropdownMenuItem>Calendar</DropdownMenuItem>
-                    <DropdownMenuItem>Event List</DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>Downloadable Forms</DropdownMenuItem>
-                    <DropdownMenuItem>Notifications</DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>Log out</DropdownMenuItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
-        </nav>
-        // <nav className="left-4 absolute">
-        //     <Sheet>
-        //         <SheetTrigger>Open</SheetTrigger>
-        //         <SheetContent className="max-w-[14rem]">
-        //             <SheetHeader>
-        //                 <SheetTitle>Ganap ADMIN</SheetTitle>
-        //                 <SheetDescription>
-        //                     Hello
-        //                 </SheetDescription>
-        //             </SheetHeader>
-        //         </SheetContent>
-        //     </Sheet>
-        // </nav>
-        // <NavigationMenu>
-        //     <NavigationMenuList>
-        //         <NavigationMenuItem>
-        //         <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-        //         <NavigationMenuContent>
-        //             <NavigationMenuLink>Link</NavigationMenuLink>
-        //         </NavigationMenuContent>
-        //         </NavigationMenuItem>
-        //     </NavigationMenuList>
-        // </NavigationMenu>
-    )
+	const pathname = usePathname();
+
+	const links = [
+		{ href: '/admin/requests', text: 'Requests', icon: <Album /> },
+		{ href: '/admin/calendar', text: 'Calendar', icon: <CalendarDays /> },
+		{ href: '/', text: 'Events List', icon: <List /> },
+		{ href: '/admin/forms', text: 'Downloadable Forms', icon: <Folders /> },
+		{ href: '/admin/notifications', text: 'Notifications', icon: <Mail /> }, 
+		{ href: '/admin/logout', text: 'Log out', icon: <LogOut /> },
+	];
+
+	return (
+		<Sheet>
+			<DropdownMenu>
+				<SheetTrigger className="absolute left-0 pt-2">
+					<HamburgerMenuIcon className="h-6 w-6" />
+				</SheetTrigger>
+				<SheetContent className="p-0">
+					<SheetHeader className="px-6 pt-6 pb-4">
+						<SheetTitle>Ganap ADMIN</SheetTitle>
+					</SheetHeader>
+					<Separator />
+					<nav className="flex flex-col text-left font-medium pt-2">
+						{links.map((link, index) => (
+							<nav key={index}>
+								<Link
+									href={link.href}
+									className={`flex items-center gap-2 mx-4 p-2 [&>svg]:w-[1.25rem] [&>svg]:h-[1.25rem] hover:bg-slate-100 hover:rounded py-[0.375rem] ${pathname === link.href ? 'text-red-500' : ''}`}
+								>
+									{link.icon} {link.text}
+								</Link>
+								{(link.text === 'Events List' || link.text === 'Notifications') && <Separator className="my-1" />}
+							</nav>
+						))}
+					</nav>
+				</SheetContent>
+			</DropdownMenu>
+		</Sheet>
+	)
 }

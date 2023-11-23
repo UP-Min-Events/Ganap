@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 export default function SignoutButton() {
     return (
-        <div className="absolute right-0 md:right-[20%] lg:right-[30%] mr-6">
+        <div className="absolute right-0 pt-0 lg:pt-1">
             <form 
                 action="/api/auth/signout" 
                 method="GET"
