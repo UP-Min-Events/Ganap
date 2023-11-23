@@ -15,9 +15,6 @@ const nextConfig = {
         ]
     },
     productionBrowserSourceMaps: true,
-    experimental: {
-        swcPlugins: [['@swc-jotai/react-refresh', {}]],
-    },
 }
 
 module.exports = nextConfig

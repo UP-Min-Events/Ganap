@@ -3,19 +3,22 @@ import { cookies } from 'next/headers'
 
 export async function GET(request: NextRequest) {
 
+    const origin = request.nextUrl.origin
     const searchParams = request.nextUrl.searchParams
     const code = searchParams.get('code') as string
 
     if (code) {
         const authorizationHeader = `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID}:${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_SECRET}`).toString('base64')}`
 
+        // Create request body
         const requestBody = new URLSearchParams({
             grant_type: 'authorization_code',
             client_id: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID as string,
             code: code,
-            redirect_uri: 'http://localhost:3000/api/auth/callback'
+            redirect_uri: `${origin}/api/auth/callback`
         })
 
+        // Get tokens
         const response = await fetch(`https://${process.env.NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/token`, {
             method: 'POST',
             headers: {
@@ -34,20 +37,83 @@ export async function GET(request: NextRequest) {
             })
         }
 
+        // Set tokens as cookies
         const cookieStore = cookies()
         cookieStore.set('id_token', data.id_token)
         cookieStore.set('access_token', data.access_token)
         cookieStore.set('refresh_token', data.refresh_token)
         
-        const idTokenExists = cookieStore.has('idtoken')
-        const accessTokenExists = cookieStore.has('accesstoken')
-        const refreshTokenExists = cookieStore.has('refreshtoken')
+        // Get user info
+        const res = await fetch(`https://${process.env.NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/userInfo`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${data.access_token}`
+            }
+        })
 
-        if (idTokenExists && accessTokenExists && refreshTokenExists) {
-            return NextResponse.redirect('/')
+        if (!res.ok) {
+            return NextResponse.json({
+                error: 'Error fetching user info'
+            })
         }
 
-        return NextResponse.redirect(new URL('/', request.nextUrl))
+        const user_info_data = await res.json()
+        const sub = user_info_data.sub
+
+        cookieStore.set('sub', sub)
+
+        // Check if user exists
+        const rez = await fetch(`${origin}/api/users/${sub}`, {
+            method: 'GET',
+        })
+
+        const user_data = await rez.json()
+
+        // Create user if it doesn't exist
+        if (user_data.error) {
+            const res = await fetch(`${origin}/api/users`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: sub,
+                    firstName: null,
+                    lastName: null,
+                    studentNumber: null,
+                    yearLevel: null,
+                    degreeProgram: null
+                })
+            })
+
+            const data = await res.json()
+
+            if (data.$metadata.httpStatusCode !== 200) {
+                return new NextResponse(`Error creating user: ${JSON.stringify(data)} ${data.$metadata.httpStatusCode}`)
+            }
+
+            return NextResponse.redirect(new URL('/onboarding', request.nextUrl))
+        }
+
+        // Redirect to onboarding page if user data is incomplete
+        if (
+            user_data.data.firstName === null || 
+            user_data.data.lastName === null || 
+            user_data.data.studentNumber === null || 
+            user_data.data.yearLevel === null || 
+            user_data.data.degreeProgram === null
+        ) {
+            return NextResponse.redirect(new URL('/onboarding', request.nextUrl))
+        }
+
+        // Redirect to home page if user exists
+        if (
+            sub && 
+            user_data.data.firstName !== null &&
+            user_data.data.lastName !== null 
+        ) {
+            return NextResponse.redirect(new URL('/', request.nextUrl))
+        }
     }
 
     const error = searchParams.get('error')
