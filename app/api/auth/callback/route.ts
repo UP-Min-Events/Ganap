@@ -16,6 +16,7 @@ export async function GET(request: NextRequest) {
             redirect_uri: 'http://localhost:3000/api/auth/callback'
         })
 
+        // Get tokens
         const response = await fetch(`https://${process.env.NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/token`, {
             method: 'POST',
             headers: {
@@ -43,11 +44,78 @@ export async function GET(request: NextRequest) {
         const accessTokenExists = cookieStore.has('accesstoken')
         const refreshTokenExists = cookieStore.has('refreshtoken')
 
-        if (idTokenExists && accessTokenExists && refreshTokenExists) {
-            return NextResponse.redirect('/')
+        // Get user info
+        const res = await fetch(`https://${process.env.NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/userInfo`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${data.access_token}`
+            }
+        })
+
+        if (!res.ok) {
+            return NextResponse.json({
+                error: 'Error fetching user info'
+            })
         }
 
-        return NextResponse.redirect(new URL('/', request.nextUrl))
+        const user_info_data = await res.json()
+        const sub = user_info_data.sub
+
+        cookieStore.set('sub', sub)
+
+        // Check if user exists
+        const rez = await fetch(`http://localhost:3000/api/users/${sub}`, {
+            method: 'GET',
+        })
+
+        const user_data = await rez.json()
+
+        // Create user if it doesn't exist
+        if (user_data.error) {
+            const res = await fetch(`http://localhost:3000/api/users`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: sub,
+                    firstName: null,
+                    lastName: null,
+                    studentNumber: null,
+                    yearLevel: null,
+                    degreeProgram: null
+                })
+            })
+
+            const data = await res.json()
+
+            if (data.$metadata.httpStatusCode !== 200) {
+                return new NextResponse(`Error creating user: ${JSON.stringify(data)} ${data.$metadata.httpStatusCode}`)
+            }
+
+            return NextResponse.redirect(new URL('/onboarding', request.nextUrl))
+        }
+
+        if (
+            user_data.data.firstName === null || 
+            user_data.data.lastName === null || 
+            user_data.data.studentNumber === null || 
+            user_data.data.yearLevel === null || 
+            user_data.data.degreeProgram === null
+        ) {
+            return NextResponse.redirect(new URL('/onboarding', request.nextUrl))
+        }
+
+        if (
+            idTokenExists && 
+            accessTokenExists && 
+            refreshTokenExists &&
+            sub && 
+            user_data.data.firstName !== null &&
+            user_data.data.lastName !== null 
+        ) {
+            return NextResponse.redirect(new URL('/', request.nextUrl))
+        }
     }
 
     const error = searchParams.get('error')
