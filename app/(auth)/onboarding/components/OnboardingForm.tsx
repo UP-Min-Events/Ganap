@@ -38,7 +38,7 @@ const formSchema = z.object({
   degreeProgram: z.string({ required_error: "Please select your degree program."}),
 })
 
-export default function OnboardingForm() {
+export default function OnboardingForm({ sub }: { sub: string }) {
   const degreePrograms = [
     { value: "AA Sports Science", label: "AA Sports Science" },
     { value: "B Sports Science", label: "B Sports Science" },
