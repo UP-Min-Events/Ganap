@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
     if (code) {
         const authorizationHeader = `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID}:${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_SECRET}`).toString('base64')}`
 
+        // Create request body
         const requestBody = new URLSearchParams({
             grant_type: 'authorization_code',
             client_id: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID as string,
@@ -35,6 +36,7 @@ export async function GET(request: NextRequest) {
             })
         }
 
+        // Set tokens as cookies
         const cookieStore = cookies()
         cookieStore.set('id_token', data.id_token)
         cookieStore.set('access_token', data.access_token)
@@ -96,6 +98,7 @@ export async function GET(request: NextRequest) {
             return NextResponse.redirect(new URL('/onboarding', request.nextUrl))
         }
 
+        // Redirect to onboarding page if user data is incomplete
         if (
             user_data.data.firstName === null || 
             user_data.data.lastName === null || 
@@ -106,10 +109,8 @@ export async function GET(request: NextRequest) {
             return NextResponse.redirect(new URL('/onboarding', request.nextUrl))
         }
 
+        // Redirect to home page if user exists
         if (
-            idTokenExists && 
-            accessTokenExists && 
-            refreshTokenExists &&
             sub && 
             user_data.data.firstName !== null &&
             user_data.data.lastName !== null 
