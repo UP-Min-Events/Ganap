@@ -24,7 +24,7 @@ export default function Edit({ searchParams
                     searchParams.info === "degreeProgram" ? "Degree Program" :
                         searchParams.info === "organizations" ? "Organizations" : "";
 
-    const route = `/api/users/${searchParams.sub}`
+    const route = `/api/users/${searchParams.sub}?from=account`
 
     return (
         <main className="min-h-screen flex flex-col items-center">
@@ -35,6 +35,7 @@ export default function Edit({ searchParams
             <section className="w-full md:w-[50%] lg:w-[40%] flex flex-col items-center p-6">
                 <h2 className="text-2xl font-bold mb-8">{title}</h2>
                 <form action={route} method="POST">
+                    {/* <input type="hidden" name="from" value="account"/> */}
                     {searchParams.info === "name" ? 
                         (
                             <>
@@ -53,7 +54,7 @@ export default function Edit({ searchParams
                         (
                             <span className="text-left w-[90%]">
                                 <h3 className="text-sm font-semibold">{title}</h3>
-                                <Input type="text" name={searchParams.info} value={searchParams[searchParams.info as keyof typeof searchParams]} />
+                                <Input type="text" name={searchParams.info} defaultValue={searchParams[searchParams.info as keyof typeof searchParams]} />
                             </span>
                         )
                     }

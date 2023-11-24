@@ -56,7 +56,7 @@ export default function OnboardingForm({ sub }: { sub: string }) {
     { value: "PhD by Research", label: "PhD by Research" }
   ];
 
-    const route = `/api/users/${sub}`
+    const route = `/api/users/${sub}?from=onboarding`
 
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
