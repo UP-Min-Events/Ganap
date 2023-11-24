@@ -5,15 +5,27 @@ import { ChevronRightIcon } from "@radix-ui/react-icons"
 // shadCN Components
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { cookies } from "next/headers"
+import { NextRequest } from "next/server"
 
 export default async function AccountInfo() {
 
-    const origin = window.location.origin
     const cookieStore = cookies()
-    const sub = cookieStore.get("sub") 
+    const sub = cookieStore.get("sub")
+    const access_token = cookieStore.get("access_token") 
 
-    const response = await fetch(`${origin}/api/users/${sub?.value}`)
+    const res = await fetch(`https://${process.env.NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/userInfo`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${access_token?.value}`
+        }
+    })
+
+    const user_info_data = await res.json()
+    const email = user_info_data.email
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/users/${sub?.value}`)
     const data = await response.json()
+    const user = data.data
 
     return (
         <>
@@ -23,9 +35,9 @@ export default async function AccountInfo() {
                     <AvatarFallback>HI</AvatarFallback>
                 </Avatar>
                 <>
-                    <h1 className="text-2xl font-bold">Nhyl Bryle</h1>
-                    <p>emailaddress@up.edu.ph</p>
-                    <p>2021-XXXXX</p>
+                    <h1 className="text-2xl font-bold">{`${user.firstName} ${user.lastName}`}</h1>
+                    <p>{email}</p>
+                    <p>{user.studentNumber}</p>
                 </>
             </section>
             <section className="w-[90%] md:w-[50%] lg:w-[40%] flex flex-col items-center px-6">
@@ -35,7 +47,9 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "name",
-                                name: "Nhyl Bryle",
+                                firstName: `${user.firstName}`,
+                                lastName: `${user.lastName}`,
+                                sub: `${sub?.value}`
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 rounded-t-lg w-full p-4 text-sm font-medium"
@@ -47,7 +61,7 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "studentNumber",
-                                studentNumber: "2021-XXXXX",
+                                studentNumber: `${user.studentNumber}`,
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
@@ -59,7 +73,7 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "yearLevel",
-                                yearLevel: "2021-XXXXX",
+                                yearLevel: `${user.yearLevel}`,
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
@@ -71,7 +85,7 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "degreeProgram",
-                                degreeProgram: "BS Computer Science",
+                                degreeProgram: `${user.degreeProgram}`,
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
