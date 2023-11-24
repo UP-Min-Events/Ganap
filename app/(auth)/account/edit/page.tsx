@@ -35,7 +35,6 @@ export default function Edit({ searchParams
             <section className="w-full md:w-[50%] lg:w-[40%] flex flex-col items-center p-6">
                 <h2 className="text-2xl font-bold mb-8">{title}</h2>
                 <form action={route} method="POST">
-                    {/* <input type="hidden" name="from" value="account"/> */}
                     {searchParams.info === "name" ? 
                         (
                             <>
