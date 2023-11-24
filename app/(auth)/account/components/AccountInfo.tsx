@@ -100,7 +100,7 @@ export default async function AccountInfo() {
                                 organizations: "Organization 1, Organization 2, Organization 3",
                             }
                         }}
-                        className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
+                        className="flex group justify-between items-center border border-b rounded-b-lg border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
                     >
                         Organizations <ChevronRightIcon className="w-[1.25rem] h-[1.25rem] text-red-500" />
                     </Link>
