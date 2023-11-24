@@ -5,7 +5,6 @@ import { ChevronRightIcon } from "@radix-ui/react-icons"
 // shadCN Components
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { cookies } from "next/headers"
-import { NextRequest } from "next/server"
 
 export default async function AccountInfo() {
 
