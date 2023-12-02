@@ -2,6 +2,7 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { PutCommand, DynamoDBDocumentClient, ScanCommand, QueryCommand, DeleteCommand } from "@aws-sdk/lib-dynamodb";
 import { v4 as uuidv4 } from 'uuid';
 import { errorHandler, successHandler } from "./status_handler";
+import endpointAuth  from "./endpoint_auth";
 
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);

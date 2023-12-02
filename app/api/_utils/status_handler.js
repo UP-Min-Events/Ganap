@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const errorBody = (statusCode, message) => {
+export const errorBody = (statusCode, message) => {
     return new NextResponse(JSON.stringify({ message: message }), {
         status: statusCode,
         headers: { "Content-Type": "application/json" },

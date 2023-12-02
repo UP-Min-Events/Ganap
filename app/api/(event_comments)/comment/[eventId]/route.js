@@ -1,4 +1,6 @@
 import { postComment, getComments } from "../../../_utils/event_comments";
+import endpointAuth from "../../../_utils/endpoint_auth";
+import { errorHandler } from "../../../_utils/status_handler";
 
 export const POST = async (request, { params }) => {
     const { eventId } = await params;
