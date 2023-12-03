@@ -23,6 +23,7 @@ export const errorHandler = (error: any) => {
 
 
     // To catch soon: validation or authorization errors
+    console.log("Error", error)
 
     return errorBody(400, "Bad request");
 }
