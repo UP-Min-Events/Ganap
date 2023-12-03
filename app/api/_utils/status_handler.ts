@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server";
 
-export const errorBody = (statusCode, message) => {
+export const errorBody = (statusCode: number, message: string): NextResponse<{message: string}> => {
     return new NextResponse(JSON.stringify({ message: message }), {
         status: statusCode,
         headers: { "Content-Type": "application/json" },
     });
 }
 
-export const errorHandler = (error) => {
-    console.log(error.name);
-    console.log(error.message);
+export const errorHandler = (error: any) => {
 
     if (error.name === "ValidationError") {
         return errorBody(422, error.message);
@@ -29,8 +27,8 @@ export const errorHandler = (error) => {
     return errorBody(400, "Bad request");
 }
 
-export const successHandler = (response) => {
-    return new NextResponse(JSON.stringify(response), {
+export const successHandler = <T = unknown>(response: T): NextResponse<T> => {
+    return new NextResponse<T>(JSON.stringify(response), {
         status: 200,
         headers: { "Content-Type": "application/json" },
     });

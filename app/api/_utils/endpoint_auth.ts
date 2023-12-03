@@ -1,9 +1,6 @@
 import { CognitoJwtVerifier } from "aws-jwt-verify";
 import { JwtExpiredError } from "aws-jwt-verify/error";
-// import {
-//   CognitoIdentityProviderClient,
-//   AdminInitiateAuthCommand,
-// } from "@aws-sdk/client-cognito-identity-provider";
+import { CognitoAccessTokenPayload } from "aws-jwt-verify/jwt-model";
 
 interface EndpointAuthProps {
   accessToken: string;
@@ -13,7 +10,7 @@ interface EndpointAuthProps {
 const verifyToken = async ({
   accessToken,
   refreshToken,
-}: EndpointAuthProps) => {
+}: EndpointAuthProps): Promise<string | CognitoAccessTokenPayload> => {
   const verifier = CognitoJwtVerifier.create({
     userPoolId: process.env.COGNITO_USER_POOL_ID as string,
     tokenUse: "access",
@@ -38,7 +35,7 @@ const verifyToken = async ({
   }
 };
 
-const getNewTokens = async (refreshToken: string) => {
+const getNewTokens = async (refreshToken: string): Promise<string> => {
   const requestBody = new URLSearchParams({
     grant_type: "refresh_token",
     client_id: process.env
@@ -61,7 +58,7 @@ const getNewTokens = async (refreshToken: string) => {
   );
 
   if (response.ok) {
-    const data = await response.json();
+    const data = await response.json() as string;
     console.log("GetToken data", data);
     return data;
   } else {
@@ -76,7 +73,7 @@ const endpointAuth = async ({
   refreshToken,
 }: EndpointAuthProps) => {
   try {
-    const payload = await verifyToken({ accessToken, refreshToken });
+    await verifyToken({ accessToken, refreshToken });
     return true;
   } catch (error) {
     return false;

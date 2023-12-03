@@ -1,16 +1,30 @@
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { PutCommand, DynamoDBDocumentClient, ScanCommand, QueryCommand, DeleteCommand } from "@aws-sdk/lib-dynamodb";
+import { AttributeValue, DynamoDBClient, QueryInput } from "@aws-sdk/client-dynamodb";
+import { PutCommand, DynamoDBDocumentClient, ScanCommand, QueryCommand, DeleteCommand, QueryCommandInput, QueryCommandOutput, ScanCommandOutput } from "@aws-sdk/lib-dynamodb";
 import { v4 as uuidv4 } from 'uuid';
 import { errorHandler, successHandler } from "./status_handler";
-import endpointAuth  from "./endpoint_auth";
+import { unknown } from "zod";
 
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
 
-export const uploadEventDetails = async (body, tableName) => {
+export type ISODateString = string & { readonly __ISODateStringBrand: unique symbol };
+
+export interface EventDetails {
+    event_id?: string;
+    start_date?: ISODateString;
+    end_date?: ISODateString;
+    event_name?: string;
+    event_created?: ISODateString;
+    venue?: string;
+    description?: string;
+    organizer?: string;
+    approval_status?: "approved" | "rejected" | "pending";
+}
+
+export const uploadEventDetails = async (body: EventDetails, tableName: string) => {
     const params = {
-        event_id: uuidv4(),
-        event_created: new Date(Date.now()).toISOString(),
+        event_id: uuidv4() as string,
+        event_created: new Date(Date.now()).toISOString() as ISODateString,
         ...body
     }
 
@@ -27,14 +41,13 @@ export const uploadEventDetails = async (body, tableName) => {
 
     try {
         await docClient.send(command);
-        console.log(successHandler(params))
-        return successHandler(params);
+        return successHandler<EventDetails>(params);
     } catch (error) {
         return errorHandler(error);
     }
 }
 
-export const queryEvent = async (eventId, tableName) => {
+export const queryEvent = async (eventId: EventDetails["event_id"], tableName: string) => {
     const command = new QueryCommand({
         TableName: tableName,
         KeyConditionExpression: "event_id = :event_id",
@@ -45,17 +58,17 @@ export const queryEvent = async (eventId, tableName) => {
 
     try {
         const response = await docClient.send(command);
-        return successHandler(response.Items);
+        return successHandler<QueryCommandOutput["Items"]>(response.Items);
     } catch (error) {
         return errorHandler(error);
     }
 }
 
-const validatePostEvent = (body) => {
+const validatePostEvent = (body: EventDetails) => {
     const approval_status_enums = ["approved", "rejected", "pending"];
 
     // To follow: validation for the other attributes.
-    if (!approval_status_enums.includes(body.approval_status)) {
+    if (!approval_status_enums.includes(body.approval_status!)) {
         return errorHandler({
             name: "ValidationError",
             message: "Approval status must be one of approved, rejected, or pending"
@@ -63,7 +76,7 @@ const validatePostEvent = (body) => {
     }
 }
 
-export const queryPendingEvents = async (tableName, index) => {
+export const queryPendingEvents = async (tableName: string, index: any) => {
     const command = new QueryCommand({
         TableName: tableName,
         IndexName: index,
@@ -76,24 +89,24 @@ export const queryPendingEvents = async (tableName, index) => {
 
     try {
         const response = await docClient.send(command);
-        return successHandler(response.Items);
+        return successHandler<QueryCommandOutput["Items"]>(response.Items);
     } catch (error) {
         return errorHandler(error);
     }
 }
 
-export const queryActiveEvents = async (tableName, lastEvaluatedKey = null) => {
+export const queryActiveEvents = async (tableName: string, lastEvaluatedKey = null) => {
     const date_today = new Date().toISOString();
 
     console.log("Date Today:", date_today);
 
     // TODO: Add limit for query pagination
-    const params = {
+    const params: QueryInput = {
         TableName: tableName,
         FilterExpression: "start_date <= :date_today AND end_date >= :date_today AND approval_status = :approval_status",
         ExpressionAttributeValues: {
-            ":date_today": date_today,
-            ":approval_status": "approved"
+            ":date_today": date_today as unknown as AttributeValue,
+            ":approval_status": "approved" as unknown as AttributeValue
         },
         ScanIndexForward: true,
     }
@@ -106,7 +119,7 @@ export const queryActiveEvents = async (tableName, lastEvaluatedKey = null) => {
 
     try {
         const response = await docClient.send(command);
-        return successHandler(response.Items);
+        return successHandler<ScanCommandOutput["Items"]>(response.Items);
     } catch (error) {
         return errorHandler(error);
     }
@@ -137,18 +150,18 @@ export const queryActiveEvents = async (tableName, lastEvaluatedKey = null) => {
 //     }
 // }
 
-export const queryPastEvents = async (tableName, lastEvaluatedKey = null) => {
+export const queryPastEvents = async (tableName: string, lastEvaluatedKey = null) => {
     const date_today = new Date().toISOString();
 
     console.log("Date Today:", date_today);
 
     // TODO: Add limit for query pagination
-    const params = {
+    const params: QueryInput = {
         TableName: tableName,
         FilterExpression: "end_date <= :date_today AND approval_status = :approval_status",
         ExpressionAttributeValues: {
-            ":date_today": date_today,
-            ":approval_status": "approved"
+            ":date_today": date_today as unknown as AttributeValue,
+            ":approval_status": "approved" as unknown as AttributeValue
         },
         ScanIndexForward: true,
     }
@@ -161,22 +174,22 @@ export const queryPastEvents = async (tableName, lastEvaluatedKey = null) => {
 
     try {
         const response = await docClient.send(command);
-        return successHandler(response.Items);
+        return successHandler<ScanCommandOutput["Items"]>(response.Items);
     } catch (error) {
         return errorHandler(error);
     }
 }
 
-export const queryIncomingEvents = async (tableName, lastEvaluatedKey = null) => {
+export const queryIncomingEvents = async (tableName: string, lastEvaluatedKey = null) => {
     const date_today = new Date().toISOString();
 
     // TODO: Add limit for query pagination
-    const params = {
+    const params: QueryInput = {
         TableName: tableName,
         FilterExpression: "start_date >= :date_today AND end_date >= :date_today AND approval_status = :approval_status",
         ExpressionAttributeValues: {
-            ":date_today": date_today,
-            ":approval_status": "approved"
+            ":date_today": date_today as unknown as AttributeValue,
+            ":approval_status": "approved" as unknown as AttributeValue
         },
         ScanIndexForward: true,
     }
@@ -189,7 +202,7 @@ export const queryIncomingEvents = async (tableName, lastEvaluatedKey = null) =>
 
     try {
         const response = await docClient.send(command);
-        return successHandler(response.Items);
+        return successHandler<ScanCommandOutput["Items"]>(response.Items);
     } catch (error) {
         return errorHandler(error);
     }
@@ -202,7 +215,7 @@ export const queryIncomingEvents = async (tableName, lastEvaluatedKey = null) =>
 //             event_id: key
 //         },
 //         UpdateExpression: {
-            
+
 //         }
 //     }
 // }
