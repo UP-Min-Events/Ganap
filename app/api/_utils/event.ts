@@ -95,7 +95,7 @@ export const queryPendingEvents = async (tableName: string, index: any) => {
     }
 }
 
-export const queryActiveEvents = async (tableName: string, lastEvaluatedKey = null) => {
+export const queryActiveEvents = async (tableName: string, lastEvaluatedKey: Record<string, AttributeValue> | null = null) => {
     const date_today = new Date().toISOString();
 
     console.log("Date Today:", date_today);
@@ -109,17 +109,15 @@ export const queryActiveEvents = async (tableName: string, lastEvaluatedKey = nu
             ":approval_status": "approved" as unknown as AttributeValue
         },
         ScanIndexForward: true,
-    }
-
-    if (lastEvaluatedKey) {
-        params.ExclusiveStartKey = lastEvaluatedKey;
+        Limit: 10, // Change limit to 10 after testing
+        ...(lastEvaluatedKey && { ExclusiveStartKey: lastEvaluatedKey })
     }
 
     const command = new ScanCommand(params);
 
     try {
         const response = await docClient.send(command);
-        return successHandler<ScanCommandOutput["Items"]>(response.Items);
+        return successHandler<Pick<ScanCommandOutput, "Items" | "LastEvaluatedKey" >>({Items: response.Items, LastEvaluatedKey: response.LastEvaluatedKey});
     } catch (error) {
         return errorHandler(error);
     }
@@ -164,7 +162,7 @@ export const queryPastEvents = async (tableName: string, lastEvaluatedKey: Recor
             ":approval_status": "approved" as unknown as AttributeValue
         },
         ScanIndexForward: true,
-        Limit: 10,
+        Limit: 10, // Change limit to 10 after testing
         ...(lastEvaluatedKey && { ExclusiveStartKey: lastEvaluatedKey })
     }
 
@@ -178,7 +176,7 @@ export const queryPastEvents = async (tableName: string, lastEvaluatedKey: Recor
     }
 }
 
-export const queryIncomingEvents = async (tableName: string, lastEvaluatedKey = null) => {
+export const queryIncomingEvents = async (tableName: string, lastEvaluatedKey: Record<string, AttributeValue> | null = null) => {
     const date_today = new Date().toISOString();
 
     // TODO: Add limit for query pagination
@@ -190,17 +188,15 @@ export const queryIncomingEvents = async (tableName: string, lastEvaluatedKey = 
             ":approval_status": "approved" as unknown as AttributeValue
         },
         ScanIndexForward: true,
-    }
-
-    if (lastEvaluatedKey) {
-        params.ExclusiveStartKey = lastEvaluatedKey;
+        Limit: 10, // Change limit to 10 after testing
+        ...(lastEvaluatedKey && { ExclusiveStartKey: lastEvaluatedKey })
     }
 
     const command = new ScanCommand(params);
 
     try {
         const response = await docClient.send(command);
-        return successHandler<ScanCommandOutput["Items"]>(response.Items);
+        return successHandler<Pick<ScanCommandOutput, "Items" | "LastEvaluatedKey" >>({Items: response.Items, LastEvaluatedKey: response.LastEvaluatedKey});
     } catch (error) {
         return errorHandler(error);
     }
