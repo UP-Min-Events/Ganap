@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
+import { EventProviders } from '@/contexts/EventContextProvider'
 
 // Components
 import PageHeader from '@/components/(nav)/PageHeader'
@@ -30,7 +31,9 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    {children}
+                    <EventProviders>
+                        {children}
+                    </EventProviders>
                 </ThemeProvider>
                 <Toaster />
             </body>
