@@ -1,8 +1,7 @@
 import { AttributeValue, DynamoDBClient, QueryInput } from "@aws-sdk/client-dynamodb";
-import { PutCommand, DynamoDBDocumentClient, ScanCommand, QueryCommand, DeleteCommand, QueryCommandInput, QueryCommandOutput, ScanCommandOutput } from "@aws-sdk/lib-dynamodb";
+import { PutCommand, DynamoDBDocumentClient, ScanCommand, QueryCommand, DeleteCommand, QueryCommandInput, QueryCommandOutput, ScanCommandOutput, UpdateCommand, UpdateCommandInput, UpdateCommandOutput } from "@aws-sdk/lib-dynamodb";
 import { v4 as uuidv4 } from 'uuid';
 import { errorHandler, successHandler } from "./status_handler";
-import { unknown } from "zod";
 
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
@@ -202,14 +201,35 @@ export const queryIncomingEvents = async (tableName: string, lastEvaluatedKey: R
     }
 }
 
-// export const updateEventDetails = async (tableName, key) => {
-//     const params = {
-//         TableName: tableName,
-//         Key: {
-//             event_id: key
-//         },
-//         UpdateExpression: {
+export const updateEventDetails = async (tableName: string, partitionKey: string, sortKey: string, newDataObject: EventDetails) => {
+    const updateExpressionParts: string[] = [];
+    const expressionAttributeValues: { [key: string]: { [key: string]: string | number | boolean | null } } = {};
 
-//         }
-//     }
-// }
+    Object.entries(newDataObject).forEach(([attributeName, attributeValue]) => {
+        const placeholder = `:${attributeName}`;
+        updateExpressionParts.push(`${attributeName} = ${placeholder}`);
+        expressionAttributeValues[placeholder] = attributeValue;
+    });
+
+    const updateExpression = `SET ${updateExpressionParts.join(', ')}`;
+    
+    const params: UpdateCommandInput = {
+        TableName: tableName,
+        Key: {
+            event_id: partitionKey,
+            start_date: sortKey
+        },
+        UpdateExpression: updateExpression,
+        ExpressionAttributeValues: expressionAttributeValues,
+        ReturnValues: "ALL_NEW",
+    }
+
+    const command = new UpdateCommand(params);
+
+    try {
+        const response = await docClient.send(command);
+        return successHandler<UpdateCommandOutput["Attributes"]>(response.Attributes);
+    } catch (error) {
+        return errorHandler(error);
+    }
+}
