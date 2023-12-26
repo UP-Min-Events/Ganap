@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.454.0",
     "@aws-sdk/client-dynamodb": "^3.441.0",
     "@aws-sdk/lib-dynamodb": "^3.444.0",
     "@ducanh2912/next-pwa": "^10.0.0",
@@ -33,6 +34,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@tanstack/react-query": "^5.0.5",
     "@tanstack/react-table": "^8.10.7",
+    "aws-jwt-verify": "^4.0.0",
     "axios": "^1.6.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",

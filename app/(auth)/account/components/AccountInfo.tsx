@@ -26,7 +26,6 @@ export default async function AccountInfo() {
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/users/${sub?.value}`)
     const data = await response.json()
-    const user = data.data
 
     return (
         <>
@@ -38,9 +37,9 @@ export default async function AccountInfo() {
                     </AvatarFallback>
                 </Avatar>
                 <>
-                    <h1 className="text-2xl font-bold">{`${user.firstName} ${user.lastName}`}</h1>
+                    <h1 className="text-2xl font-bold">{`${data.firstName} ${data.lastName}`}</h1>
                     <p>{email}</p>
-                    <p>{user.studentNumber}</p>
+                    <p>{data.studentNumber}</p>
                 </>
             </section>
             <section className="w-[90%] md:w-[50%] lg:w-[40%] flex flex-col items-center px-6">
@@ -50,8 +49,8 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "name",
-                                firstName: `${user.firstName}`,
-                                lastName: `${user.lastName}`,
+                                firstName: `${data.firstName}`,
+                                lastName: `${data.lastName}`,
                                 sub: `${sub?.value}`
                             }
                         }}
@@ -64,7 +63,7 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "studentNumber",
-                                studentNumber: `${user.studentNumber}`,
+                                studentNumber: `${data.studentNumber}`,
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
@@ -76,7 +75,7 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "yearLevel",
-                                yearLevel: `${user.yearLevel}`,
+                                yearLevel: `${data.yearLevel}`,
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
@@ -88,7 +87,7 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "degreeProgram",
-                                degreeProgram: `${user.degreeProgram}`,
+                                degreeProgram: `${data.degreeProgram}`,
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
