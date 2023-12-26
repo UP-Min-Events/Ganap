@@ -15,8 +15,8 @@ import {
 
 export default function EventCard({ event }: { event: EventDetails }) {
     return (
-        <Link href="/event">
-            <Card className="mx-auto xl:max-w-[75%] flex justify-between items-center group hover:bg-neutral-100 p-4 mb-4 lg:p-6 select-none">
+        <Link href="/event" className='rounded-xl'>
+            <Card className="mx-auto xl:max-w-[75%] flex justify-between items-center group shadow-md border-none hover:border-red-500 p-4 mb-4 lg:p-6 select-none">
                 <section className="flex flex-col gap-4">
                     <CardHeader className="space-y-0 pl-2 py-0">
                         <h2 className="text-2xl font-bold">

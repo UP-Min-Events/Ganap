@@ -26,9 +26,7 @@ export async function GET(_ : any, context: { params : { user_id: string } }) {
             })
         }
 
-        return new NextResponse(JSON.stringify({ data: data.Item }), {
-            headers: { "content-type": "application/json" },
-        })
+        return NextResponse.json(data.Item)
     } catch (err) {
         console.error(JSON.stringify(err, null, 2))
         return errorHandler(err)
@@ -37,6 +35,7 @@ export async function GET(_ : any, context: { params : { user_id: string } }) {
 
 export async function POST(request: NextRequest, context: { params : { user_id: string } }) {
     const data = await request.formData()
+    const from = request.nextUrl.searchParams.get('from')
 
     let updateExpression = "set "
     const expressionAttributeValues: Record<string, any> = {}
@@ -69,9 +68,15 @@ export async function POST(request: NextRequest, context: { params : { user_id: 
             })
         }
 
-        return NextResponse.redirect(new URL('/', request.nextUrl), {
-            status: 303,
-        })
+        if (from === 'onboarding') {
+            return NextResponse.redirect(new URL('/', request.nextUrl), {
+                status: 303,
+            })
+        } else if (from === 'account') {
+            return NextResponse.redirect(new URL('/account', request.nextUrl), {
+                status: 303,
+            })
+        }
         
     } catch (err) {
         console.error(JSON.stringify(err, null, 2))

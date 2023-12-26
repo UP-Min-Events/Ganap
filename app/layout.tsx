@@ -14,6 +14,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
     title: 'Ganap',
     description: 'An event management system for UP Mindanao',
+    manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head />
-            <body className={inter.className}>
+            <body className="${inter.className} bg-light-yellow-100">
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"

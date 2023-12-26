@@ -28,6 +28,7 @@ const request_form_schema = z.object({
   event_name: z.string().min(3, { message: "Event name must be at least 3 or more characters long."}).max(50),
   start_date: z.date(),
   end_date: z.date(),
+  time: z.string(),
   venue: z.string(),
   description: z.string(),
   organizer: z.string().min(3, { message: "Organizer must be a valid name"}).max(30),
@@ -76,7 +77,7 @@ export default function RequestForm() {
                       <FormItem>
                         <FormLabel>Event Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Event Name" {...field} />
+                          <Input required className="bg-white" placeholder="Event Name" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -89,7 +90,7 @@ export default function RequestForm() {
                       <FormItem>
                         <FormLabel>Host</FormLabel>
                         <FormControl>
-                          <Input placeholder="Organization" {...field} />
+                          <Input required className="bg-white" placeholder="Organization" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -102,7 +103,7 @@ export default function RequestForm() {
                       <FormItem>
                         <FormLabel>Event Description</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="Tell us about your event." className="min-h-[8rem]" />
+                          <Textarea required placeholder="Tell us about your event." className="min-h-[8rem] bg-white" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -126,12 +127,12 @@ export default function RequestForm() {
                   />
                   <FormField
                     control={form.control}
-                    name="end_date"
+                    name="time"
                     render={() => (
                       <FormItem>
-                        <FormLabel>Date</FormLabel>
+                        <FormLabel>Time</FormLabel>
                         <FormControl>
-                          <DatePicker />
+                          <Input type="time" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -172,7 +173,11 @@ export default function RequestForm() {
               <div className="mx-auto flex flex-col gap-2 items-center">
                 { page === 0 ?
                   <>
-                    <Button className="w-[10rem] rounded-xl border-red-500" type="button" variant="outline" onClick={() => setPage(1)}>Next Page</Button>
+                    <Button type="button" variant="outline" onClick={() => setPage(1)}
+                     className="w-[75%] rounded-2xl text-light-yellow-100 hover:text-white bg-red-500 hover:bg-red-600 h-[2.75rem] lg:h-[3.25rem] text-base lg:text-xl font-semibold" 
+                    >
+                      Next Page
+                    </Button>
                   </>
                   :
                   <>
