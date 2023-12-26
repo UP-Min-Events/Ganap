@@ -33,7 +33,7 @@ import { de } from "date-fns/locale"
 const formSchema = z.object({
   firstName: z.string().min(3, { message: "First name must be at least 3 or more characters long."}).max(50),
   lastName: z.string().min(3, { message: "Last name must be atleast 3 or more characters long."}).max(30),
-  studentNumber: z.string().min(6, { message: "Enter a valid student number."}),
+  studentNumber: z.string().min(6, { message: "Invalid student number."}).max(11, { message: "Invalid student number."}),
   yearLevel: z.string({ required_error: "Please select your year level."}),
   degreeProgram: z.string({ required_error: "Please select your degree program."}),
 })
@@ -89,7 +89,7 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                 <FormItem>
                   <FormLabel>First Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Juan" {...field} />
+                    <Input required className="bg-white" placeholder="Juan" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -102,7 +102,7 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                 <FormItem>
                   <FormLabel>Last Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Dela Cruz" {...field} />
+                    <Input required className="bg-white" placeholder="Dela Cruz" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -115,32 +115,8 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                 <FormItem>
                   <FormLabel>Student Number</FormLabel>
                   <FormControl>
-                    <Input placeholder="20XX-XXXXX" {...field} />
+                    <Input required className="bg-white" placeholder="20XX-XXXXX" {...field} />
                   </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="yearLevel"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Year Level</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select year level" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="1">1st Year</SelectItem>
-                        <SelectItem value="2">2nd Year</SelectItem>
-                        <SelectItem value="3">3rd Year</SelectItem>
-                        <SelectItem value="4">4th Year</SelectItem>
-                        <SelectItem value="5">5th Year</SelectItem>
-                      </SelectContent>
-                    </Select>
                   <FormMessage />
                 </FormItem>
               )}
@@ -153,7 +129,7 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                   <FormLabel>Degree Program</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger>
+                        <SelectTrigger className="bg-white">
                           <SelectValue placeholder="Select degree program" />
                         </SelectTrigger>
                       </FormControl>
@@ -167,8 +143,39 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="yearLevel"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Year Level</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="bg-white">
+                          <SelectValue placeholder="Select year level" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="1">1st Year</SelectItem>
+                        <SelectItem value="2">2nd Year</SelectItem>
+                        <SelectItem value="3">3rd Year</SelectItem>
+                        <SelectItem value="4">4th Year</SelectItem>
+                        {form.watch("degreeProgram") === "BS Architecture" && (
+                          <SelectItem value="5">5th Year</SelectItem>
+                        )}
+                      </SelectContent>
+                    </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <span className="w-full flex justify-center py-4">
-              <Button className="w-[75%] rounded-2xl bg-red-500 hover:bg-red-600 h-[2.5rem]" type="submit">Finish</Button>
+              <Button 
+                className="w-full rounded-2xl text-light-yellow-100 hover:text-white bg-red-500 hover:bg-red-600 h-[2.75rem] lg:h-[3.25rem] text-base lg:text-xl font-semibold" 
+                type="submit"
+              >
+                Get Started
+              </Button>
             </span>
           </form>
         </Form>

@@ -58,13 +58,14 @@ export default function Sidebar() {
 								<Link
 									href={link.href}
 									className={`flex items-center gap-2 mx-4 p-2 [&>svg]:w-[1.25rem] [&>svg]:h-[1.25rem] hover:bg-slate-100 hover:rounded py-[0.375rem] ${pathname === link.href ? 'text-red-500' : ''}`}
+									// Disable if link is notifications
 								>
 									{link.icon} {link.text}
 								</Link>
 								{(link.text === 'Events List' || link.text === 'Notifications') && <Separator className="my-1" />}
 							</nav>
 						))}
-					</nav>
+					</nav> 
 				</SheetContent>
 			</DropdownMenu>
 		</Sheet>
