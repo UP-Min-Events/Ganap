@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
+const { NEXT_PUBLIC_COGNITO_DOMAIN, NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID, NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_SECRET } = process.env
+
 export async function GET(request: NextRequest) {
     const cookieStore = cookies()
 
@@ -14,12 +16,15 @@ export async function GET(request: NextRequest) {
     }
     
     const token = cookieStore.get('refresh_token')
+    const authorizationHeader = `Basic ${Buffer.from(`${NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID}:${NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_SECRET}`).toString('base64')}`
 
-    const response = await fetch(`https://${process.env.NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/revoke`, {
+    // api/auth/signout/route.ts
+
+    const response = await fetch(`https://${NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/revoke`, {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID}:${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_SECRET}`).toString('base64')}`,
+            'Authorization': authorizationHeader,
         },
         body : new URLSearchParams({
             token: token?.value!

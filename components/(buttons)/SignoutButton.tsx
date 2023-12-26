@@ -12,7 +12,7 @@ export default function SignoutButton() {
                 <Button 
                     id="signout" 
                     variant="ghost" 
-                    className="p-0 text-white hover:bg-red-500 hover:text-red-200" 
+                    className="p-0 text-red-500 hover:text-black" 
                     aria-label="Signout"
                 >
                     <ExitIcon className="h-6 w-6"/>

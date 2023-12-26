@@ -1,25 +1,34 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { cookies } from 'next/headers'
 
+const {
+    NEXT_PUBLIC_COGNITO_DOMAIN,
+    NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID,
+    NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_SECRET
+} = process.env
+
 export async function GET(request: NextRequest) {
+    try {
+        const origin = request.nextUrl.origin
+        const searchParams = request.nextUrl.searchParams
+        const code = searchParams.get('code') as string
 
-    const origin = request.nextUrl.origin
-    const searchParams = request.nextUrl.searchParams
-    const code = searchParams.get('code') as string
+        if (!code) {
+            const error = searchParams.get('error')
+            return NextResponse.json({ error: error || 'Unknown error' })
+        }
 
-    if (code) {
-        const authorizationHeader = `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID}:${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_SECRET}`).toString('base64')}`
+        const authorizationHeader = `Basic ${Buffer.from(`${NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID}:${NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_SECRET}`).toString('base64')}`
 
-        // Create request body
         const requestBody = new URLSearchParams({
             grant_type: 'authorization_code',
-            client_id: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID as string,
+            client_id: NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID as string,
             code: code,
             redirect_uri: `${origin}/api/auth/callback`
         })
 
         // Get tokens
-        const response = await fetch(`https://${process.env.NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/token`, {
+        const token_response = await fetch(`https://${NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -28,46 +37,44 @@ export async function GET(request: NextRequest) {
             body: requestBody
         })
 
-        const data = await response.json()
+        const token_data = await token_response.json()
 
-        if (!response.ok) {
+        if (!token_response.ok) {
             return NextResponse.json({
-                error: data.error, 
-                error_description: data.error_description
+                error: token_data.error,
+                error_description: token_data.error_description
             })
         }
 
         // Set tokens as cookies
         const cookieStore = cookies()
-        cookieStore.set('id_token', data.id_token)
-        cookieStore.set('access_token', data.access_token)
-        cookieStore.set('refresh_token', data.refresh_token)
-        
+        cookieStore.set('id_token', token_data.id_token)
+        cookieStore.set('access_token', token_data.access_token)
+        cookieStore.set('refresh_token', token_data.refresh_token)
+
         // Get user info
-        const res = await fetch(`https://${process.env.NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/userInfo`, {
+        const user_info_response = await fetch(`https://${NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/userInfo`, {
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${data.access_token}`
+                Authorization: `Bearer ${token_data.access_token}`
             }
         })
 
-        if (!res.ok) {
-            return NextResponse.json({
-                error: 'Error fetching user info'
-            })
+        if (!user_info_response.ok) {
+            return NextResponse.json({ error: 'Error fetching user info' })
         }
 
-        const user_info_data = await res.json()
+        const user_info_data = await user_info_response.json()
         const sub = user_info_data.sub
 
         cookieStore.set('sub', sub)
 
         // Check if user exists
-        const rez = await fetch(`${origin}/api/users/${sub}`, {
+        const user_response = await fetch(`${origin}/api/users/${sub}`, {
             method: 'GET',
         })
 
-        const user_data = await rez.json()
+        const user_data = await user_response.json()
 
         // Create user if it doesn't exist
         if (user_data.error) {
@@ -97,25 +104,28 @@ export async function GET(request: NextRequest) {
 
         // Redirect to onboarding page if user data is incomplete
         if (
-            user_data.data.firstName === null || 
-            user_data.data.lastName === null || 
-            user_data.data.studentNumber === null || 
-            user_data.data.yearLevel === null || 
-            user_data.data.degreeProgram === null
+            user_data.firstName === null ||
+            user_data.lastName === null ||
+            user_data.studentNumber === null ||
+            user_data.yearLevel === null ||
+            user_data.degreeProgram === null
         ) {
             return NextResponse.redirect(new URL('/onboarding', request.nextUrl))
         }
 
         // Redirect to home page if user exists
         if (
-            sub && 
-            user_data.data.firstName !== null &&
-            user_data.data.lastName !== null 
+            sub &&
+            user_data.firstName !== null &&
+            user_data.lastName !== null
         ) {
             return NextResponse.redirect(new URL('/', request.nextUrl))
         }
-    }
 
-    const error = searchParams.get('error')
-    return NextResponse.json({ error: error || 'Unknown error' })
+        const error = searchParams.get('error')
+        return NextResponse.json({ error: error || 'Unknown error' })
+
+    } catch (error) {
+        return NextResponse.json({ error: error })
+    }
 } 

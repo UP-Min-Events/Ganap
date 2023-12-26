@@ -26,9 +26,7 @@ export async function GET(_ : any, context: { params : { user_id: string } }) {
             })
         }
 
-        return new NextResponse(JSON.stringify({ data: data.Item }), {
-            headers: { "content-type": "application/json" },
-        })
+        return NextResponse.json(data.Item)
     } catch (err) {
         console.error(JSON.stringify(err, null, 2))
         return errorHandler(err)

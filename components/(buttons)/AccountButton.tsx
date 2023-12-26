@@ -3,7 +3,7 @@ import Link from "next/link"
 
 // UI Components
 import { Button } from "@/components/ui/button"
-import { PersonIcon } from "@radix-ui/react-icons"
+import { Icon } from '@iconify/react';
 
 export default function AccountButton() {
     return (
@@ -15,10 +15,10 @@ export default function AccountButton() {
             <Button 
                 id="account" 
                 variant="ghost" 
-                className="p-0 text-white hover:bg-red-500 hover:text-red-200" 
+                className="p-0 text-red-500 hover:text-black" 
                 aria-label="Account"
             >
-                <PersonIcon className="h-6 w-6"/>
+                <Icon icon="bi:person-fill" className="w-6 h-6" />
             </Button>
         </Link>
     )

@@ -8,23 +8,20 @@ export default function EventTabs() {
     ];
 
     return (
-        <Tabs defaultValue={"upcoming"} className="w-full xl:max-w-[75%] mx-auto flex flex-col gap-4">
-            <TabsList className="mx-auto">
-                {tabData.map((tab, index) => (
-                    <TabsTrigger
-                        key={index}
-                        value={tab.value}
-                        className={`${tab.colorClass} w-[6rem]`}
-                    >
-                        {tab.label}
-                    </TabsTrigger>
-                ))}
-            </TabsList>
-            {tabData.map((tab) => (
-                <TabsContent key={tab.value} value={tab.value}>
-                    {tab.label} Events
-                </TabsContent>
-            ))}
-        </Tabs>
+        <header>
+            <Tabs defaultValue={"upcoming"} className="w-full xl:max-w-[75%] mx-auto flex flex-col gap-2 text-2xl font-bold my-4">
+                <TabsList className="mx-auto bg-white w-full">
+                    {tabData.map((tab, index) => (
+                        <TabsTrigger
+                            key={index}
+                            value={tab.value}
+                            className={`${tab.colorClass} w-[33.33%]`}
+                        >
+                            {tab.label}
+                        </TabsTrigger>
+                    ))}
+                </TabsList>
+            </Tabs>
+        </header>
     )
 }

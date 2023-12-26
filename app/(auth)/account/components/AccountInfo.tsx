@@ -1,11 +1,12 @@
 // Utilities
 import Link from "next/link"
 import { ChevronRightIcon } from "@radix-ui/react-icons"
+import { NextRequest } from "next/server"
 
 // shadCN Components
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { cookies } from "next/headers"
-import { NextRequest } from "next/server"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default async function AccountInfo() {
 
@@ -25,19 +26,20 @@ export default async function AccountInfo() {
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/users/${sub?.value}`)
     const data = await response.json()
-    const user = data.data
 
     return (
         <>
             <section className="flex flex-col items-center pb-4">
                 <Avatar className="w-32 h-32 mb-4">
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>HI</AvatarFallback>
+                    <AvatarImage src={email} />
+                    <AvatarFallback>
+                        <Skeleton className="h-full w-full rounded-full" />
+                    </AvatarFallback>
                 </Avatar>
                 <>
-                    <h1 className="text-2xl font-bold">{`${user.firstName} ${user.lastName}`}</h1>
+                    <h1 className="text-2xl font-bold">{`${data.firstName} ${data.lastName}`}</h1>
                     <p>{email}</p>
-                    <p>{user.studentNumber}</p>
+                    <p>{data.studentNumber}</p>
                 </>
             </section>
             <section className="w-[90%] md:w-[50%] lg:w-[40%] flex flex-col items-center px-6">
@@ -47,8 +49,8 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "name",
-                                firstName: `${user.firstName}`,
-                                lastName: `${user.lastName}`,
+                                firstName: `${data.firstName}`,
+                                lastName: `${data.lastName}`,
                                 sub: `${sub?.value}`
                             }
                         }}
@@ -61,7 +63,7 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "studentNumber",
-                                studentNumber: `${user.studentNumber}`,
+                                studentNumber: `${data.studentNumber}`,
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
@@ -73,7 +75,7 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "yearLevel",
-                                yearLevel: `${user.yearLevel}`,
+                                yearLevel: `${data.yearLevel}`,
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
@@ -85,7 +87,7 @@ export default async function AccountInfo() {
                             pathname: "/account/edit",
                             query: {
                                 info: "degreeProgram",
-                                degreeProgram: `${user.degreeProgram}`,
+                                degreeProgram: `${data.degreeProgram}`,
                             }
                         }}
                         className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
