@@ -1,8 +1,8 @@
-"use server";
+'use server';
 
-import { cookies } from "next/headers";
+import { cookies } from 'next/headers';
 
-interface LastEvaluatedKeyType{
+interface LastEvaluatedKeyType {
     event_id?: string;
     start_date?: string;
 }
@@ -14,9 +14,12 @@ const getTokens = () => {
     const access_token = credentials.get('access_token')?.value;
     const refresh_token = credentials.get('refresh_token')?.value;
     return { access_token, refresh_token };
-}
+};
 
-const fetchEvent = async (eventType: EventType, lastEvaluatedKey: LastEvaluatedKeyType | undefined = undefined) => {
+const fetchEvent = async (
+    eventType: EventType,
+    lastEvaluatedKey: LastEvaluatedKeyType | undefined = undefined,
+) => {
     const { access_token, refresh_token } = getTokens();
     let url = `${process.env.NEXT_PUBLIC_API_URL}/event/${eventType}?refresh_token=${refresh_token}`;
 
@@ -28,28 +31,34 @@ const fetchEvent = async (eventType: EventType, lastEvaluatedKey: LastEvaluatedK
     try {
         const response = await fetch(url, {
             headers: {
-                Authorization: `Bearer ${access_token}`
-            }
+                Authorization: `Bearer ${access_token}`,
+            },
         });
 
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log("Error", error);
+        console.log('Error', error);
         return null;
     }
 };
 
-const fetchPastEvent = async (lastEvaluatedKey: LastEvaluatedKeyType | undefined = undefined) => {
+const fetchPastEvent = async (
+    lastEvaluatedKey: LastEvaluatedKeyType | undefined = undefined,
+) => {
     return fetchEvent('past', lastEvaluatedKey);
 };
 
-const fetchIncomingEvent = async (lastEvaluatedKey: LastEvaluatedKeyType | undefined = undefined) => {
+const fetchIncomingEvent = async (
+    lastEvaluatedKey: LastEvaluatedKeyType | undefined = undefined,
+) => {
     return fetchEvent('incoming', lastEvaluatedKey);
 };
 
-const fetchActiveEvent = async (lastEvaluatedKey: LastEvaluatedKeyType | undefined = undefined) => {
+const fetchActiveEvent = async (
+    lastEvaluatedKey: LastEvaluatedKeyType | undefined = undefined,
+) => {
     return fetchEvent('active', lastEvaluatedKey);
-}
+};
 
-export {fetchPastEvent, fetchIncomingEvent, fetchActiveEvent};
+export { fetchPastEvent, fetchIncomingEvent, fetchActiveEvent };

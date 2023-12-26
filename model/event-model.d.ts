@@ -9,7 +9,7 @@ interface EventDetails {
     venue?: string;
     description?: string;
     organizer?: string;
-    approval_status?: "approved" | "rejected" | "pending";
+    approval_status?: 'approved' | 'rejected' | 'pending';
 }
 
 interface LastEvaluatedKeyProp {

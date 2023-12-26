@@ -1,10 +1,10 @@
 // Utilities
-import dynamic from "next/dynamic"
+import dynamic from 'next/dynamic';
 
 // Components
-import ButtonMenu from "@/components/(nav)/ButtonMenu"
-import PageHeader from "@/components/(nav)/PageHeader"
-const EventFeed = dynamic(() => import("./components/EventFeed"))
+import ButtonMenu from '@/components/(nav)/ButtonMenu';
+import PageHeader from '@/components/(nav)/PageHeader';
+const EventFeed = dynamic(() => import('./components/EventFeed'));
 
 export default function Home() {
     return (
@@ -13,5 +13,5 @@ export default function Home() {
             <EventFeed />
             <ButtonMenu />
         </main>
-    )
+    );
 }
