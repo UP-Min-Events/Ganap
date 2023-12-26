@@ -1,10 +1,12 @@
 // Utilities
 import Link from "next/link"
 import { ChevronRightIcon } from "@radix-ui/react-icons"
+import { NextRequest } from "next/server"
 
 // shadCN Components
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { cookies } from "next/headers"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default async function AccountInfo() {
 
@@ -29,8 +31,10 @@ export default async function AccountInfo() {
         <>
             <section className="flex flex-col items-center pb-4">
                 <Avatar className="w-32 h-32 mb-4">
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>HI</AvatarFallback>
+                    <AvatarImage src={email} />
+                    <AvatarFallback>
+                        <Skeleton className="h-full w-full rounded-full" />
+                    </AvatarFallback>
                 </Avatar>
                 <>
                     <h1 className="text-2xl font-bold">{`${data.firstName} ${data.lastName}`}</h1>

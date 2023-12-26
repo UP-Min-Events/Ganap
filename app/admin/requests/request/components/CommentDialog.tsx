@@ -78,18 +78,20 @@ export default function CommentDialog() {
               <DialogClose asChild>
                 <Button variant="ghost">Cancel</Button>
               </DialogClose>
-              <Button 
-                className="ml-2 bg-red-500 hover:bg-red-600" 
-                type="submit"
-                onClick={() => {
-                  toast({
-                    title: "Comment Added",
-                    description: "Your comment has been added to the request.",
-                  })
-                }}
-              >
-                Add Comment
-              </Button>
+              <DialogClose>
+                <Button 
+                  className="ml-2 bg-red-500 hover:bg-red-600" 
+                  type="submit"
+                  onClick={() => {
+                    toast({
+                      title: "Comment Added",
+                      description: "Your comment has been added to the request.",
+                    })
+                  }}
+                >
+                  Add Comment
+                </Button>
+              </DialogClose>
             </div>
           </form>
         </Form>

@@ -1,3 +1,5 @@
+"use client" 
+
 // Components
 import {
   AlertDialog,
@@ -11,12 +13,15 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function ApproveRequest() {
+  const { toast } = useToast()
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button className="bg-green-300 rounded-full px-8 h-10">Approve Request</Button>
+        <Button className="bg-green-300 hover:bg-green-400 rounded-full px-8 h-10">Approve Request</Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="w-[90%]">
         <AlertDialogHeader>
@@ -27,7 +32,17 @@ export default function ApproveRequest() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction className="bg-green-300">Approve</AlertDialogAction>
+          <AlertDialogAction 
+            className="bg-green-300 hover:bg-green-400"
+            onClick={() => {
+              toast({
+                title: "Request Approved!",
+                description: "You have successfully approved the event request."
+              })
+            }}
+          >
+            Approve
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

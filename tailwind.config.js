@@ -46,6 +46,10 @@ module.exports = {
           600: "",
           700: "",
         },
+        'light-yellow': {
+          100: "#FDF7E8",
+          900: "#241e0b",
+        },
         'neutral': {
           100: "#E8E7E7",
           200: "#C3BEBE",

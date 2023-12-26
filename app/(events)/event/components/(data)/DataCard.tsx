@@ -4,6 +4,7 @@ import { DataTable } from "./DataTable"
 
 // Icons
 import { FileTextIcon, DownloadIcon } from "@radix-ui/react-icons"
+import { FileText } from "lucide-react"
 
 // shadCN Components
 import { Button } from "@/components/ui/button"
@@ -47,9 +48,8 @@ export default async function DataCard() {
   return (
 		<Card className="flex flex-col gap-4 p-4">
 			<CardHeader className="space-y-0.5 p-2">
-				<CardTitle className="flex">
-					<FileTextIcon />
-					&nbsp; Statistics
+				<CardTitle className="flex items-center gap-[0.375rem]">
+					<FileText className="w-[1.25rem] h-[1.25rem]"/> Statistics
 				</CardTitle>
 				<CardDescription># Participants</CardDescription>
 			</CardHeader>

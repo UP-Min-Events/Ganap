@@ -1,6 +1,5 @@
 // Icons
-import { Users, Facebook } from 'lucide-react'
-import { CalendarIcon, ClockIcon, DrawingPinIcon } from "@radix-ui/react-icons"
+import { Users, ArrowUpRightSquare, Mail } from 'lucide-react'
 
 // shadCN Components
 import {
@@ -23,12 +22,17 @@ export default function OrganizerCard() {
             </CardTitle>
         </CardHeader>
         <Separator />
-        <CardContent className="flex flex-col items-center gap-2 p-4">
+        <CardContent className="flex flex-col items-center gap-4 p-4">
           <h3 className='font-bold'>UPMin SPARCS</h3>
           <p className='text-xs'>Organizer details are placed here to let participants know about the organizer/s of the event.</p>
-          <Button size="sm" className='bg-neutral-500 hover:bg-neutral-600 [&>svg]:w-4 [&>svg]:h-4 flex gap-2'>
-            <Facebook />View Organizer
-          </Button>
+          <nav className="flex w-full justify-between">
+            <Button size="sm" className='bg-neutral-500 hover:bg-neutral-600 [&>svg]:w-4 [&>svg]:h-4 flex gap-2'>
+              <ArrowUpRightSquare />View Organizer
+            </Button>
+            <Button size="sm" variant="ghost" className=' [&>svg]:w-4 [&>svg]:h-4 flex gap-1'>
+              <Mail />Contact
+            </Button>
+          </nav>
         </CardContent>
       </Card>
     )

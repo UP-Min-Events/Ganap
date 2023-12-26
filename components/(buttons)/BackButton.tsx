@@ -19,7 +19,7 @@ export default function BackButton() {
             <Button 
                 id="back-button" 
                 variant="ghost" 
-                className="p-0 hover:bg-red-500 hover:text-red-200" 
+                className="p-0 text-red-500 hover:text-black" 
                 aria-label="Back"
             >
                 <ArrowLeftIcon className="h-6 w-6" />
