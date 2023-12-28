@@ -1,6 +1,6 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import getTokens from '@/utils/getTokens';
 
 interface LastEvaluatedKeyType {
     event_id?: string;
@@ -8,13 +8,6 @@ interface LastEvaluatedKeyType {
 }
 
 type EventType = 'past' | 'incoming' | 'active';
-
-const getTokens = () => {
-    const credentials = cookies();
-    const access_token = credentials.get('access_token')?.value;
-    const refresh_token = credentials.get('refresh_token')?.value;
-    return { access_token, refresh_token };
-};
 
 const fetchEvent = async (
     eventType: EventType,
