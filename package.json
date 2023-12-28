@@ -11,7 +11,9 @@
     "dependencies": {
         "@aws-sdk/client-cognito-identity-provider": "^3.454.0",
         "@aws-sdk/client-dynamodb": "^3.441.0",
+        "@aws-sdk/client-s3": "^3.481.0",
         "@aws-sdk/lib-dynamodb": "^3.444.0",
+        "@aws-sdk/lib-storage": "^3.481.0",
         "@ducanh2912/next-pwa": "^10.0.0",
         "@hookform/resolvers": "^3.3.2",
         "@radix-ui/react-accordion": "^1.1.2",
