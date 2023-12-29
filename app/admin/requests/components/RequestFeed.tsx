@@ -9,11 +9,6 @@ export default function RequestFeed() {
             <header className="text-2xl font-bold mb-2">
                 <RequestTabs />
             </header>
-            {/* <ScrollArea className="max-h-[calc(100vh-16rem)] overflow-scroll w-full no-scrollbar">
-                <RequestCard />
-                <RequestCard />
-                <RequestCard />
-            </ScrollArea> */}
         </section>
     );
 }

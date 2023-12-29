@@ -17,7 +17,7 @@ import { Separator } from '@/components/ui/separator';
 
 export default function RequestCard({ event }: { event: EventDetails }) {
     return (
-        <Link href="/admin/requests/request">
+        <Link href={`/admin/requests/${event.event_id}`}>
             <Card className="mx-auto xl:max-w-[75%] flex justify-between items-center group hover:bg-neutral-100 p-4 mb-4 lg:p-6 select-none">
                 <section className="flex flex-col gap-4">
                     <CardHeader className="space-y-0 pl-2 py-0">
