@@ -100,20 +100,41 @@ const validatePostEvent = (body: EventDetails) => {
     }
 };
 
-export const queryPendingEvents = async (tableName: string, index: any) => {
-    const command = new QueryCommand({
+export const queryRequestedEvents = async (
+    tableName: string,
+    index: any,
+    lastEvaluatedKey:
+        | {
+              approval_status?: string;
+              event_created?: string;
+              event_id?: string;
+              start_date?: string;
+          }
+        | undefined = undefined,
+    status: string,
+) => {
+    const params = {
         TableName: tableName,
         IndexName: index,
         KeyConditionExpression: 'approval_status = :approval_status',
         ExpressionAttributeValues: {
-            ':approval_status': 'pending',
+            ':approval_status': status as unknown as AttributeValue,
         },
         ScanIndexForward: true,
-    });
+        Limit: 10, // Change limit to 10 after testing
+        ...(lastEvaluatedKey && { ExclusiveStartKey: lastEvaluatedKey }),
+    };
+
+    const command = new QueryCommand(params);
 
     try {
         const response = await docClient.send(command);
-        return successHandler<QueryCommandOutput['Items']>(response.Items);
+        return successHandler<
+            Pick<QueryCommandOutput, 'Items' | 'LastEvaluatedKey'>
+        >({
+            Items: response.Items,
+            LastEvaluatedKey: response.LastEvaluatedKey,
+        });
     } catch (error) {
         return errorHandler(error);
     }

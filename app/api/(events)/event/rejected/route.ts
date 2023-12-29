@@ -35,7 +35,7 @@ export const GET = async (request: NextRequest) => {
             'EventDetails',
             'approval_status-event_created-index',
             lastEvaluatedKey as unknown as Record<string, AttributeValue>,
-            'pending',
+            'rejected',
         );
 
         return response;

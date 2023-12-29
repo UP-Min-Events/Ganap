@@ -28,7 +28,7 @@ export default function EventCard({ event }: { event: EventDetails }) {
                     </CardHeader>
                     <CardContent className="text-sm leading-3 space-y-1 pl-2 py-0">
                         <p className="font-semibold text-red-500 text-normal">
-                            {moment(event.start_date).format('LL, h:mm a')}
+                            {moment(event.start_date).format('LL, h:mm A')}
                         </p>
                         <p>{event.venue}</p>
                     </CardContent>
