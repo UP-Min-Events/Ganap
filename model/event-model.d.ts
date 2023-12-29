@@ -12,6 +12,12 @@ interface EventDetails {
     approval_status?: 'approved' | 'rejected' | 'pending';
 }
 
+interface CommentDetails {
+    event_id?: string;
+    comment_id?: string;
+    comment_content?: string;
+}
+
 interface LastEvaluatedKeyProp {
     event_id?: string;
     start_date?: ISODateString;
