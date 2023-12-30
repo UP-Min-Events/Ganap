@@ -30,7 +30,7 @@ export default function EventCard({ event }: { event: EventDetails }) {
                             by {event.organizer}
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className='flex justify-between pl-2 pr-0 py-0'>
+                    <CardContent className='flex justify-between align-bottom pl-2 pr-0 py-0'>
                         <section className='text-sm leading-3 space-y-1'>
                             <h3 className="font-semibold text-red-500 flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
                                 <Calendar /> {moment(event.start_date).format('LL, h:mm A')}
@@ -39,9 +39,9 @@ export default function EventCard({ event }: { event: EventDetails }) {
                                 <MapPin /> {event.venue}
                             </h3>
                         </section>
-                        {/* <Button size="icon" className="group-hover:text-red-500">
+                        <Button size="icon_s" className="bg-red-100 group-hover:bg-red-200 text-red-500 group-hover:text-red-600 [&>svg]:w-[1rem] [&>svg]:h-[1rem]">
                             <ArrowUpRight /> 
-                        </Button> */}
+                        </Button>
                     </CardContent>
                 </section>
                 {/* <DoubleArrowRightIcon className="w-10 h-10 group-hover:text-red-500" /> */}

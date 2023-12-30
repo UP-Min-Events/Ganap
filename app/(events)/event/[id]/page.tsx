@@ -34,7 +34,7 @@ export default async function Event({ params }: Params<'id'>) {
     return (
         <main>
             <EventHeader event_title={data.event_name!} />
-            <section className="container flex flex-col xl:grid grid-cols-3 gap-4 md:max-w-[60%] lg:max-w-[60%] xl:max-w-[50%] mb-6 md:mb-0 pt-4">
+            <section className="container flex flex-col xl:grid grid-cols-3 gap-4 md:max-w-[60%] lg:max-w-[60%] xl:max-w-[50%] mb-6 md:mb-0">
                 <div className="col-span-3">
                     <EventStatus
                         start_date={data.start_date}
