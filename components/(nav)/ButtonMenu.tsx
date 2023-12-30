@@ -21,42 +21,42 @@ export default function ButtonMenu() {
       <Link 
         href={`${isAdmin ? '/admin/requests' : '/'}`} 
         aria-label="Home"
-        className='flex flex-col items-center justify-center pb-1 pt-2'
+        className='flex flex-col items-center justify-center pb-1 pt-2 group'
       >
         <Button 
           id="home" 
           variant="ghost"
-          className={`rounded-l-2xl h-6 hover:text-red-600 ${pathname === (isAdmin ? '/admin/requests' : '/') ? " text-red-500" : ""}`} 
+          className={`rounded-l-2xl h-6 group-hover:text-red-600 group-hover:bg-inherit ${pathname === (isAdmin ? '/admin/requests' : '/') ? " text-red-500" : ""}`} 
           aria-label="Home"
         >
           <HomeIcon className="h-6 w-6" />
         </Button>
-        <h3 className={`text-xs  ${pathname === (isAdmin ? '/admin/requests' : '/') ? " text-red-500" : ""}`}>Home</h3>
+        <h3 className={`text-xs ${pathname === (isAdmin ? '/admin/requests' : '/') ? " text-red-500" : ""} group-hover:text-red-600`}>Home</h3>
       </Link>
       <Link 
         href={isAdmin ? '/admin/calendar' : '/calendar'}
         aria-label="Calendar"
-        className='flex flex-col items-center justify-center pb-1 pt-2'
+        className='flex flex-col items-center justify-center pb-1 pt-2 group'
       >
         <Button 
           id="calendar"  
           variant="ghost"
-          className={`rounded h-6 hover:text-red-600 ${pathname === (isAdmin ? '/admin/calendar' : 'calendar') ? " text-red-500" : ""}`} 
+          className={`rounded h-6 group-hover:text-red-600 group-hover:bg-inherit ${pathname === (isAdmin ? '/admin/calendar' : 'calendar') ? " text-red-500" : ""}`} 
           aria-label="Calendar"
         >
           <CalendarIcon className="h-6 w-6"/>
         </Button>
-        <h3 className={`text-xs ${pathname === (isAdmin ? '/admin/calendar' : 'calendar') ? " text-red-500" : ""}`}>Calendar</h3>
+        <h3 className={`text-xs ${pathname === (isAdmin ? '/admin/calendar' : 'calendar') ? " text-red-500" : ""} group-hover:text-red-600`}>Calendar</h3>
       </Link>
       <Link 
         href={`${isAdmin ? '/admin/forms' : '/request'}`} 
         aria-label={isAdmin ? "Forms" : "Event Action"}
-        className='flex flex-col items-center justify-center pb-1 pt-2'
+        className='flex flex-col items-center justify-center pb-1 pt-2 group'
       >
         <Button 
           id="event-button" 
           variant="ghost" 
-          className={`rounded-r-2xl h-6 hover:text-red-600 ${pathname === (isAdmin ? '/admin/forms' : ('/request' || '/qr')) ? " text-red-500" : ""}`} 
+          className={`rounded-r-2xl h-6 group-hover:text-red-600 group-hover:bg-inherit ${pathname === (isAdmin ? '/admin/forms' : ('/request' || '/qr')) ? " text-red-500" : ""}`} 
           aria-label={isAdmin ? "Forms" : "Event Action"}
         >
           {isAdmin ? 
@@ -65,7 +65,7 @@ export default function ButtonMenu() {
             <RocketIcon className="h-6 w-6"/> 
           }
         </Button>
-        <h3 className={`text-xs ${pathname === (isAdmin ? '/admin/forms' : ('/request' || '/qr')) ? " text-red-500" : ""}`}>Forms</h3>
+        <h3 className={`text-xs ${pathname === (isAdmin ? '/admin/forms' : ('/request' || '/qr')) ? " text-red-500" : ""} group-hover:text-red-600`}>Forms</h3>
       </Link>
     </nav>
   )

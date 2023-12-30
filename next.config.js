@@ -2,18 +2,18 @@
 // const withPWAInit = require("next-pwa");
 
 /** @type {import('next-pwa').PWAConfig} */
-const withPWA = require("@ducanh2912/next-pwa").default({
-  dest: "public",
-  // Solution: https://github.com/shadowwalker/next-pwa/issues/424#issuecomment-1399683017
-	//   buildExcludes: ["app-build-manifest.json"],
-	cacheOnFrontEndNav: true,
-	aggressiveFrontEndNavCaching: true,
-	reloadOnOnline: true,
-	swcMinify: true,
-	disableSwc: false,
-	workboxOptions: {
-		disableDevLogs: true,
-	}
+const withPWA = require('@ducanh2912/next-pwa').default({
+    dest: 'public',
+    // Solution: https://github.com/shadowwalker/next-pwa/issues/424#issuecomment-1399683017
+    //   buildExcludes: ["app-build-manifest.json"],
+    cacheOnFrontEndNav: true,
+    aggressiveFrontEndNavCaching: true,
+    reloadOnOnline: true,
+    swcMinify: true,
+    disableSwc: false,
+    workboxOptions: {
+        disableDevLogs: true,
+    },
 });
 
 // const generateAppDirEntry = (entry) => {

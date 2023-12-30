@@ -34,6 +34,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+.vscode
+
 # PWA dependencies
 public/sw.js
+public/sw.js.map
 public/workbox-*.js
+public/swe-*.js
