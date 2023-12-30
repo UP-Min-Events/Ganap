@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { EventProviders } from '@/contexts/EventContextProvider';
+import { RequestEventProviders } from '@/contexts/RequestEventContextProvider';
 
 // Components
 import PageHeader from '@/components/(nav)/PageHeader';
@@ -32,7 +33,11 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <EventProviders>{children}</EventProviders>
+                    <EventProviders>
+                        <RequestEventProviders>
+                            {children}
+                        </RequestEventProviders>
+                    </EventProviders>
                 </ThemeProvider>
                 <Toaster />
             </body>

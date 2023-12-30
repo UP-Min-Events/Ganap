@@ -11,11 +11,9 @@ export const POST = async (
     try {
         await handleEndpointAuth(request);
         const { eventId } = await params;
-        const response = await postComment(
-            await request.json(),
-            eventId,
-            'EventComments',
-        );
+        const body = await await request.json();
+
+        const response = await postComment(body, eventId, 'EventComments');
         return response;
     } catch (error) {
         return error;
