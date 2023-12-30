@@ -15,7 +15,7 @@ export default function AccountButton() {
             <Button 
                 id="account" 
                 variant="ghost" 
-                className="p-0 text-red-500 hover:text-black" 
+                className="p-0 text-red-500 hover:text-red-600 hover:bg-inherit" 
                 aria-label="Account"
             >
                 <Icon icon="bi:person-fill" className="w-6 h-6" />

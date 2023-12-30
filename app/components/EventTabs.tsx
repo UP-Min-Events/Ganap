@@ -37,13 +37,13 @@ export default async function EventTabs() {
             value: 'active',
             label: 'Active',
             colorClass:
-                'data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100',
+                'data-[state=active]:bg-red-500 data-[state=active]:text-white',
         },
         {
             value: 'past',
             label: 'Past',
             colorClass:
-                'data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100',
+                'data-[state=active]:bg-red-500 data-[state=active]:text-white',
         },
     ];
 
@@ -56,12 +56,12 @@ export default async function EventTabs() {
             defaultValue={'upcoming'}
             className="w-full xl:max-w-[75%] mx-auto flex flex-col gap-4"
         >
-            <TabsList className="mx-auto">
+            <TabsList className="mx-auto bg-white">
                 {tabData.map((tab, index) => (
                     <TabsTrigger
                         key={index}
                         value={tab.value}
-                        className={`${tab.colorClass} w-[6rem]`}
+                        className={`${tab.colorClass} w-[6rem] bg-white`}
                     >
                         {tab.label}
                     </TabsTrigger>
@@ -69,7 +69,7 @@ export default async function EventTabs() {
             </TabsList>
             {tabData.map((tab) => (
                 <TabsContent key={tab.value} value={tab.value}>
-                    {tab.label} Events
+                    <h2 className="mb-4">{tab.label} Events</h2>
                     <ScrollArea className="h-[calc(100vh-18rem)] overflow-scroll w-full no-scrollbar">
                         {tab.value === 'upcoming' &&
                             renderEvents(incomingEvents, tab.value)}
