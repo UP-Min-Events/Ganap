@@ -70,7 +70,7 @@ export default async function EventTabs() {
             {tabData.map((tab) => (
                 <TabsContent key={tab.value} value={tab.value}>
                     <h2 className="mb-4">{tab.label} Events</h2>
-                    <ScrollArea className="h-[calc(100vh-18rem)] overflow-scroll w-full no-scrollbar">
+                    <ScrollArea className="h-[calc(100vh-18rem)] overflow-scroll w-full px-[0.75rem] no-scrollbar">
                         {tab.value === 'upcoming' &&
                             renderEvents(incomingEvents, tab.value)}
                         {tab.value === 'active' &&
