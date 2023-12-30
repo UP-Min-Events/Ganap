@@ -22,7 +22,7 @@ export default function EventCard({ event }: { event: EventDetails }) {
         <Link href={`/event/${event.event_id}`} className="rounded-xl">
             <Card className="mx-auto flex justify-between items-center group shadow-md border-none hover:border-red-500 p-4 mb-4 lg:p-6 select-none">
                 <section className="w-full flex flex-col gap-4">
-                    <CardHeader className="space-y-1 pl-2 py-0">
+                    <CardHeader className="space-y-1 pl-2 pr-0 py-0">
                         <h2 className="text-2xl font-bold leading-7">
                             {event.event_name}
                         </h2>
