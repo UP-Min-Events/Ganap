@@ -1,10 +1,10 @@
 // Components
-import FormFeed from "./components/FormFeed"
-import ButtonMenu from "@/components/(nav)/ButtonMenu"
-import PageHeader from "@/components/(nav)/PageHeader"
-import { UploadFormSheet } from "./components/UploadFormSheet"
+import FormFeed from './components/FormFeed';
+import ButtonMenu from '@/components/(nav)/ButtonMenu';
+import PageHeader from '@/components/(nav)/PageHeader';
+import { UploadFormSheet } from './components/UploadFormSheet';
 
-export default function Forms(){
+export default function Forms() {
     return (
         <main className="flex flex-col items-center">
             <PageHeader />
@@ -12,5 +12,5 @@ export default function Forms(){
             <UploadFormSheet />
             <ButtonMenu />
         </main>
-    )
+    );
 }
