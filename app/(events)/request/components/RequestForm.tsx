@@ -9,7 +9,7 @@ import { DatePicker } from './DatePicker';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Progress } from "@/components/ui/progress"
+import { Progress } from '@/components/ui/progress';
 import {
     Form,
     FormControl,
@@ -55,7 +55,7 @@ const request_form_schema = z.object({
     venue: z
         .string()
         .min(3, { message: 'Venue must have 3 or more characters.' }),
-    event_description: z.string(),
+    description: z.string(),
     organizer: z
         .string()
         .min(3, { message: 'Organizer must be a valid name!' })
@@ -74,12 +74,12 @@ export default function RequestForm() {
         defaultValues: {
             event_name: '',
             organizer: '',
-            event_description: '',
+            description: '',
             venue: '',
             start_date: undefined,
-            start_time: undefined,
+            start_time: '',
             end_date: undefined,
-            end_time: undefined,
+            end_time: '',
             accomplished_forms: '',
         },
     });
@@ -99,8 +99,11 @@ export default function RequestForm() {
         const filled_fields = Object.values(body_params).filter(
             (value) => value !== undefined && value !== '',
         ).length;
-        const progress = (filled_fields / required_fields) * 100;``
+        const progress = (filled_fields / required_fields) * 100;
+        ``;
         setProgress(progress);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [form.watch()]);
 
     async function uploadEventRequest(params: EventDetails) {
@@ -136,7 +139,7 @@ export default function RequestForm() {
             ...body_params,
             start_date: datetime_update(body_params.start_date, start_time),
             end_date: datetime_update(body_params.end_date, end_time),
-            approval_status: 'pending', 
+            approval_status: 'pending',
         });
 
         setProgress((prevProgress) => prevProgress + 10);
@@ -156,7 +159,7 @@ export default function RequestForm() {
                         control={form.control}
                         name="event_name"
                         render={({ field }) => (
-                            <FormItem className='px-6'>
+                            <FormItem className="px-6">
                                 <FormLabel>Event Name</FormLabel>
                                 <FormControl>
                                     <Input
@@ -174,7 +177,7 @@ export default function RequestForm() {
                         control={form.control}
                         name="organizer"
                         render={({ field }) => (
-                            <FormItem className='px-6'>
+                            <FormItem className="px-6">
                                 <FormLabel>Host</FormLabel>
                                 <FormControl>
                                     <Input
@@ -190,9 +193,9 @@ export default function RequestForm() {
                     />
                     <FormField
                         control={form.control}
-                        name="event_description"
+                        name="description"
                         render={({ field }) => (
-                            <FormItem className='px-6'>
+                            <FormItem className="px-6">
                                 <FormLabel>Event Description</FormLabel>
                                 <FormControl>
                                     <Textarea
@@ -205,7 +208,7 @@ export default function RequestForm() {
                             </FormItem>
                         )}
                     />
-                    <div className='px-6'>
+                    <div className="px-6">
                         <FormLabel htmlFor="start_date">
                             From
                             <div className="flex flex-row gap-4 justify-center w-full mt-2">
@@ -218,9 +221,7 @@ export default function RequestForm() {
                                                 <DatePicker
                                                     className="bg-white"
                                                     value={field.value}
-                                                    onChange={(
-                                                        newDate,
-                                                    ) =>
+                                                    onChange={(newDate) =>
                                                         form.setValue(
                                                             'start_date',
                                                             newDate!,
@@ -264,9 +265,7 @@ export default function RequestForm() {
                                                 <DatePicker
                                                     className="bg-white"
                                                     value={field.value}
-                                                    onChange={(
-                                                        newDate,
-                                                    ) =>
+                                                    onChange={(newDate) =>
                                                         form.setValue(
                                                             'end_date',
                                                             newDate!,
@@ -301,7 +300,7 @@ export default function RequestForm() {
                         control={form.control}
                         name="venue"
                         render={({ field }) => (
-                            <FormItem className='px-6'>
+                            <FormItem className="px-6">
                                 <FormLabel>Venue</FormLabel>
                                 <FormControl>
                                     <Input
@@ -318,10 +317,8 @@ export default function RequestForm() {
                         control={form.control}
                         name="accomplished_forms"
                         render={({ field }) => (
-                            <FormItem className='px-6'>
-                                <FormLabel>
-                                    Accomplished Forms
-                                </FormLabel>
+                            <FormItem className="px-6">
+                                <FormLabel>Accomplished Forms</FormLabel>
                                 <FormControl>
                                     <Input
                                         className="bg-white"
@@ -331,10 +328,10 @@ export default function RequestForm() {
                                 </FormControl>
                                 <FormMessage />
                                 <FormDescription>
-                                    Provide link to the Google Drive
-                                    folder where your accomplished forms
-                                    are located. Make sure to make them
-                                    visible to other people.
+                                    Provide link to the Google Drive folder
+                                    where your accomplished forms are located.
+                                    Make sure to make them visible to other
+                                    people.
                                 </FormDescription>
                             </FormItem>
                         )}
@@ -344,7 +341,7 @@ export default function RequestForm() {
                             <Button
                                 className="w-[10rem] rounded-xl bg-red-500 hover:bg-var-primary-30 h-10"
                                 type="submit"
-                                disabled = {progress < 100}
+                                disabled={progress < 100}
                             >
                                 Submit Request
                             </Button>
