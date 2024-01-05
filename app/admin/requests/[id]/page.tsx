@@ -70,7 +70,6 @@ export default async function Request({ params }: Params<'id'>) {
     const { id } = params;
     const data: EventDetails = await getEventDetails(id);
     const comments: CommentDetails[] = await getEventComments(id);
-    console.log(comments);
     return (
         <main>
             <header className="px-6 w-full flex items-center justify-center relative bg-red-500 text-white py-4 overflow-hidden">

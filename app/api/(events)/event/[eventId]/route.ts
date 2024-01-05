@@ -29,7 +29,9 @@ export const PUT = async (
 
         const { eventId } = await params;
         const start_date =
-            request.nextUrl?.searchParams.get('start_date') ?? null;
+            request.nextUrl?.searchParams
+                .get('start_date')
+                ?.replace(/ /g, '+') ?? null;
         const response = await updateEventDetails(
             'EventDetails',
             eventId,
