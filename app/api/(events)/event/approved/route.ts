@@ -40,6 +40,6 @@ export const GET = async (request: NextRequest) => {
 
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };
