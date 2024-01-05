@@ -53,7 +53,7 @@ export default function PageHeader() {
                     ) : pathname == '/onboarding' ? (
                         <div className="flex grow justify-center">
                             <h1 className="text-[1.5rem] lg:text-[1.75rem] font-bold">
-                                Let's get to know you.
+                                Let&apos;s get to know you.
                             </h1>
                         </div>
                     ) : (
