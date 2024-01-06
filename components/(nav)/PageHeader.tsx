@@ -37,7 +37,14 @@ export default function PageHeader() {
             <header className="px-6 w-full flex items-center justify-center relative bg-light-yellow-100 text-red-500 min-h-[4rem] overflow-hidden">
                 <nav className="flex flex-row relative justify-start items-center min-w-full md:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%]">
                     {isAdmin ? (
-                        <Sidebar />
+                        <>
+                            <Sidebar />
+                            <div className="flex grow justify-center">
+                                <h1 className="text-[1.5rem] lg:text-[1.75rem] font-bold text-center">
+                                    {headerNames[pathname]}
+                                </h1>
+                            </div>
+                        </>
                     ) : pathname == '/' ? (
                         <div className="flex flex-row gap-2 items-center">
                             <Image
