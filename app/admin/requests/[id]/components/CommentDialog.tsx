@@ -70,7 +70,8 @@ export default function CommentDialog({ event_id }: EventDetails) {
 
             if (!res.ok) {
                 if (res.status === 403) {
-                    redirect('/login');
+                    // redirect('/login');
+                    redirect('/api/auth/signout');
                 }
                 throw new Error('Something went wrong');
             }

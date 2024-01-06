@@ -36,7 +36,8 @@ async function getEventDetails(eventId: string) {
     // TODO: display error as toast
     if (!res.ok) {
         if (res.status === 403) {
-            redirect('/login');
+            // redirect('/login');
+            redirect('/api/auth/signout');
         }
         throw new Error('Something went wrong');
     }
@@ -67,7 +68,8 @@ async function getEventComments(eventId: string) {
 
         if (!res.ok) {
             if (res.status === 403) {
-                redirect('/login');
+                // redirect('/login');
+                redirect('/api/auth/signout');
             }
             throw new Error('Something went wrong');
         }

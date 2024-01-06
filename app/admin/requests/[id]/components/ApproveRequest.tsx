@@ -48,7 +48,8 @@ export default function ApproveRequest({ event_id, start_date }: EventDetails) {
 
         if (!res.ok) {
             if (res.status === 403) {
-                redirect('/login');
+                // redirect('/login');
+                redirect('/api/auth/signout');
             }
 
             toast({

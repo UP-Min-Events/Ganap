@@ -128,7 +128,8 @@ export default function RequestForm() {
 
         if (!res.ok) {
             if (res.status === 403) {
-                router.push('/login');
+                // router.push('/login');
+                router.push('/api/auth/signout');
             }
             toast({
                 title: 'Something went wrong',
