@@ -146,14 +146,14 @@ export default function RequestForm() {
     }
 
     return (
-        <section className="w-full md:max-w-[50%] lg:max-w-[30%] flex flex-col gap-6">
+        <section className="w-full sm:max-w-[70%] md:max-w-[50%] lg:max-w-[30%] flex flex-col gap-6">
             <header className="w-full flex gap-4 justify-between px-6">
                 <Progress value={progress} />
             </header>
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-4"
+                    className="space-y-4 mb-16"
                 >
                     <FormField
                         control={form.control}
