@@ -33,20 +33,11 @@ export default function RequestCard({ event }: { event: EventDetails }) {
                         <section className="text-sm leading-3 space-y-1">
                             <h3 className="font-semibold text-red-500 flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
                                 <Calendar />{' '}
-<<<<<<< HEAD
-                                {moment(event.start_date).format('LL, h:mm A')},
-                                &nbsp;
+                                {moment(event.start_date).format('LL, h:mm A')}, &nbsp;
                                 <MapPin /> {event.venue}
                             </h3>
                             <h3 className="font-semibold flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
-                                <Paperclip /> &nbsp; With Accomplished Forms
-=======
-                                {moment(event.start_date).format('LL, h:mm A')},{' '}
-                                {/* <MapPin /> {event.venue} */}
-                            </h3>
-                            <h3 className="font-semibold flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
                                 <Paperclip /> With Accomplished Forms
->>>>>>> 62fb14fa04a460dab8cd2cde6068c784adcb26d6
                             </h3>
                         </section>
                         <Button

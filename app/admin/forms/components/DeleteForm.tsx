@@ -20,7 +20,7 @@ export default function DeleteForm() {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="h-4 w-4 hover:text-red-500"
+                    className="h-4 w-4 text-red-500 hover:text-red-600"
                 >
                     <Cross1Icon className="p-0 m-0" />
                 </Button>

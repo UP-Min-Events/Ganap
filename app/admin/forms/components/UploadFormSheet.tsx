@@ -57,8 +57,8 @@ export function UploadFormSheet() {
 
     return (
         <Sheet>
-            <SheetTrigger asChild className="mt-8">
-                <Button className="bg-green-300 hover:bg-green-400 rounded-full px-6 py-[1.25rem]">
+            <SheetTrigger asChild className="mb-16 mt-6">
+                <Button className="bg-green-300 hover:bg-green-400 rounded-xl py-[1.25rem]">
                     <UploadIcon className="w-4 h-4 mr-2" /> Upload Form
                 </Button>
             </SheetTrigger>
