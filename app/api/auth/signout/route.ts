@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
     const accessTokenExists = cookieStore.has('access_token');
     const refreshTokenExists = cookieStore.has('refresh_token');
     const subExists = cookieStore.has('sub');
+    const adminExists = cookieStore.has('admin');
 
     if (!refreshTokenExists) {
         return NextResponse.redirect(new URL('/login', request.nextUrl));
@@ -23,8 +24,6 @@ export async function GET(request: NextRequest) {
     const authorizationHeader = `Basic ${Buffer.from(
         `${NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_ID}:${NEXT_PUBLIC_COGNITO_USER_POOL_APP_CLIENT_SECRET}`,
     ).toString('base64')}`;
-
-    // api/auth/signout/route.ts
 
     const response = await fetch(
         `https://${NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/revoke`,
@@ -64,6 +63,10 @@ export async function GET(request: NextRequest) {
 
         if (subExists) {
             cookieStore.delete('sub');
+        }
+
+        if (adminExists) {
+            cookieStore.delete('admin');
         }
 
         return NextResponse.redirect(new URL('/login', request.nextUrl));
