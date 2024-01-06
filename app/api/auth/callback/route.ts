@@ -1,5 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
+import getUserInfo from '@/utils/getUserInfo';
+import checkIfAdmin from '@/utils/checkIfAdmin';
 
 const {
     NEXT_PUBLIC_COGNITO_DOMAIN,
@@ -53,29 +55,69 @@ export async function GET(request: NextRequest) {
 
         // Set tokens as cookies
         const cookieStore = cookies();
-        cookieStore.set('id_token', token_data.id_token);
-        cookieStore.set('access_token', token_data.access_token);
-        cookieStore.set('refresh_token', token_data.refresh_token);
+
+        cookieStore.set({
+            name: 'id_token',
+            value: token_data.id_token,
+            secure: true,
+            sameSite: 'none',
+            path: '/',
+            httpOnly: true,
+        });
+
+        cookieStore.set({
+            name: 'access_token',
+            value: token_data.access_token,
+            secure: true,
+            sameSite: 'none',
+            path: '/',
+            httpOnly: true,
+        });
+
+        cookieStore.set({
+            name: 'refresh_token',
+            value: token_data.refresh_token,
+            secure: true,
+            sameSite: 'none',
+            path: '/',
+            httpOnly: true,
+        });
 
         // Get user info
-        const user_info_response = await fetch(
-            `https://${NEXT_PUBLIC_COGNITO_DOMAIN}/oauth2/userInfo`,
-            {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${token_data.access_token}`,
-                },
-            },
-        );
-
-        if (!user_info_response.ok) {
-            return NextResponse.json({ error: 'Error fetching user info' });
-        }
-
-        const user_info_data = await user_info_response.json();
+        const user_info_data = await getUserInfo();
         const sub = user_info_data.sub;
 
-        cookieStore.set('sub', sub);
+        cookieStore.set({
+            name: 'sub',
+            value: sub,
+            secure: true,
+            sameSite: 'none',
+            path: '/',
+            httpOnly: true,
+        });
+
+        // Check if Admin
+        const isAdmin = await checkIfAdmin();
+
+        if (isAdmin) {
+            cookieStore.set({
+                name: 'admin',
+                value: 'true',
+                secure: true,
+                sameSite: 'none',
+                path: '/',
+                httpOnly: true,
+            });
+        } else {
+            cookieStore.set({
+                name: 'admin',
+                value: 'false',
+                secure: true,
+                sameSite: 'none',
+                path: '/',
+                httpOnly: true,
+            });
+        }
 
         // Check if user exists
         const user_response = await fetch(`${origin}/api/users/${sub}`, {

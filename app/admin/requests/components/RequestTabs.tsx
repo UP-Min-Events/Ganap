@@ -1,12 +1,13 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+// UI Components
 import RequestCard from './RequestCard';
+import LoadMoreRequest from './LoadMoreRequest';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
     fetchPendingEvent,
     fetchApprovedEvent,
     fetchRejectedEvent,
 } from '@/actions/fetchRequestEvents';
-import LoadMoreRequest from './LoadMoreRequest';
 
 interface FetchRequestedEventProps {
     Items: EventDetails[];
@@ -43,13 +44,13 @@ export default async function EventTabs() {
             value: 'approved',
             label: 'Approved',
             colorClass:
-                'data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100',
+                'data-[state=active]:bg-red-500 data-[state=active]:text-white',
         },
         {
             value: 'rejected',
             label: 'Rejected',
             colorClass:
-                'data-[state=active]:bg-red-500 data-[state=active]:text-neutral-100',
+                'data-[state=active]:bg-red-500 data-[state=active]:text-white',
         },
     ];
 
@@ -62,26 +63,21 @@ export default async function EventTabs() {
             defaultValue={'pending'}
             className="w-full xl:max-w-[75%] mx-auto flex flex-col gap-4"
         >
-            <TabsList className="mx-auto">
+            <TabsList className="mx-auto bg-white">
                 {tabData.map((tab, index) => (
                     <TabsTrigger
                         key={index}
                         value={tab.value}
-                        className={`${tab.colorClass} w-[6rem]`}
+                        className={`${tab.colorClass} w-[6rem] bg-white`}
                     >
                         {tab.label}
                     </TabsTrigger>
                 ))}
             </TabsList>
-            {/* {tabData.map((tab) => (
-                <TabsContent key={tab.value} value={tab.value}>
-                    {tab.label} Requests
-                </TabsContent>
-            ))} */}
             {tabData.map((tab) => (
                 <TabsContent key={tab.value} value={tab.value}>
-                    {tab.label} Requests
-                    <ScrollArea className="h-[calc(100vh-18rem)] overflow-scroll w-full no-scrollbar">
+                    <h2 className="mb-4">{tab.label} Requests</h2>
+                    <ScrollArea className="h-[calc(100vh-18rem)] overflow-scroll w-full px-[0.75rem] no-scrollbar">
                         {tab.value === 'pending' &&
                             renderEvents(pendingEvents, tab.value)}
                         {tab.value === 'approved' &&

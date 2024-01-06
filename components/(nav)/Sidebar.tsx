@@ -38,18 +38,19 @@ export default function Sidebar() {
         { href: '/', text: 'Events List', icon: <List /> },
         { href: '/admin/forms', text: 'Downloadable Forms', icon: <Folders /> },
         { href: '/admin/notifications', text: 'Notifications', icon: <Mail /> },
-        { href: '/admin/logout', text: 'Log out', icon: <LogOut /> },
     ];
 
     return (
         <Sheet>
             <DropdownMenu>
-                <SheetTrigger className="absolute left-0 pt-2">
+                <SheetTrigger className="absolute left-0">
                     <HamburgerMenuIcon className="h-6 w-6" />
                 </SheetTrigger>
-                <SheetContent className="p-0">
+                <SheetContent className="p-0 bg-light-yellow-100">
                     <SheetHeader className="px-6 pt-6 pb-4">
-                        <SheetTitle>Ganap ADMIN</SheetTitle>
+                        <SheetTitle className="font-bold">
+                            Ganap ADMIN
+                        </SheetTitle>
                     </SheetHeader>
                     <Separator />
                     <nav className="flex flex-col text-left font-medium pt-2">
@@ -72,6 +73,14 @@ export default function Sidebar() {
                                 )}
                             </nav>
                         ))}
+                        <form
+                            className="flex items-center gap-2 mx-4 p-2 [&>svg]:w-[1.25rem] [&>svg]:h-[1.25rem] hover:bg-slate-100 hover:rounded py-[0.375rem]"
+                            action="/api/auth/signout"
+                            method="GET"
+                        >
+                            <LogOut />
+                            <button>Log out</button>
+                        </form>
                     </nav>
                 </SheetContent>
             </DropdownMenu>
