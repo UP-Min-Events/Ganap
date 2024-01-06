@@ -27,6 +27,9 @@ export const GET = async (request: NextRequest) => {
         );
         return response;
     } catch (error) {
-        return errorBody(400, error as string);
+        return errorBody(
+            parseInt((error as any).status),
+            (await (error as any).json()).message as string,
+        );
     }
 };
