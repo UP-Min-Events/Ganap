@@ -16,7 +16,7 @@ export const POST = async (
         const response = await postComment(body, eventId, 'EventComments');
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };
 
@@ -30,6 +30,6 @@ export const GET = async (
         const response = await getComments(eventId, 'EventComments');
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };
