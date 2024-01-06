@@ -6,6 +6,7 @@ import { errorBody } from '@/app/api/_utils/status_handler';
 export const POST = async (request: NextRequest) => {
     try {
         await handleEndpointAuth(request);
+        console.log(request);
         const response = await uploadEventDetails(
             await await request.json(),
             'EventDetails',
@@ -13,6 +14,11 @@ export const POST = async (request: NextRequest) => {
         return response;
     } catch (error) {
         console.log('ERROR', error);
-        return errorBody(400, error as string);
+        // const message = (await (error as any).json()).message;
+        // console.log('MESSAGE', message);
+        return errorBody(
+            parseInt((error as any).status),
+            (await (error as any).json()).message as string,
+        );
     }
 };
