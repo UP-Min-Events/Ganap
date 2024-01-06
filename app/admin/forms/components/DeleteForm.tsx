@@ -25,7 +25,7 @@ export default function DeleteForm() {
                     <Cross1Icon className="p-0 m-0" />
                 </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="w-[90%]">
+            <AlertDialogContent className="w-[90%] bg-light-yellow-100">
                 <AlertDialogHeader>
                     <AlertDialogTitle>Delete form?</AlertDialogTitle>
                     <AlertDialogDescription>
@@ -34,7 +34,7 @@ export default function DeleteForm() {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel className="bg-white">Cancel</AlertDialogCancel>
                     <AlertDialogAction className="bg-red-500 hover:bg-red-600">
                         Delete
                     </AlertDialogAction>
