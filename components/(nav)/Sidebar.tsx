@@ -44,7 +44,7 @@ export default function Sidebar() {
     return (
         <Sheet>
             <DropdownMenu>
-                <SheetTrigger className="absolute left-0 pt-2">
+                <SheetTrigger className="absolute left-0">
                     <HamburgerMenuIcon className="h-6 w-6" />
                 </SheetTrigger>
                 <SheetContent className="p-0 bg-light-yellow-100">
