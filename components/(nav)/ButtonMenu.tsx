@@ -23,7 +23,7 @@ export default function ButtonMenu() {
 
     return (
         <nav
-            className={`fixed bottom-0 w-full flex justify-around lg:w-[50%] lg:gap-12 lg:justify-center border-none bg-light-yellow-100 shadow-md ${
+            className={`fixed bottom-0 w-full flex justify-around lg:w-[50%] lg:gap-12 lg:justify-center border-none bg-none${
                 pathname === '/scan' ? 'border-white' : 'border-red-500'
             } overflow-hidden md:max-w-[60%] lg:max-w-[50%] xl:max-w-[40%]`}
         >
