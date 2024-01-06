@@ -27,9 +27,12 @@ export const GET = async (request: NextRequest) => {
         );
         return response;
     } catch (error) {
+        console.error('Error: ', error);
         return errorBody(
             parseInt((error as any).status),
             (await (error as any).json()).message as string,
         );
     }
 };
+
+export const dynamic = 'force-dynamic';
