@@ -14,11 +14,16 @@ import moment from 'moment';
 import { date } from 'zod';
 import { redirect } from 'next/navigation';
 import { comment } from 'postcss';
+import { headers } from 'next/headers';
 
 async function getEventDetails(eventId: string) {
     const { refresh_token, access_token } = getTokens();
+    const headersList = headers();
 
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/event/${eventId}?refresh_token=${refresh_token}`;
+    // const url = `${process.env.NEXT_PUBLIC_API_URL}/event/${eventId}?refresh_token=${refresh_token}`;
+    const url = `${headersList.get('x-forwarded-proto')}://${headersList.get(
+        'host',
+    )}/api/event/${eventId}?refresh_token=${refresh_token}`;
 
     const res = await fetch(url, {
         method: 'GET',
@@ -42,8 +47,15 @@ async function getEventDetails(eventId: string) {
 async function getEventComments(eventId: string) {
     const { refresh_token, access_token } = getTokens();
 
+    const headersList = headers();
+
     try {
-        const url = `${process.env.NEXT_PUBLIC_API_URL}/comment/${eventId}?refresh_token=${refresh_token}`;
+        // const url = `${process.env.NEXT_PUBLIC_API_URL}/comment/${eventId}?refresh_token=${refresh_token}`;
+        const url = `${headersList.get(
+            'x-forwarded-proto',
+        )}://${headersList.get(
+            'host',
+        )}/api/comment/${eventId}?refresh_token=${refresh_token}`;
 
         const res = await fetch(url, {
             method: 'GET',

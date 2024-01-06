@@ -100,7 +100,6 @@ export default function RequestForm() {
             (value) => value !== undefined && value !== '',
         ).length;
         const progress = (filled_fields / required_fields) * 100;
-        ``;
         setProgress(progress);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -109,8 +108,15 @@ export default function RequestForm() {
     async function uploadEventRequest(params: EventDetails) {
         const refresh_token = getCookie('refresh_token');
         const access_token = getCookie('access_token');
+        let host = '';
 
-        const url = `${process.env.NEXT_PUBLIC_API_URL}/event?refresh_token=${refresh_token}`;
+        if (typeof window !== 'undefined') {
+            host = window.location.origin;
+        }
+
+        // const url = `${process.env.NEXT_PUBLIC_API_URL}/event?refresh_token=${refresh_token}`;
+        const url = `${host}/api/event?refresh_token=${refresh_token}`;
+        console.log('2323232', url);
         const res = await fetch(url, {
             method: 'POST',
             headers: {

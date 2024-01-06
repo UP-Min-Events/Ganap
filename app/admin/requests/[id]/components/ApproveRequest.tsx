@@ -23,8 +23,17 @@ export default function ApproveRequest({ event_id, start_date }: EventDetails) {
     const refresh_token = getCookie('refresh_token');
     const access_token = getCookie('access_token');
 
+    if (typeof window !== 'undefined') {
+        console.log('This is from client', window.location.origin);
+    }
+
     async function approveEventRequest() {
-        const url = `${process.env.NEXT_PUBLIC_API_URL}/event/${event_id}?start_date=${start_date}&refresh_token=${refresh_token}`;
+        let host = '';
+        if (typeof window !== 'undefined') {
+            host = window.location.origin;
+        }
+        // const url = `${process.env.NEXT_PUBLIC_API_URL}/event/${event_id}?start_date=${start_date}&refresh_token=${refresh_token}`;
+        const url = `${host}/api/event/${event_id}?start_date=${start_date}&refresh_token=${refresh_token}`;
 
         const res = await fetch(url, {
             method: 'PUT',
