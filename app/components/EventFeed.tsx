@@ -1,3 +1,4 @@
+// Components
 import EventTabs from '@/app/components/EventTabs';
 
 export default async function EventFeed() {

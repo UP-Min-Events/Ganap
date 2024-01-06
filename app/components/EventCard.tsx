@@ -3,7 +3,7 @@ import Link from 'next/link';
 import moment from 'moment';
 
 // UI Components
-import { DoubleArrowRightIcon } from '@radix-ui/react-icons';
+import { Button } from '@/components/ui/button';
 import {
     Card,
     CardContent,
@@ -14,8 +14,7 @@ import {
 } from '@/components/ui/card';
 
 // Icons
-import { MapPin, Calendar, ArrowUpRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ArrowUpRight, Calendar, MapPin } from 'lucide-react';
 
 export default function EventCard({ event }: { event: EventDetails }) {
     return (
@@ -30,21 +29,24 @@ export default function EventCard({ event }: { event: EventDetails }) {
                             by {event.organizer}
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className='flex justify-between align-bottom pl-2 pr-0 py-0'>
-                        <section className='text-sm leading-3 space-y-1'>
+                    <CardContent className="flex justify-between align-bottom pl-2 pr-0 py-0">
+                        <section className="text-sm leading-3 space-y-1">
                             <h3 className="font-semibold text-red-500 flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
-                                <Calendar /> {moment(event.start_date).format('LL, h:mm A')}
+                                <Calendar />{' '}
+                                {moment(event.start_date).format('LL, h:mm A')}
                             </h3>
                             <h3 className="font-semibold flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
                                 <MapPin /> {event.venue}
                             </h3>
                         </section>
-                        <Button size="icon_s" className="bg-red-100 group-hover:bg-red-200 text-red-500 group-hover:text-red-600 [&>svg]:w-[1rem] [&>svg]:h-[1rem]">
-                            <ArrowUpRight /> 
+                        <Button
+                            size="icon_s"
+                            className="bg-red-100 group-hover:bg-red-200 text-red-500 group-hover:text-red-600 [&>svg]:w-[1rem] [&>svg]:h-[1rem]"
+                        >
+                            <ArrowUpRight />
                         </Button>
                     </CardContent>
                 </section>
-                {/* <DoubleArrowRightIcon className="w-10 h-10 group-hover:text-red-500" /> */}
             </Card>
         </Link>
     );

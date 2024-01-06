@@ -2,6 +2,7 @@ import { queryPastEvents } from '@/app/api/_utils/event';
 import { NextRequest } from 'next/server';
 import handleEndpointAuth from '@/app/api/_utils/handle_endpoint_auth';
 import { AttributeValue } from '@aws-sdk/client-dynamodb';
+import { errorBody } from '@/app/api/_utils/status_handler';
 
 export const GET = async (request: NextRequest) => {
     try {
@@ -22,6 +23,6 @@ export const GET = async (request: NextRequest) => {
         );
         return response;
     } catch (error) {
-        return error;
+        return errorBody(400, error as string) as any;
     }
 };

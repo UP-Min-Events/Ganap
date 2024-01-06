@@ -14,11 +14,16 @@ import moment from 'moment';
 import { date } from 'zod';
 import { redirect } from 'next/navigation';
 import { comment } from 'postcss';
+import { headers } from 'next/headers';
 
 async function getEventDetails(eventId: string) {
     const { refresh_token, access_token } = getTokens();
+    const headersList = headers();
 
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/event/${eventId}?refresh_token=${refresh_token}`;
+    // const url = `${process.env.NEXT_PUBLIC_API_URL}/event/${eventId}?refresh_token=${refresh_token}`;
+    const url = `${headersList.get('x-forwarded-proto')}://${headersList.get(
+        'host',
+    )}/api/event/${eventId}?refresh_token=${refresh_token}`;
 
     const res = await fetch(url, {
         method: 'GET',
@@ -31,7 +36,8 @@ async function getEventDetails(eventId: string) {
     // TODO: display error as toast
     if (!res.ok) {
         if (res.status === 403) {
-            redirect('/login');
+            // redirect('/login');
+            redirect('/api/auth/signout');
         }
         throw new Error('Something went wrong');
     }
@@ -42,8 +48,15 @@ async function getEventDetails(eventId: string) {
 async function getEventComments(eventId: string) {
     const { refresh_token, access_token } = getTokens();
 
+    const headersList = headers();
+
     try {
-        const url = `${process.env.NEXT_PUBLIC_API_URL}/comment/${eventId}?refresh_token=${refresh_token}`;
+        // const url = `${process.env.NEXT_PUBLIC_API_URL}/comment/${eventId}?refresh_token=${refresh_token}`;
+        const url = `${headersList.get(
+            'x-forwarded-proto',
+        )}://${headersList.get(
+            'host',
+        )}/api/comment/${eventId}?refresh_token=${refresh_token}`;
 
         const res = await fetch(url, {
             method: 'GET',
@@ -55,7 +68,8 @@ async function getEventComments(eventId: string) {
 
         if (!res.ok) {
             if (res.status === 403) {
-                redirect('/login');
+                // redirect('/login');
+                redirect('/api/auth/signout');
             }
             throw new Error('Something went wrong');
         }
@@ -70,7 +84,6 @@ export default async function Request({ params }: Params<'id'>) {
     const { id } = params;
     const data: EventDetails = await getEventDetails(id);
     const comments: CommentDetails[] = await getEventComments(id);
-    console.log(comments);
     return (
         <main>
             <header className="px-6 w-full flex items-center justify-center relative bg-red-500 text-white py-4 overflow-hidden">

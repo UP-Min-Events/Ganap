@@ -16,7 +16,7 @@ export const GET = async (
 
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };
 
@@ -29,7 +29,9 @@ export const PUT = async (
 
         const { eventId } = await params;
         const start_date =
-            request.nextUrl?.searchParams.get('start_date') ?? null;
+            request.nextUrl?.searchParams
+                .get('start_date')
+                ?.replace(/ /g, '+') ?? null;
         const response = await updateEventDetails(
             'EventDetails',
             eventId,
@@ -39,6 +41,6 @@ export const PUT = async (
 
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };

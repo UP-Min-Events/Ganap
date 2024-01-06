@@ -1,12 +1,13 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+// UI Components
+import LoadMore from './LoadMore';
 import EventCard from './EventCard';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
     fetchIncomingEvent,
     fetchActiveEvent,
     fetchPastEvent,
 } from '@/actions/fetchEvents';
-import LoadMore from './LoadMore';
 
 interface FetchEventProps {
     Items: EventDetails[];

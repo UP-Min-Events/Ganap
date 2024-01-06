@@ -6,11 +6,16 @@ import ScheduleCard from './components/ScheduleCard';
 import DescriptionCard from './components/DescriptionCard';
 import OrganizerCard from './components/OrganizerCard';
 import getTokens from '@/utils/getTokens';
+import { headers } from 'next/headers';
 
 async function getEventDetails(eventId: string) {
     const { refresh_token, access_token } = getTokens();
+    const headersList = headers();
 
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/event/${eventId}?refresh_token=${refresh_token}`;
+    // const url = `${process.env.NEXT_PUBLIC_API_URL}/event/${eventId}?refresh_token=${refresh_token}`;
+    const url = `${headersList.get('x-forwarded-proto')}://${headersList.get(
+        'host',
+    )}/api/event/${eventId}?refresh_token=${refresh_token}`;
 
     const res = await fetch(url, {
         method: 'GET',
