@@ -37,7 +37,7 @@ export default function Sidebar() {
         { href: '/admin/calendar', text: 'Calendar', icon: <CalendarDays /> },
         { href: '/', text: 'Events List', icon: <List /> },
         { href: '/admin/forms', text: 'Downloadable Forms', icon: <Folders /> },
-        { href: '/admin/notifications', text: 'Notifications', icon: <Mail /> }
+        { href: '/admin/notifications', text: 'Notifications', icon: <Mail /> },
     ];
 
     return (
@@ -85,5 +85,5 @@ export default function Sidebar() {
                 </SheetContent>
             </DropdownMenu>
         </Sheet>
-    )
+    );
 }
