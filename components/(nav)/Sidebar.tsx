@@ -49,7 +49,9 @@ export default function Sidebar() {
                 </SheetTrigger>
                 <SheetContent className="p-0 bg-light-yellow-100">
                     <SheetHeader className="px-6 pt-6 pb-4">
-                        <SheetTitle className="font-bold">Ganap ADMIN</SheetTitle>
+                        <SheetTitle className="font-bold">
+                            Ganap ADMIN
+                        </SheetTitle>
                     </SheetHeader>
                     <Separator />
                     <nav className="flex flex-col text-left font-medium pt-2">

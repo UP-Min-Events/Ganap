@@ -92,7 +92,7 @@ export default function OnboardingForm({ sub }: { sub: string }) {
     useEffect(() => {
         const fields = form.getValues();
         const fields_filled = Object.keys(fields).filter(
-            (field) => fields[field as keyof typeof fields] !== ''
+            (field) => fields[field as keyof typeof fields] !== '',
         ).length;
         const progress = (fields_filled / 5) * 100;
         setProgress(progress);
@@ -104,11 +104,7 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                 <Progress value={progress} />
             </header>
             <Form {...form}>
-                <form
-                    action={route}
-                    method="POST"
-                    className="space-y-4"
-                >
+                <form action={route} method="POST" className="space-y-4">
                     <FormField
                         control={form.control}
                         name="firstName"
@@ -212,10 +208,18 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        <SelectItem value="1">1st Year</SelectItem>
-                                        <SelectItem value="2">2nd Year</SelectItem>
-                                        <SelectItem value="3">3rd Year</SelectItem>
-                                        <SelectItem value="4">4th Year</SelectItem>
+                                        <SelectItem value="1">
+                                            1st Year
+                                        </SelectItem>
+                                        <SelectItem value="2">
+                                            2nd Year
+                                        </SelectItem>
+                                        <SelectItem value="3">
+                                            3rd Year
+                                        </SelectItem>
+                                        <SelectItem value="4">
+                                            4th Year
+                                        </SelectItem>
                                         {form.watch('degreeProgram') ===
                                             'BS Architecture' && (
                                             <SelectItem value="5">
