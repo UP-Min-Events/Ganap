@@ -47,9 +47,9 @@ export default function Sidebar() {
                 <SheetTrigger className="absolute left-0 pt-2">
                     <HamburgerMenuIcon className="h-6 w-6" />
                 </SheetTrigger>
-                <SheetContent className="p-0">
+                <SheetContent className="p-0 bg-light-yellow-100">
                     <SheetHeader className="px-6 pt-6 pb-4">
-                        <SheetTitle>Ganap ADMIN</SheetTitle>
+                        <SheetTitle className="font-bold">Ganap ADMIN</SheetTitle>
                     </SheetHeader>
                     <Separator />
                     <nav className="flex flex-col text-left font-medium pt-2">

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import moment from 'moment';
 
 // UI Components
-import { DoubleArrowRightIcon } from '@radix-ui/react-icons';
+import { Button } from '@/components/ui/button';
 import {
     Card,
     CardContent,
@@ -14,8 +14,7 @@ import {
 } from '@/components/ui/card';
 
 // Icons
-import { MapPin, Calendar, ArrowUpRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ArrowUpRight, Calendar, MapPin } from 'lucide-react';
 
 export default function EventCard({ event }: { event: EventDetails }) {
     return (
@@ -48,7 +47,6 @@ export default function EventCard({ event }: { event: EventDetails }) {
                         </Button>
                     </CardContent>
                 </section>
-                {/* <DoubleArrowRightIcon className="w-10 h-10 group-hover:text-red-500" /> */}
             </Card>
         </Link>
     );
