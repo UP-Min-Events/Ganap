@@ -62,7 +62,7 @@ export function UploadFormSheet() {
                     <UploadIcon className="w-4 h-4 mr-2" /> Upload Form
                 </Button>
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className="bg-light-yellow-100">
                 <SheetHeader>
                     <SheetTitle>Upload Downloadable Form</SheetTitle>
                     <SheetDescription>
@@ -87,6 +87,7 @@ export function UploadFormSheet() {
                                                 <Input
                                                     placeholder="Form Title"
                                                     {...field}
+                                                    className="bg-white"
                                                 />
                                             </FormControl>
                                         </FormItem>
@@ -104,6 +105,7 @@ export function UploadFormSheet() {
                                                 <Textarea
                                                     placeholder="Form Description"
                                                     {...field}
+                                                    className="bg-white"
                                                 />
                                             </FormControl>
                                         </FormItem>
@@ -121,6 +123,7 @@ export function UploadFormSheet() {
                                                 <Input
                                                     placeholder="Google Drive Link"
                                                     {...field}
+                                                    className="bg-white"
                                                 />
                                             </FormControl>
                                         </FormItem>

@@ -1,7 +1,7 @@
 // Utilities
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+// import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { EventProviders } from '@/contexts/EventContextProvider';
 import { RequestEventProviders } from '@/contexts/RequestEventContextProvider';
@@ -10,7 +10,7 @@ import { RequestEventProviders } from '@/contexts/RequestEventContextProvider';
 import PageHeader from '@/components/(nav)/PageHeader';
 import { Toaster } from '@/components/ui/toaster';
 
-const inter = Inter({ subsets: ['latin'] });
+// const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Ganap',

@@ -14,7 +14,7 @@ export const GET = async (
         const response = await queryForm(formId, 'DownloadableForms');
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };
 
@@ -28,6 +28,6 @@ export const DELETE = async (
         const response = await deleteForm(formId, 'DownloadableForms');
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };

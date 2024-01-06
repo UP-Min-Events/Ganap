@@ -20,7 +20,7 @@ export function AddEvent() {
             <SheetTrigger asChild>
                 <CallToActionButton action="Add Event" />
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className="bg-light-yellow-100">
                 <SheetHeader>
                     <SheetTitle>Add Event To Calendar</SheetTitle>
                     <SheetDescription>
@@ -37,7 +37,7 @@ export function AddEvent() {
                         <Input
                             id="name"
                             placeholder="Event Title"
-                            className="col-span-3"
+                            className="col-span-3 bg-white"
                         />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
@@ -47,7 +47,7 @@ export function AddEvent() {
                         <Textarea
                             id="description"
                             placeholder="Event Description"
-                            className="col-span-3"
+                            className="col-span-3 bg-white"
                         />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
@@ -58,7 +58,7 @@ export function AddEvent() {
                             type="date"
                             id="date"
                             placeholder="Date"
-                            className="col-span-3"
+                            className="col-span-3 bg-white"
                         />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
@@ -69,7 +69,7 @@ export function AddEvent() {
                             type="time"
                             id="time"
                             placeholder="Time"
-                            className="col-span-3"
+                            className="col-span-3 bg-white"
                         />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
@@ -79,7 +79,7 @@ export function AddEvent() {
                         <Input
                             id="memo"
                             placeholder="Upload Official Memo"
-                            className="col-span-3"
+                            className="col-span-3 bg-white"
                         />
                     </div>
                 </form>

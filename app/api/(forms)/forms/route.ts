@@ -8,6 +8,6 @@ export const GET = async (request: NextRequest) => {
         const response = await getForms('DownloadableForms');
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };

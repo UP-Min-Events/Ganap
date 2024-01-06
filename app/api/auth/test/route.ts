@@ -22,15 +22,15 @@ export async function GET(request: NextRequest) {
         return new NextResponse(JSON.stringify(error));
     }
 
-    return new NextResponse(JSON.stringify(response));
+    // return new NextResponse(JSON.stringify(response));
 
-    const admin_users = response.Users;
+    // const admin_users = response.Users;
 
-    const user_info_data = await getUserInfo();
-    const sub = user_info_data?.sub;
+    // const user_info_data = await getUserInfo();
+    // const sub = user_info_data?.sub;
 
-    const user_is_admin = admin_users?.some((user) => user.Username === sub);
-    console.log('user_is_admin', user_is_admin);
+    // const user_is_admin = admin_users?.some((user) => user.Username === sub);
+    // console.log('user_is_admin', user_is_admin);
 
-    return new NextResponse(JSON.stringify({ user_is_admin }));
+    // return new NextResponse(JSON.stringify({ user_is_admin }));
 }

@@ -11,6 +11,6 @@ export const POST = async (request: NextRequest) => {
         );
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };

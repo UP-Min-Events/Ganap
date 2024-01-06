@@ -18,6 +18,6 @@ export const DELETE = async (
         );
         return response;
     } catch (error) {
-        return error;
+        return error as any;
     }
 };
