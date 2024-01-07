@@ -163,7 +163,7 @@ export default function RequestForm() {
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-4 mb-6"
+                    className="mb-6 space-y-4"
                 >
                     <FormField
                         control={form.control}

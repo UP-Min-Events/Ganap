@@ -106,7 +106,7 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                 <Progress value={progress} />
             </header>
             <Form {...form}>
-                <form action={route} method="POST" className="space-y-4 mb-6">
+                <form action={route} method="POST" className="mb-6 space-y-4">
                     <FormField
                         control={form.control}
                         name="firstName"
@@ -238,7 +238,7 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                     <nav className="fixed bottom-4 mx-auto w-full sm:relative sm:pt-4">
                         <div className="mx-auto flex flex-col items-center gap-2">
                             <Button
-                                className="hover:bg-var-primary-30 h-10 w-[10rem] rounded-xl bg-red-500 hover:bg-red-600 text-white"
+                                className="hover:bg-var-primary-30 h-10 w-[10rem] rounded-xl bg-red-500 text-white hover:bg-red-600"
                                 type="submit"
                                 disabled={progress < 100}
                             >
