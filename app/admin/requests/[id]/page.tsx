@@ -1,21 +1,17 @@
 // UI Components
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import BackButton from '@/components/(buttons)/BackButton';
-
-// Feature Components
 import ScheduleCard from './components/ScheduleCard';
 import CommentDialog from './components/CommentDialog';
 import ApproveRequest from './components/ApproveRequest';
 import DescriptionCard from './components/DescriptionCard';
-import getTokens from '@/utils/getTokens';
 
-import moment from 'moment';
-import { date } from 'zod';
-import { redirect } from 'next/navigation';
-import { comment } from 'postcss';
+// Utils
 import { headers } from 'next/headers';
+import getTokens from '@/utils/getTokens';
+import { redirect } from 'next/navigation';
 import RequestHeader from './components/RequestHeader';
+import { Card } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 async function getEventDetails(eventId: string) {
     const { refresh_token, access_token } = getTokens();
@@ -105,24 +101,29 @@ export default async function Request({ params }: Params<'id'>) {
                     organizer={data.organizer}
                     description={data.description}
                 />
-                <div className="flex justify-center gap-4">
+                {/* Test, to fix UI later */}
+                {comments &&
+                    comments.length > 0 &&
+                    <Card className="flex flex-col gap-2 p-4">
+                        <h3 className="text-[1.125rem] text-center font-bold">Admin Comments</h3>
+                        {comments.map((comment, index) => (
+                            <article
+                                className="flex flex-col gap-1 rounded-md border p-4"
+                                key={index}
+                            >
+                                <h4 className="text-neutral-700 font-bold text-xs">08 Jan 2024</h4>
+                                <p>{comment.comment_content}</p>
+                            </article>
+                        ))}
+                    </Card>
+                }
+                <div className="flex justify-center gap-4 mb-4">
                     <CommentDialog event_id={id} />
                     <ApproveRequest
                         event_id={id}
                         start_date={data.start_date}
                     />
                 </div>
-                {/* Test, to fix UI later */}
-                {comments &&
-                    comments.length > 0 &&
-                    comments.map((comment, index) => (
-                        <div
-                            className="rounded-md bg-neutral-100 p-4"
-                            key={index}
-                        >
-                            <p>{comment.comment_content}</p>
-                        </div>
-                    ))}
             </section>
         </main>
     );

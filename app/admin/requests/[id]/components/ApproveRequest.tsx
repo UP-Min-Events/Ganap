@@ -72,20 +72,20 @@ export default function ApproveRequest({ event_id, start_date }: EventDetails) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button className="h-10 rounded-full bg-green-300 px-8 hover:bg-green-400">
+                <Button className="h-10 rounded-xl bg-green-300 px-8 hover:bg-green-400">
                     Approve Request
                 </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="w-[90%]">
+            <AlertDialogContent className="w-[90%] bg-light-yellow-100">
                 <AlertDialogHeader>
                     <AlertDialogTitle>Approve event request?</AlertDialogTitle>
-                    <AlertDialogDescription>
+                    <AlertDialogDescription className="text-neutral-700">
                         This action cannot be undone. This will publish the
                         event to the public.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel className="bg-white">Cancel</AlertDialogCancel>
                     <AlertDialogAction
                         className="bg-green-300 hover:bg-green-400"
                         onClick={() => {

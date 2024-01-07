@@ -102,14 +102,14 @@ export default function CommentDialog({ event_id }: EventDetails) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline" className="h-10 rounded-full px-8">
+                <Button variant="outline" className="h-10 rounded-xl px-8 bg-white hover:bg-red-100 hover:text-red-500">
                     Add Comment
                 </Button>
             </DialogTrigger>
-            <DialogContent className="w-[90%]">
+            <DialogContent className="w-[90%] bg-light-yellow-100">
                 <DialogHeader>
                     <DialogTitle>Add Comment to the Request</DialogTitle>
-                    <DialogDescription>
+                    <DialogDescription className="text-neutral-700">
                         This comment will only be seen by the event organizer.
                         Make sure to be as detailed as possible.
                     </DialogDescription>
@@ -131,6 +131,7 @@ export default function CommentDialog({ event_id }: EventDetails) {
                                         <Textarea
                                             placeholder="Comment about this event request."
                                             id="comment_content"
+                                            className="bg-white"
                                             {...field}
                                         />
                                     </FormControl>
