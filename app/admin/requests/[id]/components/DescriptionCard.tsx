@@ -1,5 +1,5 @@
 // Icons
-import { InfoCircledIcon, ArrowTopRightIcon } from '@radix-ui/react-icons';
+import { Info } from 'lucide-react';
 
 // shadCN Components
 import { Button } from '@/components/ui/button';
@@ -17,26 +17,16 @@ export default function DescriptionCard({
     organizer,
 }: EventDetails) {
     return (
-        <Card className="flex flex-col gap-4 p-4">
+        <Card className="flex flex-col gap-2 p-4">
             <CardHeader className="space-y-0.5 p-2">
-                <CardTitle className="flex">
-                    <InfoCircledIcon />
-                    &nbsp; About this event
+                <CardTitle className="flex items-center text-xl gap-2">
+                    <Info className="size-[1.25rem]" /> About this event
                 </CardTitle>
                 <CardDescription>by {organizer}</CardDescription>
             </CardHeader>
             <CardContent className="p-2">
                 <p className="indent-8">{description}</p>
             </CardContent>
-            <CardFooter className="flex justify-end p-2">
-                <Button
-                    className="bg-red-500 hover:bg-red-100 hover:text-black"
-                    disabled
-                >
-                    <ArrowTopRightIcon className="mr-2 h-4 w-4" /> Attend this
-                    event
-                </Button>
-            </CardFooter>
         </Card>
     );
 }

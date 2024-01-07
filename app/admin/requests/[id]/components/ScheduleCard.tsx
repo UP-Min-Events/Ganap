@@ -1,5 +1,5 @@
 // Icons
-import { CalendarIcon, ClockIcon, DrawingPinIcon } from '@radix-ui/react-icons';
+import { MapPin, CalendarDaysIcon, CalendarCheck, CalendarX } from 'lucide-react';
 
 // shadCN Components
 import {
@@ -19,18 +19,17 @@ export default function ScheduleCard({
     venue,
 }: EventDetails) {
     return (
-        <Card className="flex flex-col gap-4 p-4">
+        <Card className="flex flex-col gap-2 p-4">
             <CardHeader className="space-y-0.5 p-2">
-                <CardTitle className="flex">
-                    <CalendarIcon />
-                    &nbsp; Schedule
+                <CardTitle className="flex items-center gap-2 text-xl">
+                    <CalendarDaysIcon className="size-[1.25rem]" /> Schedule
                 </CardTitle>
-                <CardDescription>Event schedule details</CardDescription>
+                <CardDescription>Event schedule details set by the organizer.</CardDescription>
             </CardHeader>
             <CardContent className="p-2">
                 <div className="flex justify-between">
                     <p className="flex items-center">
-                        <CalendarIcon />
+                        <CalendarX className="size-4" />
                         &nbsp;Start Date
                     </p>
                     <p className="font-medium">
@@ -39,7 +38,7 @@ export default function ScheduleCard({
                 </div>
                 <div className="flex justify-between">
                     <p className="flex items-center">
-                        <CalendarIcon />
+                        <CalendarCheck className="size-4" />
                         &nbsp;End Date
                     </p>
                     <p className="font-medium">
@@ -48,7 +47,7 @@ export default function ScheduleCard({
                 </div>
                 <div className="flex justify-between">
                     <p className="flex items-center">
-                        <DrawingPinIcon />
+                        <MapPin className="size-4" />
                         &nbsp;Venue
                     </p>
                     <p className="font-medium">{venue}</p>

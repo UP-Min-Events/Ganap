@@ -88,7 +88,6 @@ export default async function Request({ params }: Params<'id'>) {
     return (
         <main>
             <RequestHeader event_title={data.event_name!} />
-            <Separator className="mb-4" />
             <section className="container flex flex-col gap-4 md:max-w-[60%] lg:max-w-[40%]">
                 <h3 className="flex items-center justify-center text-center text-sm font-medium">
                     Status:&nbsp;{' '}
