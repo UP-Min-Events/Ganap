@@ -10,7 +10,7 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-  } from "@/components/ui/card"
+} from '@/components/ui/card';
 import ConfirmEdit from './components/ConfirmEdit';
 
 export default function Edit({
@@ -52,7 +52,12 @@ export default function Edit({
                             Editing {title}
                         </CardTitle>
                         <CardDescription className="text-sm">
-                            Note that this will <span className="text-red-500 font-bold">need approval</span> from the admin before it will be reflected on your account.
+                            Note that this will{' '}
+                            <span className="font-bold text-red-500">
+                                need approval
+                            </span>{' '}
+                            from the admin before it will be reflected on your
+                            account.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -73,7 +78,9 @@ export default function Edit({
                                             className="bg-white"
                                             type="text"
                                             name="firstName"
-                                            defaultValue={searchParams.firstName}
+                                            defaultValue={
+                                                searchParams.firstName
+                                            }
                                         />
                                     </span>
                                     <span className="w-[90%] text-left">
@@ -90,7 +97,9 @@ export default function Edit({
                                 </>
                             ) : (
                                 <span className="w-[90%] text-left">
-                                    <h3 className="text-sm font-semibold">{title}</h3>
+                                    <h3 className="text-sm font-semibold">
+                                        {title}
+                                    </h3>
                                     <Input
                                         className="bg-white"
                                         type="text"
