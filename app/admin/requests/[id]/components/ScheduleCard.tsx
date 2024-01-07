@@ -1,5 +1,10 @@
 // Icons
-import { MapPin, CalendarDaysIcon, CalendarCheck, CalendarX } from 'lucide-react';
+import {
+    MapPin,
+    CalendarDaysIcon,
+    CalendarCheck,
+    CalendarX,
+} from 'lucide-react';
 
 // shadCN Components
 import {
@@ -24,7 +29,9 @@ export default function ScheduleCard({
                 <CardTitle className="flex items-center gap-2 text-xl">
                     <CalendarDaysIcon className="size-[1.25rem]" /> Schedule
                 </CardTitle>
-                <CardDescription>Event schedule details set by the organizer.</CardDescription>
+                <CardDescription>
+                    Event schedule details set by the organizer.
+                </CardDescription>
             </CardHeader>
             <CardContent className="p-2">
                 <div className="flex justify-between">
