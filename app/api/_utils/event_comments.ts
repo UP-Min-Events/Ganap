@@ -9,6 +9,7 @@ import {
 } from '@aws-sdk/lib-dynamodb';
 import { v4 as uuidv4 } from 'uuid';
 import { errorHandler, successHandler } from './status_handler';
+import moment from 'moment';
 
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
@@ -27,6 +28,7 @@ export const postComment = async (
     const params = {
         event_id: eventId,
         comment_id: uuidv4() as string,
+        posted_on: moment().utcOffset('+0800').format(),
         ...body,
     };
     const command = new PutCommand({
