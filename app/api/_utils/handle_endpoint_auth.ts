@@ -7,6 +7,9 @@ const handleEndpointAuth = async (request: NextRequest) => {
     const refreshTokenQueryParam =
         request.nextUrl?.searchParams.get('refresh_token') ?? null;
 
+    console.log('authorizationHeader', authorizationHeader);
+    console.log('refreshTokenQueryParam', refreshTokenQueryParam);
+
     if (
         typeof authorizationHeader !== 'string' ||
         typeof refreshTokenQueryParam !== 'string'
