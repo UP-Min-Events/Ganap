@@ -34,7 +34,9 @@ export default function DeleteForm() {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel className="bg-white">Cancel</AlertDialogCancel>
+                    <AlertDialogCancel className="bg-white">
+                        Cancel
+                    </AlertDialogCancel>
                     <AlertDialogAction className="bg-red-500 hover:bg-red-600">
                         Delete
                     </AlertDialogAction>

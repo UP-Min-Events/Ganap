@@ -33,7 +33,8 @@ export default function RequestCard({ event }: { event: EventDetails }) {
                         <section className="text-sm leading-3 space-y-1">
                             <h3 className="font-semibold text-red-500 flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
                                 <Calendar />{' '}
-                                {moment(event.start_date).format('LL, h:mm A')}, &nbsp;
+                                {moment(event.start_date).format('LL, h:mm A')},
+                                &nbsp;
                                 <MapPin /> {event.venue}
                             </h3>
                             <h3 className="font-semibold flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
