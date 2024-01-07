@@ -14,20 +14,22 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
-import { getCookie } from 'cookies-next';
+// import { getCookie } from 'cookies-next';
 import { redirect } from 'next/navigation';
+import getTokens from '@/actions/getCookies';
 
 export default function ApproveRequest({ event_id, start_date }: EventDetails) {
     const { toast } = useToast();
 
-    const refresh_token = getCookie('refresh_token');
-    const access_token = getCookie('access_token');
+    // const refresh_token = getCookie('refresh_token');
+    // const access_token = getCookie('access_token');
 
     if (typeof window !== 'undefined') {
         console.log('This is from client', window.location.origin);
     }
 
     async function approveEventRequest() {
+        const { refresh_token, access_token } = await getTokens();
         let host = '';
         if (typeof window !== 'undefined') {
             host = window.location.origin;
