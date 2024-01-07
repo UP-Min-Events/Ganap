@@ -238,7 +238,7 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                     <nav className="fixed bottom-4 mx-auto w-full md:relative md:pt-4">
                         <div className="mx-auto flex flex-col items-center gap-2">
                             <Button
-                                className="hover:bg-var-primary-30 h-10 w-[10rem] rounded-xl bg-red-500 hover:bg-red-600 text-white"
+                                className="hover:bg-var-primary-30 h-10 w-[10rem] rounded-xl bg-red-500 text-white hover:bg-red-600"
                                 type="submit"
                                 disabled={progress < 100}
                             >

@@ -20,7 +20,7 @@ export default function AppInfoAccordion() {
                     value="item-1"
                     className="rounded-t-lg border border-b-0 border-neutral-300"
                 >
-                    <AccordionTrigger className="bg-white hover:bg-white hover:text-red-500 text-black rounded-t-lg">
+                    <AccordionTrigger className="rounded-t-lg bg-white text-black hover:bg-white hover:text-red-500">
                         About the app
                     </AccordionTrigger>
                     <AccordionContent className="bg-white px-4 pt-2 text-justify indent-8">
@@ -38,9 +38,9 @@ export default function AppInfoAccordion() {
                         </p>
                         <p>
                             As of January 2024, this application is still in
-                            continuous development in collaboration with the Student
-                            Organizations and Activities Section of the UP
-                            Mindanao&apos;s Office of Student Affairs.
+                            continuous development in collaboration with the
+                            Student Organizations and Activities Section of the
+                            UP Mindanao&apos;s Office of Student Affairs.
                         </p>
                     </AccordionContent>
                 </AccordionItem>
@@ -48,7 +48,7 @@ export default function AppInfoAccordion() {
                     value="item-2"
                     className="border border-b-0 border-neutral-300"
                 >
-                    <AccordionTrigger className="bg-white hover:bg-white hover:text-red-500 text-black rounded">
+                    <AccordionTrigger className="rounded bg-white text-black hover:bg-white hover:text-red-500">
                         Notifications
                     </AccordionTrigger>
                     <AccordionContent className="bg-white px-4 pt-2">
@@ -67,10 +67,10 @@ export default function AppInfoAccordion() {
                     value="item-3"
                     className="rounded-b-lg border border-neutral-300"
                 >
-                    <AccordionTrigger className="bg-white hover:bg-white hover:text-red-500 text-black rounded-b-lg">
+                    <AccordionTrigger className="rounded-b-lg bg-white text-black hover:bg-white hover:text-red-500">
                         Privacy and Safety
                     </AccordionTrigger>
-                    <AccordionContent className="bg-white px-4 pt-2 text-justify indent-8 rounded-b-lg">
+                    <AccordionContent className="rounded-b-lg bg-white px-4 pt-2 text-justify indent-8">
                         For safety purposes, all personal information will be
                         kept confidential and will only be used for official
                         SOAS documents.
