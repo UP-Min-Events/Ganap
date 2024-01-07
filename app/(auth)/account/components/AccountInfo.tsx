@@ -88,7 +88,7 @@ export default async function AccountInfo() {
                         // className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 bg-white p-4 text-sm font-medium"
                     >
                         Year Level{' '}
-                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500 group-hover:text-red-500 group-hover:bg-red-100 rounded" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] rounded text-red-500 group-hover:bg-red-100 group-hover:text-red-500" />
                     </Link>
                     <Link
                         href={{
@@ -101,7 +101,7 @@ export default async function AccountInfo() {
                         className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 bg-white p-4 text-sm font-medium"
                     >
                         Degree Program{' '}
-                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500 group-hover:text-red-500 group-hover:bg-red-100 rounded" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] rounded text-red-500 group-hover:bg-red-100 group-hover:text-red-500" />
                     </Link>
                     <Link
                         href={{
@@ -115,7 +115,7 @@ export default async function AccountInfo() {
                         className="group flex w-full items-center justify-between rounded-b-lg border border-b border-neutral-300 bg-white p-4 text-sm font-medium"
                     >
                         Organizations{' '}
-                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500 group-hover:text-red-500 group-hover:bg-red-100 rounded" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] rounded text-red-500 group-hover:bg-red-100 group-hover:text-red-500" />
                     </Link>
                 </section>
             </section>
