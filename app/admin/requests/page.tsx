@@ -8,7 +8,7 @@ const RequestFeed = dynamic(() => import('./components/RequestFeed'));
 
 export default function Requests() {
     return (
-        <main className="min-h-screen flex flex-col items-center">
+        <main className="flex min-h-screen flex-col items-center">
             <PageHeader />
             <RequestFeed />
             <ButtonMenu />

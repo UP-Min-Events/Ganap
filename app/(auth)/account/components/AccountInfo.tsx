@@ -34,7 +34,7 @@ export default async function AccountInfo() {
     return (
         <>
             <section className="flex flex-col items-center pb-4">
-                <Avatar className="w-32 h-32 mb-4">
+                <Avatar className="mb-4 h-32 w-32">
                     <AvatarImage src={email} />
                     <AvatarFallback>
                         <Skeleton className="h-full w-full rounded-full" />
@@ -46,8 +46,8 @@ export default async function AccountInfo() {
                     <p>{data.studentNumber}</p>
                 </>
             </section>
-            <section className="w-[90%] md:w-[50%] lg:w-[40%] flex flex-col items-center px-6">
-                <section className="xl:max-w-[75%] flex flex-col items-center w-full shadow-[0_2px_2px_0_rgba(0,0,0,0.2)] rounded-lg">
+            <section className="flex w-[90%] flex-col items-center px-6 md:w-[50%] lg:w-[40%]">
+                <section className="flex w-full flex-col items-center rounded-lg shadow-[0_2px_2px_0_rgba(0,0,0,0.2)] xl:max-w-[75%]">
                     <Link
                         href={{
                             pathname: '/account/edit',
@@ -58,10 +58,10 @@ export default async function AccountInfo() {
                                 sub: `${sub?.value}`,
                             },
                         }}
-                        className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 rounded-t-lg w-full p-4 text-sm font-medium"
+                        className="group flex w-full items-center justify-between rounded-t-lg border border-b-0 border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
                     >
                         Name{' '}
-                        <ChevronRightIcon className="w-[1.25rem] h-[1.25rem] text-red-500" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
                     </Link>
                     <Link
                         href={{
@@ -71,10 +71,10 @@ export default async function AccountInfo() {
                                 studentNumber: `${data.studentNumber}`,
                             },
                         }}
-                        className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
+                        className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
                     >
                         Student Number{' '}
-                        <ChevronRightIcon className="w-[1.25rem] h-[1.25rem] text-red-500" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
                     </Link>
                     <Link
                         href={{
@@ -84,10 +84,10 @@ export default async function AccountInfo() {
                                 yearLevel: `${data.yearLevel}`,
                             },
                         }}
-                        className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
+                        className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
                     >
                         Year Level{' '}
-                        <ChevronRightIcon className="w-[1.25rem] h-[1.25rem] text-red-500" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
                     </Link>
                     <Link
                         href={{
@@ -97,10 +97,10 @@ export default async function AccountInfo() {
                                 degreeProgram: `${data.degreeProgram}`,
                             },
                         }}
-                        className="flex group justify-between items-center border border-b-0 border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
+                        className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
                     >
                         Degree Program{' '}
-                        <ChevronRightIcon className="w-[1.25rem] h-[1.25rem] text-red-500" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
                     </Link>
                     <Link
                         href={{
@@ -111,10 +111,10 @@ export default async function AccountInfo() {
                                     'Organization 1, Organization 2, Organization 3',
                             },
                         }}
-                        className="flex group justify-between items-center border border-b rounded-b-lg border-neutral-300 hover:bg-neutral-100 w-full p-4 text-sm font-medium"
+                        className="group flex w-full items-center justify-between rounded-b-lg border border-b border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
                     >
                         Organizations{' '}
-                        <ChevronRightIcon className="w-[1.25rem] h-[1.25rem] text-red-500" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
                     </Link>
                 </section>
             </section>

@@ -20,7 +20,7 @@ export default function ScheduleCard({
 }: EventDetails) {
     return (
         <Card className="flex flex-col">
-            <CardHeader className="space-y-0.5 px-4 pt-4 pb-2">
+            <CardHeader className="space-y-0.5 px-4 pb-2 pt-4">
                 <CardTitle className="flex items-center gap-[0.375rem] text-lg">
                     <CalendarIcon /> Schedule
                 </CardTitle>

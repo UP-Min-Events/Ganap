@@ -86,17 +86,17 @@ export default async function Request({ params }: Params<'id'>) {
     const comments: CommentDetails[] = await getEventComments(id);
     return (
         <main>
-            <header className="px-6 w-full flex items-center justify-center relative bg-red-500 text-white py-4 overflow-hidden">
-                <nav className="flex flex-row relative justify-center items-center min-w-full md:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%]">
+            <header className="relative flex w-full items-center justify-center overflow-hidden bg-red-500 px-6 py-4 text-white">
+                <nav className="relative flex min-w-full flex-row items-center justify-center md:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%]">
                     <BackButton />
-                    <h1 className="text-[1.75rem] font-semibold text-center">
+                    <h1 className="text-center text-[1.75rem] font-semibold">
                         {data.event_name}
                     </h1>
                 </nav>
             </header>
             <Separator className="mb-4" />
             <section className="container flex flex-col gap-4 md:max-w-[60%] lg:max-w-[40%]">
-                <h3 className="flex justify-center items-center text-center text-sm font-medium">
+                <h3 className="flex items-center justify-center text-center text-sm font-medium">
                     Status:&nbsp;{' '}
                     <Badge>
                         {data.approval_status?.charAt(0).toUpperCase()! +
@@ -112,7 +112,7 @@ export default async function Request({ params }: Params<'id'>) {
                     organizer={data.organizer}
                     description={data.description}
                 />
-                <div className="flex gap-4 justify-center">
+                <div className="flex justify-center gap-4">
                     <CommentDialog event_id={id} />
                     <ApproveRequest
                         event_id={id}
@@ -124,7 +124,7 @@ export default async function Request({ params }: Params<'id'>) {
                     comments.length > 0 &&
                     comments.map((comment, index) => (
                         <div
-                            className="bg-neutral-100 p-4 rounded-md"
+                            className="rounded-md bg-neutral-100 p-4"
                             key={index}
                         >
                             <p>{comment.comment_content}</p>

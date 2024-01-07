@@ -5,7 +5,7 @@ import AppInfoAccordion from './components/AppInfoAccordion';
 
 export default function Account() {
     return (
-        <main className="min-h-screen flex flex-col items-center">
+        <main className="flex min-h-screen flex-col items-center">
             <PageHeader />
             <AccountInfo />
             <AppInfoAccordion />

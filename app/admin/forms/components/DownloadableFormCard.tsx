@@ -16,7 +16,7 @@ import Link from 'next/link';
 
 export default function DownloadableFormCard() {
     return (
-        <Card className="flex flex-col gap-6 lg:gap-8 p-4 lg:p-6 w-full">
+        <Card className="flex w-full flex-col gap-6 p-4 lg:gap-8 lg:p-6">
             <CardHeader className="space-y-0.5 p-0">
                 <CardTitle className="flex justify-between text-2xl font-bold">
                     Form 1 <DeleteForm />
@@ -28,7 +28,7 @@ export default function DownloadableFormCard() {
             <CardFooter className="flex justify-end gap-4 p-0">
                 <Link href="#">
                     <Button
-                        className="bg-white hover:bg-red-100 hover:text-red-500 rounded-xl"
+                        className="rounded-xl bg-white hover:bg-red-100 hover:text-red-500"
                         variant="outline"
                     >
                         <Eye className="mr-2 size-4" /> Preview

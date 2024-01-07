@@ -34,39 +34,39 @@ export default function PageHeader() {
 
     return (
         <>
-            <header className="px-6 w-full flex items-center justify-center relative bg-light-yellow-100 text-red-500 min-h-[4rem] overflow-hidden">
-                <nav className="flex flex-row relative justify-start items-center min-w-full md:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%]">
+            <header className="relative flex min-h-[4rem] w-full items-center justify-center overflow-hidden bg-light-yellow-100 px-6 text-red-500">
+                <nav className="relative flex min-w-full flex-row items-center justify-start md:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%]">
                     {isAdmin ? (
                         <>
                             <Sidebar />
                             <div className="flex grow justify-center">
-                                <h1 className="text-[1.5rem] lg:text-[1.75rem] font-bold text-center">
+                                <h1 className="text-center text-[1.5rem] font-bold lg:text-[1.75rem]">
                                     {headerNames[pathname]}
                                 </h1>
                             </div>
                         </>
                     ) : pathname == '/' ? (
-                        <div className="flex flex-row gap-2 items-center">
+                        <div className="flex flex-row items-center gap-2">
                             <Image
                                 src="/icon-192x192.png"
                                 width={32}
                                 height={32}
                                 alt="Ganap Logo"
                             />
-                            <h1 className="text-[1.5rem] lg:text-[1.75rem] font-bold">
+                            <h1 className="text-[1.5rem] font-bold lg:text-[1.75rem]">
                                 Ganap
                             </h1>
                         </div>
                     ) : pathname == '/onboarding' ? (
                         <div className="flex grow justify-center">
-                            <h1 className="text-[1.5rem] lg:text-[1.75rem] font-bold">
+                            <h1 className="text-[1.5rem] font-bold lg:text-[1.75rem]">
                                 Let&apos;s get to know you.
                             </h1>
                         </div>
                     ) : (
                         <div className="flex grow justify-center">
                             <BackButton />
-                            <h1 className="text-[1.5rem] lg:text-[1.75rem] font-bold text-center">
+                            <h1 className="text-center text-[1.5rem] font-bold lg:text-[1.75rem]">
                                 {headerNames[pathname]}
                             </h1>
                         </div>

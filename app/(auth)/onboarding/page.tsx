@@ -7,7 +7,7 @@ export default function Onboarding() {
     const sub = cookieStore.get('sub');
 
     return (
-        <main className="min-h-screen flex flex-col items-center">
+        <main className="flex min-h-screen flex-col items-center">
             <PageHeader />
             <OnboardingForm sub={sub?.value!} />
         </main>

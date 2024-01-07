@@ -22,7 +22,7 @@ export default function DeleteForm() {
                     size="icon"
                     className="h-4 w-4 text-red-500 hover:text-red-600"
                 >
-                    <Cross1Icon className="p-0 m-0" />
+                    <Cross1Icon className="m-0 p-0" />
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="w-[90%] bg-light-yellow-100">

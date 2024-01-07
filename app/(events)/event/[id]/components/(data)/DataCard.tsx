@@ -49,7 +49,7 @@ export default async function DataCard() {
         <Card className="flex flex-col gap-4 p-4">
             <CardHeader className="space-y-0.5 p-2">
                 <CardTitle className="flex items-center gap-[0.375rem]">
-                    <FileText className="w-[1.25rem] h-[1.25rem]" /> Statistics
+                    <FileText className="h-[1.25rem] w-[1.25rem]" /> Statistics
                 </CardTitle>
                 <CardDescription># Participants</CardDescription>
             </CardHeader>
