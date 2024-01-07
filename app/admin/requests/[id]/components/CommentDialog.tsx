@@ -26,8 +26,9 @@ import {
 } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
 
-import { getCookie } from 'cookies-next';
+// import { getCookie } from 'cookies-next';
 import { redirect } from 'next/navigation';
+import getTokens from '@/actions/getCookies';
 
 const formSchema = z.object({
     // comment_id: z.string().uuid(),
@@ -47,8 +48,9 @@ export default function CommentDialog({ event_id }: EventDetails) {
     });
 
     async function uploadComment(comment: string) {
-        const refresh_token = getCookie('refresh_token');
-        const access_token = getCookie('access_token');
+        // const refresh_token = getCookie('refresh_token');
+        // const access_token = getCookie('access_token');
+        const { refresh_token, access_token } = await getTokens();
         let host = '';
         if (typeof window !== 'undefined') {
             host = window.location.origin;
