@@ -23,10 +23,11 @@ import {
 // Utilities
 import moment from 'moment';
 import { useState, useEffect } from 'react';
-import { getCookie } from 'cookies-next';
+// import { getCookie } from 'cookies-next';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
+import getTokens from '@/actions/getCookies';
 
 const datetime_update = (date: Date, time: string): ISODateString => {
     const updated_date = moment(date, 'ddd MMM D YYYY HH:mm:ss ZZ');
@@ -106,8 +107,7 @@ export default function RequestForm() {
     }, [form.watch()]);
 
     async function uploadEventRequest(params: EventDetails) {
-        const refresh_token = getCookie('refresh_token');
-        const access_token = getCookie('access_token');
+        const { refresh_token, access_token } = await getTokens();
         let host = '';
 
         console.log('refresh_token in RequestForm', refresh_token);
