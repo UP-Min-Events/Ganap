@@ -76,7 +76,9 @@ export default async function EventTabs() {
             </TabsList>
             {tabData.map((tab) => (
                 <TabsContent key={tab.value} value={tab.value}>
-                    <h2 className="mb-4 text-2xl font-bold">{tab.label} Requests</h2>
+                    <h2 className="mb-4 text-2xl font-bold">
+                        {tab.label} Requests
+                    </h2>
                     <ScrollArea className="no-scrollbar h-[calc(100vh-18rem)] w-full overflow-scroll px-[0.75rem]">
                         {tab.value === 'pending' &&
                             renderEvents(pendingEvents, tab.value)}

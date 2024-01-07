@@ -85,7 +85,9 @@ export default function ApproveRequest({ event_id, start_date }: EventDetails) {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel className="bg-white">Cancel</AlertDialogCancel>
+                    <AlertDialogCancel className="bg-white">
+                        Cancel
+                    </AlertDialogCancel>
                     <AlertDialogAction
                         className="bg-green-300 hover:bg-green-400"
                         onClick={() => {

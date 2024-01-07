@@ -102,22 +102,25 @@ export default async function Request({ params }: Params<'id'>) {
                     description={data.description}
                 />
                 {/* Test, to fix UI later */}
-                {comments &&
-                    comments.length > 0 &&
+                {comments && comments.length > 0 && (
                     <Card className="flex flex-col gap-2 p-4">
-                        <h3 className="text-[1.125rem] text-center font-bold">Admin Comments</h3>
+                        <h3 className="text-center text-[1.125rem] font-bold">
+                            Admin Comments
+                        </h3>
                         {comments.map((comment, index) => (
                             <article
                                 className="flex flex-col gap-1 rounded-md border p-4"
                                 key={index}
                             >
-                                <h4 className="text-neutral-700 font-bold text-xs">08 Jan 2024</h4>
+                                <h4 className="text-xs font-bold text-neutral-700">
+                                    08 Jan 2024
+                                </h4>
                                 <p>{comment.comment_content}</p>
                             </article>
                         ))}
                     </Card>
-                }
-                <div className="flex justify-center gap-4 mb-4">
+                )}
+                <div className="mb-4 flex justify-center gap-4">
                     <CommentDialog event_id={id} />
                     <ApproveRequest
                         event_id={id}
