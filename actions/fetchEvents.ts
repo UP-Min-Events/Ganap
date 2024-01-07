@@ -29,6 +29,9 @@ const fetchEvent = async (
         url = `${url}&event_id=${event_id}&start_date=${start_date}`;
     }
 
+    console.log('Access token', access_token);
+    console.log('Refresh token', refresh_token);
+
     try {
         const response = await fetch(url, {
             headers: {
@@ -37,9 +40,10 @@ const fetchEvent = async (
         });
 
         const data = await response.json();
+        console.log('DATA from FETCHEVENTS', data);
         return data;
     } catch (error) {
-        console.log('Error', error);
+        console.log('Error in FetchEvents', error);
         return null;
     }
 };
