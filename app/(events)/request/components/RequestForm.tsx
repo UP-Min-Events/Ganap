@@ -110,16 +110,12 @@ export default function RequestForm() {
         const { refresh_token, access_token } = await getTokens();
         let host = '';
 
-        console.log('refresh_token in RequestForm', refresh_token);
-        console.log('access_token in RequestForm', access_token);
-
         if (typeof window !== 'undefined') {
             host = window.location.origin;
         }
 
         // const url = `${process.env.NEXT_PUBLIC_API_URL}/event?refresh_token=${refresh_token}`;
         const url = `${host}/api/event?refresh_token=${refresh_token}`;
-        console.log('2323232', url);
         const res = await fetch(url, {
             method: 'POST',
             headers: {
