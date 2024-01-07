@@ -163,7 +163,7 @@ export default function RequestForm() {
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="mb-16 space-y-4"
+                    className="space-y-4 mb-6"
                 >
                     <FormField
                         control={form.control}
@@ -346,7 +346,7 @@ export default function RequestForm() {
                             </FormItem>
                         )}
                     />
-                    <nav className="fixed bottom-4 mx-auto w-full md:relative md:pt-4">
+                    <nav className="mx-auto w-full">
                         <div className="mx-auto flex flex-col items-center gap-2">
                             <Button
                                 className="hover:bg-var-primary-30 h-10 w-[10rem] rounded-xl bg-red-500"
