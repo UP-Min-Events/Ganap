@@ -12,6 +12,7 @@ import { redirect } from 'next/navigation';
 import RequestHeader from './components/RequestHeader';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import moment from 'moment';
 
 async function getEventDetails(eventId: string) {
     const { refresh_token, access_token } = getTokens();
@@ -113,7 +114,9 @@ export default async function Request({ params }: Params<'id'>) {
                                 key={index}
                             >
                                 <h4 className="text-xs font-bold text-neutral-700">
-                                    08 Jan 2024
+                                    {moment(comment.posted_on).format(
+                                        'll',
+                                    )}{' '}
                                 </h4>
                                 <p>{comment.comment_content}</p>
                             </article>

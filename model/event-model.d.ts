@@ -16,6 +16,7 @@ interface CommentDetails {
     event_id?: string;
     comment_id?: string;
     comment_content?: string;
+    posted_on?: ISODateString;
 }
 
 interface LastEvaluatedKeyProp {
