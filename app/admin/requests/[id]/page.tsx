@@ -114,9 +114,7 @@ export default async function Request({ params }: Params<'id'>) {
                                 key={index}
                             >
                                 <h4 className="text-xs font-bold text-neutral-700">
-                                    {moment(comment.posted_on).format(
-                                        'll',
-                                    )}{' '}
+                                    {moment(comment.posted_on).format('ll')}{' '}
                                 </h4>
                                 <p>{comment.comment_content}</p>
                             </article>
