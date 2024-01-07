@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { queryActiveEvents } from '@/app/api/_utils/event';
 import handleEndpointAuth from '@/app/api/_utils/handle_endpoint_auth';
 import { AttributeValue } from '@aws-sdk/client-dynamodb';
+import { errorBody } from '@/app/api/_utils/status_handler';
 
 export const GET = async (request: NextRequest) => {
     try {
@@ -16,12 +17,22 @@ export const GET = async (request: NextRequest) => {
             lastEvaluatedKey = { event_id: event_id, start_date: start_date };
         }
 
+        // if (!start_date || !event_id) {
+        //     return errorBody(400, 'Bad request: missing query parameters');
+        // }
+
         const response = await queryActiveEvents(
             'EventDetails',
             lastEvaluatedKey as unknown as Record<string, AttributeValue>,
         );
         return response;
     } catch (error) {
-        return error as any;
+        console.error('Error: ', error);
+        return errorBody(
+            parseInt((error as any).status),
+            (await (error as any).json()).message as string,
+        );
     }
 };
+
+export const dynamic = 'force-dynamic';

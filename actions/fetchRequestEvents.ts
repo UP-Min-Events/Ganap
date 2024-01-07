@@ -1,5 +1,6 @@
 'use server';
 import getTokens from '@/utils/getTokens';
+import { headers } from 'next/headers';
 
 interface LastEvaluatedKeyType {
     event_id?: string;
@@ -15,7 +16,12 @@ const fetchRequestEvent = async (
     lastEvaluatedKey: LastEvaluatedKeyType | undefined = undefined,
 ) => {
     const { access_token, refresh_token } = getTokens();
-    let url = `${process.env.NEXT_PUBLIC_API_URL}/event/${eventRequestType}?refresh_token=${refresh_token}`;
+    const headersList = headers();
+
+    // let url = `${process.env.NEXT_PUBLIC_API_URL}/event/${eventRequestType}?refresh_token=${refresh_token}`;
+    let url = `${headersList.get('x-forwarded-proto')}://${headersList.get(
+        'host',
+    )}/api/event/${eventRequestType}?refresh_token=${refresh_token}`;
 
     if (lastEvaluatedKey) {
         const { event_id, start_date, event_created, approval_status } =

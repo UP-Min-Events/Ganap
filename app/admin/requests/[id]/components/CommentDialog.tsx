@@ -49,10 +49,14 @@ export default function CommentDialog({ event_id }: EventDetails) {
     async function uploadComment(comment: string) {
         const refresh_token = getCookie('refresh_token');
         const access_token = getCookie('access_token');
-        console.log('Event ID: ', event_id);
+        let host = '';
+        if (typeof window !== 'undefined') {
+            host = window.location.origin;
+        }
 
         try {
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/comment/${event_id}?refresh_token=${refresh_token}`;
+            // const url = `${process.env.NEXT_PUBLIC_API_URL}/comment/${event_id}?refresh_token=${refresh_token}`;
+            const url = `${host}/api/comment/${event_id}?refresh_token=${refresh_token}`;
             const res = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -66,7 +70,8 @@ export default function CommentDialog({ event_id }: EventDetails) {
 
             if (!res.ok) {
                 if (res.status === 403) {
-                    redirect('/login');
+                    // redirect('/login');
+                    redirect('/api/auth/signout');
                 }
                 throw new Error('Something went wrong');
             }
