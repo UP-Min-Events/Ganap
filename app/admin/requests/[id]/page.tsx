@@ -15,6 +15,7 @@ import { date } from 'zod';
 import { redirect } from 'next/navigation';
 import { comment } from 'postcss';
 import { headers } from 'next/headers';
+import RequestHeader from './components/RequestHeader';
 
 async function getEventDetails(eventId: string) {
     const { refresh_token, access_token } = getTokens();
@@ -86,14 +87,7 @@ export default async function Request({ params }: Params<'id'>) {
     const comments: CommentDetails[] = await getEventComments(id);
     return (
         <main>
-            <header className="relative flex w-full items-center justify-center overflow-hidden bg-red-500 px-6 py-4 text-white">
-                <nav className="relative flex min-w-full flex-row items-center justify-center md:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%]">
-                    <BackButton />
-                    <h1 className="text-center text-[1.75rem] font-semibold">
-                        {data.event_name}
-                    </h1>
-                </nav>
-            </header>
+            <RequestHeader event_title={data.event_name!} />
             <Separator className="mb-4" />
             <section className="container flex flex-col gap-4 md:max-w-[60%] lg:max-w-[40%]">
                 <h3 className="flex items-center justify-center text-center text-sm font-medium">
