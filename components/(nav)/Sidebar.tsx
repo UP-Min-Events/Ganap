@@ -46,19 +46,19 @@ export default function Sidebar() {
                 <SheetTrigger className="absolute left-0">
                     <HamburgerMenuIcon className="h-6 w-6" />
                 </SheetTrigger>
-                <SheetContent className="p-0 bg-light-yellow-100">
-                    <SheetHeader className="px-6 pt-6 pb-4">
+                <SheetContent className="bg-light-yellow-100 p-0">
+                    <SheetHeader className="px-6 pb-4 pt-6">
                         <SheetTitle className="font-bold">
                             Ganap ADMIN
                         </SheetTitle>
                     </SheetHeader>
                     <Separator />
-                    <nav className="flex flex-col text-left font-medium pt-2">
+                    <nav className="flex flex-col pt-2 text-left font-medium">
                         {links.map((link, index) => (
                             <nav key={index}>
                                 <Link
                                     href={link.href}
-                                    className={`flex items-center gap-2 mx-4 p-2 [&>svg]:w-[1.25rem] [&>svg]:h-[1.25rem] hover:bg-slate-100 hover:rounded py-[0.375rem] ${
+                                    className={`mx-4 flex items-center gap-2 p-2 py-[0.375rem] hover:rounded hover:bg-slate-100 [&>svg]:h-[1.25rem] [&>svg]:w-[1.25rem] ${
                                         pathname === link.href
                                             ? 'text-red-500'
                                             : ''
@@ -74,7 +74,7 @@ export default function Sidebar() {
                             </nav>
                         ))}
                         <form
-                            className="flex items-center gap-2 mx-4 p-2 [&>svg]:w-[1.25rem] [&>svg]:h-[1.25rem] hover:bg-slate-100 hover:rounded py-[0.375rem]"
+                            className="mx-4 flex items-center gap-2 p-2 py-[0.375rem] hover:rounded hover:bg-slate-100 [&>svg]:h-[1.25rem] [&>svg]:w-[1.25rem]"
                             action="/api/auth/signout"
                             method="GET"
                         >

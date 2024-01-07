@@ -10,18 +10,18 @@ import { Switch } from '@/components/ui/switch';
 
 export default function AppInfoAccordion() {
     return (
-        <section className="w-[90%] md:w-[50%] lg:w-[40%] px-6 my-6">
+        <section className="my-6 w-[90%] px-6 md:w-[50%] lg:w-[40%]">
             <Accordion
                 type="single"
                 collapsible
-                className="w-full xl:max-w-[75%] mx-auto rounded-lg shadow-[0_2px_2px_0_rgba(0,0,0,0.2)]"
+                className="mx-auto w-full rounded-lg shadow-[0_2px_2px_0_rgba(0,0,0,0.2)] xl:max-w-[75%]"
             >
                 <AccordionItem
                     value="item-1"
-                    className="border border-neutral-300 border-b-0 rounded-t-lg"
+                    className="rounded-t-lg border border-b-0 border-neutral-300"
                 >
                     <AccordionTrigger>About the app</AccordionTrigger>
-                    <AccordionContent className="indent-8 text-justify px-4 pt-2">
+                    <AccordionContent className="px-4 pt-2 text-justify indent-8">
                         <p>
                             Ganap is an event management system developed by
                             Nhyl Bryle Iba&#241;ez, Anakin Skywalker Pactores,
@@ -44,27 +44,27 @@ export default function AppInfoAccordion() {
                 </AccordionItem>
                 <AccordionItem
                     value="item-2"
-                    className="border border-neutral-300 border-b-0"
+                    className="border border-b-0 border-neutral-300"
                 >
                     <AccordionTrigger>Notifications</AccordionTrigger>
                     <AccordionContent className="px-4 pt-2">
-                        <div className="flex items-center space-x-2 mb-2">
+                        <div className="mb-2 flex items-center space-x-2">
                             <Switch id="toggle-notifications" />
                             <Label htmlFor="enable-notifications">
                                 Enable Notifications
                             </Label>
                         </div>
-                        <span className="text-sm text-red-600 font-medium">
+                        <span className="text-sm font-medium text-red-600">
                             This feature is not yet functional.
                         </span>
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem
                     value="item-3"
-                    className="border border-neutral-300 rounded-b-lg"
+                    className="rounded-b-lg border border-neutral-300"
                 >
                     <AccordionTrigger>Privacy and Safety</AccordionTrigger>
-                    <AccordionContent className="indent-8 text-justify px-4 pt-2">
+                    <AccordionContent className="px-4 pt-2 text-justify indent-8">
                         For safety purposes, all personal information will be
                         kept confidential and will only be used for official
                         SOAS documents such as event attendance sheets.

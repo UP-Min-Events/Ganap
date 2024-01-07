@@ -39,18 +39,18 @@ export default async function Event({ params }: Params<'id'>) {
     return (
         <main>
             <EventHeader event_title={data.event_name!} />
-            <section className="container flex flex-col xl:grid grid-cols-3 gap-4 md:max-w-[60%] lg:max-w-[60%] xl:max-w-[50%] mb-6 md:mb-0">
+            <section className="container mb-6 flex grid-cols-3 flex-col gap-4 md:mb-0 md:max-w-[60%] lg:max-w-[60%] xl:grid xl:max-w-[50%]">
                 <div className="col-span-3">
                     <EventStatus
                         start_date={data.start_date}
                         end_date={data.end_date}
                     />
                 </div>
-                <section className="flex flex-col col-span-2 gap-4">
+                <section className="col-span-2 flex flex-col gap-4">
                     <DescriptionCard event_description={data.description!} />
                     {/* <DataCard /> */}
                 </section>
-                <section className="flex flex-col col-span-1 gap-4">
+                <section className="col-span-1 flex flex-col gap-4">
                     <ScheduleCard
                         start_date={data.start_date}
                         end_date={data.end_date}

@@ -25,7 +25,7 @@ export default function FloatingButtonMenu() {
         <nav
             className={`fixed bottom-8 flex border-none bg-white shadow-md ${
                 pathname === '/scan' ? 'border-white' : 'border-red-500'
-            } rounded-2xl overflow-hidden`}
+            } overflow-hidden rounded-2xl`}
         >
             <Link
                 href={`${isAdmin ? '/admin/requests' : '/'}`}
@@ -34,7 +34,7 @@ export default function FloatingButtonMenu() {
                 <Button
                     id="home"
                     variant="ghost"
-                    className={`rounded-l-2xl h-12 hover:bg-red-500 hover:text-white ${
+                    className={`h-12 rounded-l-2xl hover:bg-red-500 hover:text-white ${
                         pathname === (isAdmin ? '/admin/requests' : '/')
                             ? ' text-red-500'
                             : ''
@@ -51,7 +51,7 @@ export default function FloatingButtonMenu() {
                 <Button
                     id="calendar"
                     variant="ghost"
-                    className={`rounded h-12 hover:bg-red-500 hover:text-white ${
+                    className={`h-12 rounded hover:bg-red-500 hover:text-white ${
                         pathname === (isAdmin ? '/admin/calendar' : 'calendar')
                             ? ' text-red-500'
                             : ''
@@ -68,7 +68,7 @@ export default function FloatingButtonMenu() {
                 <Button
                     id="event-button"
                     variant="ghost"
-                    className={`rounded-r-2xl h-12 hover:bg-red-500 hover:text-white ${
+                    className={`h-12 rounded-r-2xl hover:bg-red-500 hover:text-white ${
                         pathname ===
                         (isAdmin ? '/admin/forms' : '/request' || '/qr')
                             ? ' text-red-500'

@@ -15,10 +15,10 @@ export default function AccountButton() {
             <Button
                 id="account"
                 variant="ghost"
-                className="p-0 text-red-500 hover:text-red-600 hover:bg-inherit"
+                className="p-0 text-red-500 hover:bg-inherit hover:text-red-600"
                 aria-label="Account"
             >
-                <Icon icon="bi:person-fill" className="w-6 h-6" />
+                <Icon icon="bi:person-fill" className="h-6 w-6" />
             </Button>
         </Link>
     );

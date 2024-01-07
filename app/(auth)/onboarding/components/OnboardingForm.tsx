@@ -96,11 +96,13 @@ export default function OnboardingForm({ sub }: { sub: string }) {
         ).length;
         const progress = (fields_filled / 5) * 100;
         setProgress(progress);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [form.watch()]);
 
     return (
-        <section className="w-full md:max-w-[50%] lg:max-w-[30%] flex flex-col gap-6">
-            <header className="w-full flex gap-4 justify-between px-6">
+        <section className="flex w-full flex-col gap-6 sm:max-w-[70%] md:max-w-[50%] lg:max-w-[30%]">
+            <header className="flex w-full justify-between gap-4 px-6">
                 <Progress value={progress} />
             </header>
             <Form {...form}>
@@ -233,10 +235,10 @@ export default function OnboardingForm({ sub }: { sub: string }) {
                             </FormItem>
                         )}
                     />
-                    <nav className="fixed md:relative md:pt-4 bottom-4 mx-auto w-full">
-                        <div className="mx-auto flex flex-col gap-2 items-center">
+                    <nav className="fixed bottom-4 mx-auto w-full md:relative md:pt-4">
+                        <div className="mx-auto flex flex-col items-center gap-2">
                             <Button
-                                className="w-[10rem] rounded-xl bg-red-500 hover:bg-var-primary-30 h-10"
+                                className="hover:bg-var-primary-30 h-10 w-[10rem] rounded-xl bg-red-500"
                                 type="submit"
                                 disabled={progress < 100}
                             >

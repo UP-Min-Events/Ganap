@@ -8,7 +8,7 @@ const EventFeed = dynamic(() => import('./components/EventFeed'));
 
 export default function Home() {
     return (
-        <main className="min-h-screen flex flex-col items-center">
+        <main className="flex min-h-screen flex-col items-center">
             <PageHeader />
             <EventFeed />
             <ButtonMenu />

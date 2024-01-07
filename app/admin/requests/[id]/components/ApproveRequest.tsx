@@ -70,7 +70,7 @@ export default function ApproveRequest({ event_id, start_date }: EventDetails) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button className="bg-green-300 hover:bg-green-400 rounded-full px-8 h-10">
+                <Button className="h-10 rounded-full bg-green-300 px-8 hover:bg-green-400">
                     Approve Request
                 </Button>
             </AlertDialogTrigger>

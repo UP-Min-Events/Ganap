@@ -153,14 +153,14 @@ export default function RequestForm() {
     }
 
     return (
-        <section className="w-full md:max-w-[50%] lg:max-w-[30%] flex flex-col gap-6">
-            <header className="w-full flex gap-4 justify-between px-6">
+        <section className="flex w-full flex-col gap-6 sm:max-w-[70%] md:max-w-[50%] lg:max-w-[30%]">
+            <header className="flex w-full justify-between gap-4 px-6">
                 <Progress value={progress} />
             </header>
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-4"
+                    className="mb-16 space-y-4"
                 >
                     <FormField
                         control={form.control}
@@ -218,7 +218,7 @@ export default function RequestForm() {
                     <div className="px-6">
                         <FormLabel htmlFor="start_date">
                             From
-                            <div className="flex flex-row gap-4 justify-center w-full mt-2">
+                            <div className="mt-2 flex w-full flex-row justify-center gap-4">
                                 <FormField
                                     control={form.control}
                                     name="start_date"
@@ -262,7 +262,7 @@ export default function RequestForm() {
                     <div className="mt-2 px-6">
                         <FormLabel htmlFor="end_date">
                             To
-                            <div className="flex flex-row gap-4 justify-center w-full mt-2">
+                            <div className="mt-2 flex w-full flex-row justify-center gap-4">
                                 <FormField
                                     control={form.control}
                                     name="end_date"
@@ -343,10 +343,10 @@ export default function RequestForm() {
                             </FormItem>
                         )}
                     />
-                    <nav className="fixed md:relative md:pt-4 bottom-4 mx-auto w-full">
-                        <div className="mx-auto flex flex-col gap-2 items-center">
+                    <nav className="fixed bottom-4 mx-auto w-full md:relative md:pt-4">
+                        <div className="mx-auto flex flex-col items-center gap-2">
                             <Button
-                                className="w-[10rem] rounded-xl bg-red-500 hover:bg-var-primary-30 h-10"
+                                className="hover:bg-var-primary-30 h-10 w-[10rem] rounded-xl bg-red-500"
                                 type="submit"
                                 disabled={progress < 100}
                             >

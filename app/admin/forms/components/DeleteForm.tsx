@@ -20,12 +20,12 @@ export default function DeleteForm() {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="h-4 w-4 hover:text-red-500"
+                    className="h-4 w-4 text-red-500 hover:text-red-600"
                 >
-                    <Cross1Icon className="p-0 m-0" />
+                    <Cross1Icon className="m-0 p-0" />
                 </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="w-[90%]">
+            <AlertDialogContent className="w-[90%] bg-light-yellow-100">
                 <AlertDialogHeader>
                     <AlertDialogTitle>Delete form?</AlertDialogTitle>
                     <AlertDialogDescription>
@@ -34,7 +34,9 @@ export default function DeleteForm() {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel className="bg-white">
+                        Cancel
+                    </AlertDialogCancel>
                     <AlertDialogAction className="bg-red-500 hover:bg-red-600">
                         Delete
                     </AlertDialogAction>

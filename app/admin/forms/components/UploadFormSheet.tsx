@@ -57,12 +57,12 @@ export function UploadFormSheet() {
 
     return (
         <Sheet>
-            <SheetTrigger asChild className="mt-8">
-                <Button className="bg-green-300 hover:bg-green-400 rounded-full px-6 py-[1.25rem]">
-                    <UploadIcon className="w-4 h-4 mr-2" /> Upload Form
+            <SheetTrigger asChild className="mb-16 mt-6">
+                <Button className="rounded-xl bg-green-300 py-[1.25rem] hover:bg-green-400">
+                    <UploadIcon className="mr-2 h-4 w-4" /> Upload Form
                 </Button>
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className="bg-light-yellow-100">
                 <SheetHeader>
                     <SheetTitle>Upload Downloadable Form</SheetTitle>
                     <SheetDescription>
@@ -87,6 +87,7 @@ export function UploadFormSheet() {
                                                 <Input
                                                     placeholder="Form Title"
                                                     {...field}
+                                                    className="bg-white"
                                                 />
                                             </FormControl>
                                         </FormItem>
@@ -104,6 +105,7 @@ export function UploadFormSheet() {
                                                 <Textarea
                                                     placeholder="Form Description"
                                                     {...field}
+                                                    className="bg-white"
                                                 />
                                             </FormControl>
                                         </FormItem>
@@ -121,6 +123,7 @@ export function UploadFormSheet() {
                                                 <Input
                                                     placeholder="Google Drive Link"
                                                     {...field}
+                                                    className="bg-white"
                                                 />
                                             </FormControl>
                                         </FormItem>

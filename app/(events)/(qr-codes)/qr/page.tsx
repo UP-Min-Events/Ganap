@@ -5,7 +5,7 @@ import AccountQrCode from './components/AccountQrCode';
 
 export default function QR() {
     return (
-        <main className="min-h-screen flex flex-col items-center">
+        <main className="flex min-h-screen flex-col items-center">
             <PageHeader />
             <AccountQrCode />
             <ButtonMenu />

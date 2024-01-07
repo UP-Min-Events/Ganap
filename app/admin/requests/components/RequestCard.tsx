@@ -19,30 +19,31 @@ import { ArrowUpRight, Calendar, MapPin, Paperclip } from 'lucide-react';
 export default function RequestCard({ event }: { event: EventDetails }) {
     return (
         <Link href={`/admin/requests/${event.event_id}`} className="rounded-xl">
-            <Card className="mx-auto flex justify-between items-center group shadow-md border-none hover:border-red-500 p-4 mb-4 lg:p-6 select-none">
-                <section className="w-full flex flex-col gap-4">
-                    <CardHeader className="space-y-1 pl-2 pr-0 py-0">
+            <Card className="group mx-auto mb-4 flex select-none items-center justify-between border-none p-4 shadow-md hover:border-red-500 lg:p-6">
+                <section className="flex w-full flex-col gap-4">
+                    <CardHeader className="space-y-1 py-0 pl-2 pr-0">
                         <h2 className="text-2xl font-bold leading-7">
                             {event.event_name}
                         </h2>
-                        <CardDescription className="leading-3 font-normal">
+                        <CardDescription className="font-normal leading-3">
                             by {event.organizer}
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className="flex justify-between align-bottom pl-2 pr-0 py-0">
-                        <section className="text-sm leading-3 space-y-1">
-                            <h3 className="font-semibold text-red-500 flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
+                    <CardContent className="flex justify-between py-0 pl-2 pr-0 align-bottom">
+                        <section className="space-y-1 text-sm leading-3">
+                            <h3 className="flex items-center gap-1 font-semibold text-red-500 [&>svg]:h-[0.75rem] [&>svg]:w-[0.75rem]">
                                 <Calendar />{' '}
-                                {moment(event.start_date).format('LL, h:mm A')},{' '}
-                                {/* <MapPin /> {event.venue} */}
+                                {moment(event.start_date).format('LL, h:mm A')},
+                                &nbsp;
+                                <MapPin /> {event.venue}
                             </h3>
-                            <h3 className="font-semibold flex items-center gap-1 [&>svg]:w-[0.75rem] [&>svg]:h-[0.75rem]">
+                            <h3 className="flex items-center gap-1 font-semibold [&>svg]:h-[0.75rem] [&>svg]:w-[0.75rem]">
                                 <Paperclip /> With Accomplished Forms
                             </h3>
                         </section>
                         <Button
                             size="icon_s"
-                            className="bg-red-100 group-hover:bg-red-200 text-red-500 group-hover:text-red-600 [&>svg]:w-[1rem] [&>svg]:h-[1rem]"
+                            className="bg-red-100 text-red-500 group-hover:bg-red-200 group-hover:text-red-600 [&>svg]:h-[1rem] [&>svg]:w-[1rem]"
                         >
                             <ArrowUpRight />
                         </Button>

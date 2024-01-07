@@ -100,7 +100,7 @@ export default function CommentDialog({ event_id }: EventDetails) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline" className="rounded-full px-8 h-10">
+                <Button variant="outline" className="h-10 rounded-full px-8">
                     Add Comment
                 </Button>
             </DialogTrigger>

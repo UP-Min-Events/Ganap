@@ -4,7 +4,7 @@ import { ChevronRightIcon, ChevronLeftIcon } from '@radix-ui/react-icons';
 
 export default function CalendarHeader() {
     return (
-        <header className="header flex lg:max-w-[40%] mx-auto justify-between items-center border-b p-4">
+        <header className="header mx-auto flex items-center justify-between border-b p-4 lg:max-w-[40%]">
             <span className="text-lg font-bold">2023 November</span>
             <nav className="flex gap-1">
                 <Button variant="outline" size="icon" className="p-1">

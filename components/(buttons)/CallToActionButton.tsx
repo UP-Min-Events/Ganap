@@ -14,7 +14,7 @@ export default function CallToActionButton({
     return (
         <Button
             id="action-button"
-            className="bg-red-500 hover:bg-red-600 w-[15rem] h-[2.5rem] rounded-2xl text-base text-center"
+            className="h-[2.5rem] w-[15rem] rounded-2xl bg-red-500 text-center text-base hover:bg-red-600"
             aria-label="Call to Action"
         >
             {action}

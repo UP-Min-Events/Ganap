@@ -34,17 +34,17 @@ export default function Edit({
     const route = `/api/users/${searchParams.sub}?from=account`;
 
     return (
-        <main className="min-h-screen flex flex-col items-center">
-            <header className="px-6 w-full flex items-center justify-center relative bg-red-500 text-white py-4 overflow-hidden">
-                <nav className="flex flex-row relative justify-center items-center min-w-full md:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%]">
+        <main className="flex min-h-screen flex-col items-center">
+            <header className="relative flex w-full items-center justify-center overflow-hidden bg-red-500 px-6 py-4 text-white">
+                <nav className="relative flex min-w-full flex-row items-center justify-center md:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%]">
                     <BackButton />
-                    <h1 className="text-[1.5rem] lg:text-[1.75rem]] font-semibold text-center">
+                    <h1 className="lg:text-[1.75rem]] text-center text-[1.5rem] font-semibold">
                         Edit Account Info
                     </h1>
                 </nav>
             </header>
-            <section className="w-full md:w-[50%] lg:w-[40%] flex flex-col items-center p-6">
-                <h2 className="text-xl font-bold mb-6 flex gap-1 items-center">
+            <section className="flex w-full flex-col items-center p-6 md:w-[50%] lg:w-[40%]">
+                <h2 className="mb-6 flex items-center gap-1 text-xl font-bold">
                     <PencilIcon />
                     {title}
                 </h2>
@@ -56,7 +56,7 @@ export default function Edit({
                     {/* <input type="hidden" name="from" value="account"/> */}
                     {searchParams.info === 'name' ? (
                         <>
-                            <span className="text-left w-[90%]">
+                            <span className="w-[90%] text-left">
                                 <h3 className="text-sm font-semibold">
                                     First Name
                                 </h3>
@@ -66,7 +66,7 @@ export default function Edit({
                                     defaultValue={searchParams.firstName}
                                 />
                             </span>
-                            <span className="text-left w-[90%]">
+                            <span className="w-[90%] text-left">
                                 <h3 className="text-sm font-semibold">
                                     Last Name
                                 </h3>
@@ -78,7 +78,7 @@ export default function Edit({
                             </span>
                         </>
                     ) : (
-                        <span className="text-left w-[90%]">
+                        <span className="w-[90%] text-left">
                             <h3 className="text-sm font-semibold">{title}</h3>
                             <Input
                                 type="text"

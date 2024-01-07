@@ -16,8 +16,8 @@ import { Button } from '@/components/ui/button';
 export default function OrganizerCard({ organizer }: EventDetails) {
     return (
         <Card className="flex flex-col">
-            <CardHeader className="space-y-0.5 px-4 pt-4 pb-2">
-                <CardTitle className="flex items-center gap-[0.375rem] [&>svg]:w-4 [&>svg]:h-4 text-lg">
+            <CardHeader className="space-y-0.5 px-4 pb-2 pt-4">
+                <CardTitle className="flex items-center gap-[0.375rem] text-lg [&>svg]:h-4 [&>svg]:w-4">
                     <Users /> Organizer
                 </CardTitle>
             </CardHeader>
@@ -31,7 +31,7 @@ export default function OrganizerCard({ organizer }: EventDetails) {
                 <nav className="flex w-full justify-between">
                     <Button
                         size="sm"
-                        className="bg-neutral-500 hover:bg-neutral-600 [&>svg]:w-4 [&>svg]:h-4 flex gap-2"
+                        className="flex gap-2 bg-neutral-500 hover:bg-neutral-600 [&>svg]:h-4 [&>svg]:w-4"
                     >
                         <ArrowUpRightSquare />
                         View Organizer
@@ -39,7 +39,7 @@ export default function OrganizerCard({ organizer }: EventDetails) {
                     <Button
                         size="sm"
                         variant="ghost"
-                        className=" [&>svg]:w-4 [&>svg]:h-4 flex gap-1"
+                        className=" flex gap-1 [&>svg]:h-4 [&>svg]:w-4"
                     >
                         <Mail />
                         Contact

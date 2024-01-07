@@ -20,21 +20,21 @@ export default function CalendarTable() {
     const renderTableCell = (day: number, weekday: Day) => (
         <td
             key={day}
-            className="group border h-6 lg:h-40 overflow-auto transition duration-500 ease hover:bg-gray-300"
+            className="ease group h-6 overflow-auto border transition duration-500 hover:bg-gray-300 lg:h-40"
         >
-            <div className="flex flex-col h-full w-full overflow-hidden">
-                <div className="w-full flex justify-center h-4 lg:mb-1">
-                    <span className="text-gray-500 text-xs lg:text-base">
+            <div className="flex h-full w-full flex-col overflow-hidden">
+                <div className="flex h-4 w-full justify-center lg:mb-1">
+                    <span className="text-xs text-gray-500 lg:text-base">
                         {day}
                     </span>
                 </div>
-                <div className="bottom flex-grow h-30 py-1 w-full cursor-pointer" />
+                <div className="bottom h-30 w-full flex-grow cursor-pointer py-1" />
             </div>
         </td>
     );
 
     const renderTableRow = (startDay: number) => (
-        <tr key={startDay} className="text-center h-[6rem]">
+        <tr key={startDay} className="h-[6rem] text-center">
             {Array.from({ length: 7 }, (_, index) => {
                 const day = startDay + index;
                 if (day <= 31) {
@@ -48,8 +48,8 @@ export default function CalendarTable() {
     );
 
     return (
-        <section className="w-full mb-24">
-            <span className="wrapper bg-white rounded shadow w-full">
+        <section className="mb-24 w-full">
+            <span className="wrapper w-full rounded bg-white shadow">
                 <CalendarHeader />
                 <table className="w-full table-fixed">
                     <thead>
@@ -57,12 +57,12 @@ export default function CalendarTable() {
                             {weekdays.map((day) => (
                                 <th
                                     key={day.full}
-                                    className="bg-red-500 text-white py-1 border-l border-r xl:text-sm text-xs"
+                                    className="border-l border-r bg-red-500 py-1 text-xs text-white xl:text-sm"
                                 >
-                                    <span className="xl:block lg:block md:block sm:block hidden">
+                                    <span className="hidden sm:block md:block lg:block xl:block">
                                         {day.full}
                                     </span>
-                                    <span className="xl:hidden lg:hidden md:hidden sm:hidden block">
+                                    <span className="block sm:hidden md:hidden lg:hidden xl:hidden">
                                         {day.short}
                                     </span>
                                 </th>
