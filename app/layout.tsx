@@ -7,14 +7,13 @@ import { EventProviders } from '@/contexts/EventContextProvider';
 import { RequestEventProviders } from '@/contexts/RequestEventContextProvider';
 
 // Components
-import PageHeader from '@/components/(nav)/PageHeader';
 import { Toaster } from '@/components/ui/toaster';
 
 // const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Ganap',
-    description: 'An event management system for UP Mindanao',
+    description: 'Your one-stop guide for all events in UP Mindanao',
     manifest: '/manifest.json',
 };
 

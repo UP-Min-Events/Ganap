@@ -63,6 +63,13 @@ export default function PageHeader() {
                                 Let&apos;s get to know you.
                             </h1>
                         </div>
+                    ) : pathname.includes('/edit') ? (
+                        <div className="flex grow justify-center">
+                            <BackButton />
+                            <h1 className="text-center text-[1.5rem] font-bold lg:text-[1.75rem]">
+                                Edit
+                            </h1>
+                        </div>
                     ) : (
                         <div className="flex grow justify-center">
                             <BackButton />
@@ -81,6 +88,8 @@ export default function PageHeader() {
                     ) : pathname == '/onboarding' ? (
                         ''
                     ) : pathname == '/request' ? (
+                        ''
+                    ) : pathname.includes('/edit') ? (
                         ''
                     ) : (
                         <AccountButton />

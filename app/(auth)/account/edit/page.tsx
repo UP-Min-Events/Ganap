@@ -1,9 +1,17 @@
-// Components
+import { useToast } from '@/components/ui/use-toast';
+import { PencilIcon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import BackButton from '@/components/(buttons)/BackButton';
-import { PencilIcon } from 'lucide-react';
 import PageHeader from '@/components/(nav)/PageHeader';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/card"
+import ConfirmEdit from './components/ConfirmEdit';
 
 export default function Edit({
     searchParams,
@@ -37,61 +45,68 @@ export default function Edit({
     return (
         <main className="flex min-h-screen flex-col items-center">
             <PageHeader />
-            <section className="flex w-full flex-col items-center p-6 md:w-[50%] lg:w-[40%]">
-                <h2 className="mb-6 flex items-center gap-1 text-xl font-bold">
-                    <PencilIcon />
-                    {title}
-                </h2>
-                <form
-                    action={route}
-                    method="POST"
-                    className="flex flex-col items-center gap-4"
-                >
-                    {/* <input type="hidden" name="from" value="account"/> */}
-                    {searchParams.info === 'name' ? (
-                        <>
-                            <span className="w-[90%] text-left">
-                                <h3 className="text-sm font-semibold">
-                                    First Name
-                                </h3>
-                                <Input
-                                    type="text"
-                                    name="firstName"
-                                    defaultValue={searchParams.firstName}
-                                />
-                            </span>
-                            <span className="w-[90%] text-left">
-                                <h3 className="text-sm font-semibold">
-                                    Last Name
-                                </h3>
-                                <Input
-                                    type="text"
-                                    name="lastName"
-                                    defaultValue={searchParams.lastName}
-                                />
-                            </span>
-                        </>
-                    ) : (
-                        <span className="w-[90%] text-left">
-                            <h3 className="text-sm font-semibold">{title}</h3>
-                            <Input
-                                type="text"
-                                name={searchParams.info}
-                                defaultValue={
-                                    searchParams[
-                                        searchParams.info as keyof typeof searchParams
-                                    ]
-                                }
-                            />
-                        </span>
-                    )}
-                    <Button
-                        className="mt-12 bg-red-500 hover:bg-red-600"
-                        type="submit"
-                    >
-                        Update {title}
-                    </Button>
-                </form>
+            <section className="px-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-2xl font-bold">
+                            Editing {title}
+                        </CardTitle>
+                        <CardDescription className="text-sm">
+                            Note that this will <span className="text-red-500 font-bold">need approval</span> from the admin before it will be reflected on your account.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <form
+                            action={route}
+                            method="POST"
+                            className="flex flex-col items-center gap-4"
+                        >
+                            {/* <input
+                                className="bg-white" type="hidden" name="from" value="account"/> */}
+                            {searchParams.info === 'name' ? (
+                                <>
+                                    <span className="w-[90%] text-left">
+                                        <h3 className="text-sm font-semibold">
+                                            First Name
+                                        </h3>
+                                        <Input
+                                            className="bg-white"
+                                            type="text"
+                                            name="firstName"
+                                            defaultValue={searchParams.firstName}
+                                        />
+                                    </span>
+                                    <span className="w-[90%] text-left">
+                                        <h3 className="text-sm font-semibold">
+                                            Last Name
+                                        </h3>
+                                        <Input
+                                            className="bg-white"
+                                            type="text"
+                                            name="lastName"
+                                            defaultValue={searchParams.lastName}
+                                        />
+                                    </span>
+                                </>
+                            ) : (
+                                <span className="w-[90%] text-left">
+                                    <h3 className="text-sm font-semibold">{title}</h3>
+                                    <Input
+                                        className="bg-white"
+                                        type="text"
+                                        name={searchParams.info}
+                                        defaultValue={
+                                            searchParams[
+                                                searchParams.info as keyof typeof searchParams
+                                            ]
+                                        }
+                                    />
+                                </span>
+                            )}
+                            <ConfirmEdit title={title} />
+                        </form>
+                    </CardContent>
+                </Card>
             </section>
         </main>
     );
