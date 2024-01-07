@@ -110,6 +110,9 @@ export default function RequestForm() {
         const access_token = getCookie('access_token');
         let host = '';
 
+        console.log('refresh_token in RequestForm', refresh_token);
+        console.log('access_token in RequestForm', access_token);
+
         if (typeof window !== 'undefined') {
             host = window.location.origin;
         }
