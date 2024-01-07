@@ -20,8 +20,10 @@ export default function AppInfoAccordion() {
                     value="item-1"
                     className="rounded-t-lg border border-b-0 border-neutral-300"
                 >
-                    <AccordionTrigger>About the app</AccordionTrigger>
-                    <AccordionContent className="px-4 pt-2 text-justify indent-8">
+                    <AccordionTrigger className="bg-white hover:bg-white hover:text-red-500 text-black rounded-t-lg">
+                        About the app
+                    </AccordionTrigger>
+                    <AccordionContent className="bg-white px-4 pt-2 text-justify indent-8">
                         <p>
                             Ganap is an event management system developed by
                             Nhyl Bryle Iba&#241;ez, Anakin Skywalker Pactores,
@@ -35,8 +37,8 @@ export default function AppInfoAccordion() {
                             now.
                         </p>
                         <p>
-                            As of October 2023, this application is still in
-                            development in collaboration with the Student
+                            As of January 2024, this application is still in
+                            continuous development in collaboration with the Student
                             Organizations and Activities Section of the UP
                             Mindanao&apos;s Office of Student Affairs.
                         </p>
@@ -46,15 +48,17 @@ export default function AppInfoAccordion() {
                     value="item-2"
                     className="border border-b-0 border-neutral-300"
                 >
-                    <AccordionTrigger>Notifications</AccordionTrigger>
-                    <AccordionContent className="px-4 pt-2">
+                    <AccordionTrigger className="bg-white hover:bg-white hover:text-red-500 text-black rounded">
+                        Notifications
+                    </AccordionTrigger>
+                    <AccordionContent className="bg-white px-4 pt-2">
                         <div className="mb-2 flex items-center space-x-2">
                             <Switch id="toggle-notifications" />
                             <Label htmlFor="enable-notifications">
                                 Enable Notifications
                             </Label>
                         </div>
-                        <span className="text-sm font-medium text-red-600">
+                        <span className="text-sm font-medium text-red-500">
                             This feature is not yet functional.
                         </span>
                     </AccordionContent>
@@ -63,11 +67,13 @@ export default function AppInfoAccordion() {
                     value="item-3"
                     className="rounded-b-lg border border-neutral-300"
                 >
-                    <AccordionTrigger>Privacy and Safety</AccordionTrigger>
-                    <AccordionContent className="px-4 pt-2 text-justify indent-8">
+                    <AccordionTrigger className="bg-white hover:bg-white hover:text-red-500 text-black rounded-b-lg">
+                        Privacy and Safety
+                    </AccordionTrigger>
+                    <AccordionContent className="bg-white px-4 pt-2 text-justify indent-8 rounded-b-lg">
                         For safety purposes, all personal information will be
                         kept confidential and will only be used for official
-                        SOAS documents such as event attendance sheets.
+                        SOAS documents.
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>

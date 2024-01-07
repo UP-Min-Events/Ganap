@@ -48,7 +48,7 @@ export default async function AccountInfo() {
             </section>
             <section className="flex w-[90%] flex-col items-center px-6 md:w-[50%] lg:w-[40%]">
                 <section className="flex w-full flex-col items-center rounded-lg shadow-[0_2px_2px_0_rgba(0,0,0,0.2)] xl:max-w-[75%]">
-                    <Link
+                    {/* <Link
                         href={{
                             pathname: '/account/edit',
                             query: {
@@ -58,10 +58,10 @@ export default async function AccountInfo() {
                                 sub: `${sub?.value}`,
                             },
                         }}
-                        className="group flex w-full items-center justify-between rounded-t-lg border border-b-0 border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
+                        className="group flex w-full items-center justify-between rounded-t-lg border border-b-0 border-neutral-300 bg-white p-4 text-sm font-medium"
                     >
                         Name{' '}
-                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-black group-hover:text-red-500 group-hover:bg-red-100 rounded" />
                     </Link>
                     <Link
                         href={{
@@ -71,11 +71,11 @@ export default async function AccountInfo() {
                                 studentNumber: `${data.studentNumber}`,
                             },
                         }}
-                        className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
+                        className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 bg-white p-4 text-sm font-medium"
                     >
                         Student Number{' '}
-                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
-                    </Link>
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-black group-hover:text-red-500 group-hover:bg-red-100 rounded" />
+                    </Link> */}
                     <Link
                         href={{
                             pathname: '/account/edit',
@@ -84,10 +84,11 @@ export default async function AccountInfo() {
                                 yearLevel: `${data.yearLevel}`,
                             },
                         }}
-                        className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
+                        className="group flex w-full items-center justify-between rounded-t-lg border border-b-0 border-neutral-300 bg-white p-4 text-sm font-medium"
+                        // className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 bg-white p-4 text-sm font-medium"
                     >
                         Year Level{' '}
-                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500 group-hover:text-red-500 group-hover:bg-red-100 rounded" />
                     </Link>
                     <Link
                         href={{
@@ -97,10 +98,10 @@ export default async function AccountInfo() {
                                 degreeProgram: `${data.degreeProgram}`,
                             },
                         }}
-                        className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
+                        className="group flex w-full items-center justify-between border border-b-0 border-neutral-300 bg-white p-4 text-sm font-medium"
                     >
                         Degree Program{' '}
-                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500 group-hover:text-red-500 group-hover:bg-red-100 rounded" />
                     </Link>
                     <Link
                         href={{
@@ -111,10 +112,10 @@ export default async function AccountInfo() {
                                     'Organization 1, Organization 2, Organization 3',
                             },
                         }}
-                        className="group flex w-full items-center justify-between rounded-b-lg border border-b border-neutral-300 p-4 text-sm font-medium hover:bg-neutral-100"
+                        className="group flex w-full items-center justify-between rounded-b-lg border border-b border-neutral-300 bg-white p-4 text-sm font-medium"
                     >
                         Organizations{' '}
-                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500" />
+                        <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] text-red-500 group-hover:text-red-500 group-hover:bg-red-100 rounded" />
                     </Link>
                 </section>
             </section>

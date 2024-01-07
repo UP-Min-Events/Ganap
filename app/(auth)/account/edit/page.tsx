@@ -3,6 +3,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import BackButton from '@/components/(buttons)/BackButton';
 import { PencilIcon } from 'lucide-react';
+import PageHeader from '@/components/(nav)/PageHeader';
 
 export default function Edit({
     searchParams,
@@ -35,14 +36,7 @@ export default function Edit({
 
     return (
         <main className="flex min-h-screen flex-col items-center">
-            <header className="relative flex w-full items-center justify-center overflow-hidden bg-red-500 px-6 py-4 text-white">
-                <nav className="relative flex min-w-full flex-row items-center justify-center md:min-w-[60%] lg:min-w-[40%] xl:min-w-[30%]">
-                    <BackButton />
-                    <h1 className="lg:text-[1.75rem]] text-center text-[1.5rem] font-semibold">
-                        Edit Account Info
-                    </h1>
-                </nav>
-            </header>
+            <PageHeader />
             <section className="flex w-full flex-col items-center p-6 md:w-[50%] lg:w-[40%]">
                 <h2 className="mb-6 flex items-center gap-1 text-xl font-bold">
                     <PencilIcon />
