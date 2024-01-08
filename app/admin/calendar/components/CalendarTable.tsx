@@ -3,7 +3,7 @@
 // Components
 import CalendarHeader from './CalendarHeader';
 import EventInstance from './EventInstance';
-import { AddEvent } from './AddEvent';
+import AddEvent from './AddEvent';
 
 // Utilities
 import { usePathname } from 'next/navigation';
