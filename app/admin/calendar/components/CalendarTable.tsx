@@ -6,6 +6,7 @@ import EventInstance from './EventInstance';
 import { AddEvent } from './AddEvent';
 
 // Utilities
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
 import {
@@ -38,6 +39,11 @@ function classNames(...classes: string[]) {
 }
 
 export default function CalendarTable({ events }: { events: Events }) {
+    const pathname = usePathname() || '/';
+
+    // temporary Admin Validation
+    const isAdmin = pathname.includes('/admin');
+
     let today = startOfToday();
     let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'));
     let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
@@ -106,7 +112,9 @@ export default function CalendarTable({ events }: { events: Events }) {
                         nextMonth={nextMonth}
                         previousMonth={previousMonth}
                     />
-                    <AddEvent />
+                    {isAdmin &&
+                        <AddEvent />
+                    }
                 </header>
                 <table className="w-full table-fixed bg-white">
                     <thead>

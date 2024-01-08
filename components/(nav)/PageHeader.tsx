@@ -10,9 +10,6 @@ import BackButton from '@/components/(buttons)/BackButton';
 import SignoutButton from '../(buttons)/SignoutButton';
 import AccountButton from '../(buttons)/AccountButton';
 
-// shadCN Components
-import { Separator } from '@/components/ui/separator';
-
 const headerNames: { [key: string]: string } = {
     '/': 'Ganap',
     '/account': 'Account',
