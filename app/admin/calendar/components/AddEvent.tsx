@@ -19,7 +19,7 @@ export function AddEvent() {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <Button className="absolute top-4 right-4 md:relative md:top-0 md:right-0 bg-red-500 hover:bg-red-600 flex items-center md:mb-4 px-2 md:px-4 gap-2">
+                <Button className="absolute right-4 top-4 flex items-center gap-2 bg-red-500 px-2 hover:bg-red-600 md:relative md:right-0 md:top-0 md:mb-4 md:px-4">
                     <PlusSquare className="size-[1.25rem]" />
                     <span className="hidden md:inline">Add Event</span>
                 </Button>
