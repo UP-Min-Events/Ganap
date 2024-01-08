@@ -41,13 +41,13 @@ export default async function Event({ params }: Params<'id'>) {
     const data: EventDetails = await getEventDetails(id);
     return (
         <main>
-            <EventHeader 
-                event_name={data.event_name!} 
+            <EventHeader
+                event_name={data.event_name!}
                 organizer={data.organizer}
                 start_date={data.start_date}
             />
             <section className="container mb-6 flex grid-cols-3 flex-col gap-6 md:mb-0 md:max-w-[55%] lg:max-w-[45%] xl:max-w-[35%]">
-                <section className="col-span-3 flex flex-col gap-6 mt-6">
+                <section className="col-span-3 mt-6 flex flex-col gap-6">
                     <DetailsCard
                         start_date={data.start_date}
                         end_date={data.end_date}
@@ -57,13 +57,13 @@ export default async function Event({ params }: Params<'id'>) {
                     {/* <OrganizerCard organizer={data.organizer} /> */}
                 </section>
                 <section className="col-span-3 flex flex-col gap-4">
-                    <DescriptionCard 
-                        description={data.description!} 
+                    <DescriptionCard
+                        description={data.description!}
                         end_date={data.end_date}
                     />
                     {/* <DataCard /> */}
                 </section>
-            </section>  
+            </section>
         </main>
     );
 }
