@@ -104,9 +104,9 @@ export default function CalendarTable({ events }: { events: Events }) {
     );
 
     return (
-        <section className="mb-24 w-full bg">
+        <section className="bg mb-24 w-full">
             <span className="wrapper w-full rounded bg-white shadow">
-                <header className="flex flex-col-reverse gap-4 md:flex-row md:justify-between items-center px-4">
+                <header className="flex flex-col-reverse items-center gap-4 px-4 md:flex-row md:justify-between">
                     <CalendarHeader
                         month={format(firstDayCurrentMonth, 'MMMM yyyy')}
                         nextMonth={nextMonth}
@@ -187,12 +187,12 @@ export default function CalendarTable({ events }: { events: Events }) {
                                         key={event.event_id}
                                     >
                                         {isSameDay(
-                                            parseISO(
-                                                event.start_date ?? '',
-                                            ),
+                                            parseISO(event.start_date ?? ''),
                                             day,
                                         ) && (
-                                            <EventInstance event_name={event.event_name} />
+                                            <EventInstance
+                                                event_name={event.event_name}
+                                            />
                                         )}
                                     </Link>
                                 ))}
