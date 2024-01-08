@@ -1,5 +1,6 @@
 // Utilities
 import Link from 'next/link';
+import moment from 'moment';
 
 // Icons
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
@@ -15,31 +16,31 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 
 export default function DescriptionCard({
-    event_description,
-}: {
-    event_description: string;
-}) {
+    description,
+    end_date,
+} : EventDetails) {
     return (
         <Card className="flex flex-col">
-            <CardHeader className="space-y-0.5 px-4 pb-2 pt-4 bg-red-100 text-black rounded-t-lg">
-                <CardTitle className="flex items-center gap-[0.375rem] text-lg">
-                    <Info className="h-[1.25rem] w-[1.25rem]" /> About the event
+            <CardHeader className="space-y-0.5 px-4 md:px-6 pt-4 md:pt-6 pb-2 text-black rounded-t-lg">
+                <CardTitle className="flex text-xl items-center gap-[0.375rem]">
+                    <Info className="size-[1.125rem] text-red-500" /> About Event
                 </CardTitle>
             </CardHeader>
-            <Separator />
-            <CardContent className="p-4">
-                <p className="indent-8">{event_description}</p>
+            <CardContent className="px-4 md:px-6 py-4">
+                <p className="indent-8">{description}</p>
             </CardContent>
-            <CardFooter className="flex justify-end px-4 pb-4">
-                <Link href="/qr">
-                    <Button className="bg-red-500 hover:bg-red-600">
-                        <ArrowTopRightIcon className="mr-2 size-4" /> 
+            <CardFooter className="flex justify-end px-4 md:px-6 pb-4 md:pb-6">
+                <Button 
+                    className="bg-red-500 hover:bg-red-600"
+                    disabled={moment().isAfter(end_date)}
+                >
+                    <Link href="/qr" className="flex items-center gap-2">
+                        <ArrowTopRightIcon className="size-4" /> 
                         Attend event
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
             </CardFooter>
         </Card>
     );

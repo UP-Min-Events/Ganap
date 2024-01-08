@@ -9,6 +9,7 @@ import OrganizerCard from './components/OrganizerCard';
 // Utilities
 import getTokens from '@/utils/getTokens';
 import { headers } from 'next/headers';
+import DetailsCard from './components/DetailsCard';
 
 async function getEventDetails(eventId: string) {
     const { refresh_token, access_token } = getTokens();
@@ -40,25 +41,29 @@ export default async function Event({ params }: Params<'id'>) {
     const data: EventDetails = await getEventDetails(id);
     return (
         <main>
-            <EventHeader event_title={data.event_name!} />
-            <EventStatus
+            <EventHeader 
+                event_name={data.event_name!} 
+                organizer={data.organizer}
                 start_date={data.start_date}
-                end_date={data.end_date}
             />
-            <section className="container mb-6 flex grid-cols-3 flex-col-reverse md:flex-col gap-4 md:mb-0 md:max-w-[60%] lg:max-w-[60%] xl:grid xl:max-w-[50%]">
-                <section className="col-span-2 flex flex-col gap-4">
-                    <DescriptionCard event_description={data.description!} />
-                    {/* <DataCard /> */}
-                </section>
-                <section className="col-span-1 flex flex-col gap-4">
-                    <ScheduleCard
+            <section className="container mb-6 flex grid-cols-3 flex-col gap-6 md:mb-0 md:max-w-[55%] lg:max-w-[45%] xl:max-w-[35%]">
+                <section className="col-span-3 flex flex-col gap-6 mt-6">
+                    <DetailsCard
                         start_date={data.start_date}
                         end_date={data.end_date}
                         venue={data.venue}
+                        event_name={data.event_name!}
                     />
-                    <OrganizerCard organizer={data.organizer} />
+                    {/* <OrganizerCard organizer={data.organizer} /> */}
                 </section>
-            </section>
+                <section className="col-span-3 flex flex-col gap-4">
+                    <DescriptionCard 
+                        description={data.description!} 
+                        end_date={data.end_date}
+                    />
+                    {/* <DataCard /> */}
+                </section>
+            </section>  
         </main>
     );
 }
