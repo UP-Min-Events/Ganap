@@ -45,7 +45,7 @@ export default async function Event({ params }: Params<'id'>) {
                 start_date={data.start_date}
                 end_date={data.end_date}
             />
-            <section className="container mb-6 flex grid-cols-3 flex-col-reverse md:flex-col gap-4 md:mb-0 md:max-w-[60%] lg:max-w-[60%] xl:grid xl:max-w-[50%]">
+            <section className="container mb-6 flex grid-cols-3 flex-col-reverse gap-4 md:mb-0 md:max-w-[60%] md:flex-col lg:max-w-[60%] xl:grid xl:max-w-[50%]">
                 <section className="col-span-2 flex flex-col gap-4">
                     <DescriptionCard event_description={data.description!} />
                     {/* <DataCard /> */}

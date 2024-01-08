@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 export default function OrganizerCard({ organizer }: EventDetails) {
     return (
         <Card className="flex flex-col">
-            <CardHeader className="space-y-0.5 px-4 pb-2 pt-4 bg-red-100 rounded-t-lg text-black">
+            <CardHeader className="space-y-0.5 rounded-t-lg bg-red-100 px-4 pb-2 pt-4 text-black">
                 <CardTitle className="flex items-center gap-[0.375rem]">
                     <Users className="size-4" /> Organizer
                 </CardTitle>

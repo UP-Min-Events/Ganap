@@ -19,7 +19,7 @@ function getEventStatus({ start_date, end_date }: EventDetails) {
 
 export default function EventStatus({ start_date, end_date }: EventDetails) {
     return (
-        <h3 className="flex items-center justify-center text-center text-sm font-medium mb-4">
+        <h3 className="mb-4 flex items-center justify-center text-center text-sm font-medium">
             Status:&nbsp;{' '}
             <Badge>{getEventStatus({ start_date, end_date })}</Badge>
         </h3>
