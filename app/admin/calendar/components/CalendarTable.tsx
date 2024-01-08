@@ -1,6 +1,11 @@
 'use client';
 
+// Components
 import CalendarHeader from './CalendarHeader';
+import EventInstance from './EventInstance';
+import { AddEvent } from './AddEvent';
+
+// Utilities
 import { useState } from 'react';
 import Link from 'next/link';
 import {
@@ -53,19 +58,19 @@ export default function CalendarTable({ events }: { events: Events }) {
     }
 
     const weekdays: Day[] = [
-        { full: 'Sunday', short: 'Sun' },
-        { full: 'Monday', short: 'Mon' },
-        { full: 'Tuesday', short: 'Tue' },
-        { full: 'Wednesday', short: 'Wed' },
-        { full: 'Thursday', short: 'Thu' },
-        { full: 'Friday', short: 'Fri' },
-        { full: 'Saturday', short: 'Sat' },
+        { full: 'Sunday', short: 'S' },
+        { full: 'Monday', short: 'M' },
+        { full: 'Tuesday', short: 'T' },
+        { full: 'Wednesday', short: 'W' },
+        { full: 'Thursday', short: 'T' },
+        { full: 'Friday', short: 'F' },
+        { full: 'Saturday', short: 'S' },
     ];
 
     const renderTableCell = (day: number, weekday: Day) => (
         <td
             key={day}
-            className="ease group h-6 overflow-auto border transition duration-500 hover:bg-gray-300 lg:h-40"
+            className="ease group h-6 overflow-auto border transition duration-500 lg:h-40"
         >
             <div className="flex h-full w-full flex-col overflow-hidden">
                 <div className="flex h-4 w-full justify-center lg:mb-1">
@@ -93,14 +98,17 @@ export default function CalendarTable({ events }: { events: Events }) {
     );
 
     return (
-        <section className="mb-24 w-full">
+        <section className="mb-24 w-full bg">
             <span className="wrapper w-full rounded bg-white shadow">
-                <CalendarHeader
-                    month={format(firstDayCurrentMonth, 'MMMM yyyy')}
-                    nextMonth={nextMonth}
-                    previousMonth={previousMonth}
-                />
-                <table className="w-full table-fixed">
+                <header className="flex flex-col-reverse gap-4 md:flex-row md:justify-between items-center px-4">
+                    <CalendarHeader
+                        month={format(firstDayCurrentMonth, 'MMMM yyyy')}
+                        nextMonth={nextMonth}
+                        previousMonth={previousMonth}
+                    />
+                    <AddEvent />
+                </header>
+                <table className="w-full table-fixed bg-white">
                     <thead>
                         <tr>
                             {weekdays.map((day) => (
@@ -132,7 +140,7 @@ export default function CalendarTable({ events }: { events: Events }) {
                                 (dayIdx === 0 &&
                                     colStartClasses[getDay(day)]) ||
                                     '',
-                                'ease group h-20 overflow-auto border transition duration-200 hover:bg-gray-300 lg:h-40',
+                                'ease group h-20 overflow-auto border transition duration-200 lg:h-40',
                             )}
                         >
                             <div className="flex h-full w-full flex-col overflow-hidden">
@@ -140,7 +148,7 @@ export default function CalendarTable({ events }: { events: Events }) {
                                     <span
                                         className={classNames(
                                             isToday(day)
-                                                ? 'font-bold text-gray-900'
+                                                ? 'font-bold text-red-500'
                                                 : '',
                                             !isToday(day) &&
                                                 isSameMonth(
@@ -165,25 +173,21 @@ export default function CalendarTable({ events }: { events: Events }) {
                                         </time>
                                     </span>
                                 </div>
-                                <div>
-                                    {events.Items.map((event) => (
-                                        <Link
-                                            href={`/event/${event.event_id}`}
-                                            key={event.event_id}
-                                        >
-                                            {isSameDay(
-                                                parseISO(
-                                                    event.start_date ?? '',
-                                                ),
-                                                day,
-                                            ) && (
-                                                <div>
-                                                    <p>{event.event_name}</p>
-                                                </div>
-                                            )}
-                                        </Link>
-                                    ))}
-                                </div>
+                                {events.Items.map((event) => (
+                                    <Link
+                                        href={`/event/${event.event_id}`}
+                                        key={event.event_id}
+                                    >
+                                        {isSameDay(
+                                            parseISO(
+                                                event.start_date ?? '',
+                                            ),
+                                            day,
+                                        ) && (
+                                            <EventInstance event_name={event.event_name} />
+                                        )}
+                                    </Link>
+                                ))}
                                 <div className="bottom h-30 w-full flex-grow cursor-pointer py-1" />
                             </div>
                         </div>

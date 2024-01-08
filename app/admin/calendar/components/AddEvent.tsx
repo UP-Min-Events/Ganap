@@ -13,12 +13,16 @@ import {
     SheetTrigger,
 } from '@/components/ui/sheet';
 import CallToActionButton from '@/components/(buttons)/CallToActionButton';
+import { PlusSquare } from 'lucide-react';
 
 export function AddEvent() {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <CallToActionButton action="Add Event" />
+                <Button className="absolute top-4 right-4 md:relative md:top-0 md:right-0 bg-red-500 hover:bg-red-600 flex items-center md:mb-4 px-2 md:px-4 gap-2">
+                    <PlusSquare className="size-[1.25rem]" />
+                    <span className="hidden md:inline">Add Event</span>
+                </Button>
             </SheetTrigger>
             <SheetContent className="bg-light-yellow-100">
                 <SheetHeader>

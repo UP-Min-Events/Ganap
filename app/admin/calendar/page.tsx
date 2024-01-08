@@ -15,7 +15,7 @@ export default async function Calendar() {
     return (
         <main className="flex min-h-screen flex-col items-center">
             <PageHeader />
-            <AddEvent />
+            {/* <AddEvent /> */}
             <CalendarTable events={approvedEvents} />
             <ButtonMenu />
         </main>

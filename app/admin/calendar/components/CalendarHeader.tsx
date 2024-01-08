@@ -1,4 +1,5 @@
 // Components
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ChevronRightIcon, ChevronLeftIcon } from '@radix-ui/react-icons';
 
@@ -14,14 +15,16 @@ export default function CalendarHeader({
     previousMonth,
 }: Props) {
     return (
-        <header className="header mx-auto flex items-center justify-between border-b p-4 lg:max-w-[40%]">
-            <span className="text-lg font-bold">{month}</span>
-            <nav className="flex gap-1">
+        <header className="w-full flex items-center justify-between sm:justify-start gap-6 border-b pb-4">
+            <Badge className="text-lg font-bold text-card-foreground shadow bg-white hover:bg-white min-w-[10rem] justify-center  ">
+                {month}
+            </Badge>
+            <nav className="flex gap-2">
                 <Button
                     onClick={previousMonth}
                     variant="outline"
                     size="icon"
-                    className="p-1"
+                    className="p-1 bg-white hover:bg-red-100 hover:text-red-500"
                 >
                     <ChevronLeftIcon className="h-4 w-4" />
                 </Button>
@@ -29,7 +32,7 @@ export default function CalendarHeader({
                     onClick={nextMonth}
                     variant="outline"
                     size="icon"
-                    className="p-1"
+                    className="p-1 bg-white hover:bg-red-100 hover:text-red-500"
                 >
                     <ChevronRightIcon className="h-4 w-4" />
                 </Button>
