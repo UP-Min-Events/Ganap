@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function Login() {
     return (
-        <main className="container flex min-h-screen flex-col items-center justify-between py-[20%] lg:py-[10%]">
+        <main className="container flex min-h-[100svh] flex-col items-center justify-between py-[20%] lg:py-[10%]">
             <header className="align-center flex flex-col justify-center text-center">
                 <figure className="flex justify-center">
                     <Image

@@ -24,7 +24,7 @@ export default function DescriptionCard({
 }) {
     return (
         <Card className="flex flex-col">
-            <CardHeader className="space-y-0.5 px-4 pb-2 pt-4">
+            <CardHeader className="space-y-0.5 px-4 pb-2 pt-4 bg-red-100 text-black rounded-t-lg">
                 <CardTitle className="flex items-center gap-[0.375rem] text-lg">
                     <Info className="h-[1.25rem] w-[1.25rem]" /> About the event
                 </CardTitle>
@@ -36,8 +36,8 @@ export default function DescriptionCard({
             <CardFooter className="flex justify-end px-4 pb-4">
                 <Link href="/qr">
                     <Button className="bg-red-500 hover:bg-red-600">
-                        <ArrowTopRightIcon className="mr-2 h-4 w-4" /> Visit
-                        Official Post
+                        <ArrowTopRightIcon className="mr-2 size-4" /> 
+                        Attend event
                     </Button>
                 </Link>
             </CardFooter>

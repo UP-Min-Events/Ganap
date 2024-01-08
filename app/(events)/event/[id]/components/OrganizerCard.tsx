@@ -16,19 +16,19 @@ import { Button } from '@/components/ui/button';
 export default function OrganizerCard({ organizer }: EventDetails) {
     return (
         <Card className="flex flex-col">
-            <CardHeader className="space-y-0.5 px-4 pb-2 pt-4">
-                <CardTitle className="flex items-center gap-[0.375rem] text-lg [&>svg]:h-4 [&>svg]:w-4">
-                    <Users /> Organizer
+            <CardHeader className="space-y-0.5 px-4 pb-2 pt-4 bg-red-100 rounded-t-lg text-black">
+                <CardTitle className="flex items-center gap-[0.375rem]">
+                    <Users className="size-4" /> Organizer
                 </CardTitle>
             </CardHeader>
             <Separator />
             <CardContent className="flex flex-col items-center gap-4 p-4">
                 <h3 className="font-bold">{organizer}</h3>
-                <p className="text-xs">
+                {/* <p className="text-xs">
                     Organizer details are placed here to let participants know
                     about the organizer/s of the event.
-                </p>
-                <nav className="flex w-full justify-between">
+                </p> */}
+                {/* <nav className="flex w-full justify-between">
                     <Button
                         size="sm"
                         className="flex gap-2 bg-neutral-500 hover:bg-neutral-600 [&>svg]:h-4 [&>svg]:w-4"
@@ -44,7 +44,7 @@ export default function OrganizerCard({ organizer }: EventDetails) {
                         <Mail />
                         Contact
                     </Button>
-                </nav>
+                </nav> */}
             </CardContent>
         </Card>
     );

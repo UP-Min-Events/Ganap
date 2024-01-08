@@ -5,6 +5,8 @@ import EventStatus from './components/EventStatus';
 import ScheduleCard from './components/ScheduleCard';
 import DescriptionCard from './components/DescriptionCard';
 import OrganizerCard from './components/OrganizerCard';
+
+// Utilities
 import getTokens from '@/utils/getTokens';
 import { headers } from 'next/headers';
 
@@ -39,13 +41,11 @@ export default async function Event({ params }: Params<'id'>) {
     return (
         <main>
             <EventHeader event_title={data.event_name!} />
-            <section className="container mb-6 flex grid-cols-3 flex-col gap-4 md:mb-0 md:max-w-[60%] lg:max-w-[60%] xl:grid xl:max-w-[50%]">
-                <div className="col-span-3">
-                    <EventStatus
-                        start_date={data.start_date}
-                        end_date={data.end_date}
-                    />
-                </div>
+            <EventStatus
+                start_date={data.start_date}
+                end_date={data.end_date}
+            />
+            <section className="container mb-6 flex grid-cols-3 flex-col-reverse md:flex-col gap-4 md:mb-0 md:max-w-[60%] lg:max-w-[60%] xl:grid xl:max-w-[50%]">
                 <section className="col-span-2 flex flex-col gap-4">
                     <DescriptionCard event_description={data.description!} />
                     {/* <DataCard /> */}

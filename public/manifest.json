@@ -1,7 +1,7 @@
 {
     "name": "Ganap",
-    "short_name": "Events",
-    "description": "UPMin Events is an event management app.",
+    "short_name": "Ganap",
+    "description": "Your one-stop guide to all events in UP Mindanao.",
     "icons": [
         {
             "src": "/icon-192x192.png",
