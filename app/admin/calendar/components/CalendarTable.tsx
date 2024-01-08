@@ -112,9 +112,7 @@ export default function CalendarTable({ events }: { events: Events }) {
                         nextMonth={nextMonth}
                         previousMonth={previousMonth}
                     />
-                    {isAdmin &&
-                        <AddEvent />
-                    }
+                    {isAdmin && <AddEvent />}
                 </header>
                 <table className="w-full table-fixed bg-white">
                     <thead>
